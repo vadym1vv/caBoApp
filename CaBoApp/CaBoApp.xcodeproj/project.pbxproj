@@ -8,19 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		D5A4B1D32EE9B3A70063B0AB /* CaBoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1D22EE9B3A70063B0AB /* CaBoAppApp.swift */; };
-		D5A4B1D52EE9B3A70063B0AB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1D42EE9B3A70063B0AB /* ContentView.swift */; };
 		D5A4B1D72EE9B3A80063B0AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5A4B1D62EE9B3A80063B0AB /* Assets.xcassets */; };
 		D5A4B1DA2EE9B3A80063B0AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5A4B1D92EE9B3A80063B0AB /* Preview Assets.xcassets */; };
 		D5A4B1DF2EE9B3A80063B0AB /* CaBoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1DD2EE9B3A80063B0AB /* CaBoApp.xcdatamodeld */; };
+		D5A4B1E82EE9B6830063B0AB /* PreloaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1E72EE9B6830063B0AB /* PreloaderView.swift */; };
+		D5A4B1EA2EE9B7450063B0AB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1E92EE9B7450063B0AB /* OnboardingView.swift */; };
+		D5A4B1EC2EE9B74E0063B0AB /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1EB2EE9B74E0063B0AB /* MainScreenView.swift */; };
+		D5A4B1F02EE9B7D00063B0AB /* OnboardingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1EF2EE9B7D00063B0AB /* OnboardingEnum.swift */; };
+		D5AD14D92EE9BDFD00C7A261 /* LinearGradientEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AD14D82EE9BDFD00C7A261 /* LinearGradientEnum.swift */; };
+		D5AD14DB2EE9C38700C7A261 /* ColorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AD14DA2EE9C38700C7A261 /* ColorEnum.swift */; };
+		D5AD14DD2EE9D37C00C7A261 /* IconEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AD14DC2EE9D37C00C7A261 /* IconEnum.swift */; };
+		D5AD14E02EE9DDBF00C7A261 /* LayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AD14DF2EE9DDBF00C7A261 /* LayoutExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D5A4B1CF2EE9B3A70063B0AB /* CaBoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaBoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A4B1D22EE9B3A70063B0AB /* CaBoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaBoAppApp.swift; sourceTree = "<group>"; };
-		D5A4B1D42EE9B3A70063B0AB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D5A4B1D62EE9B3A80063B0AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5A4B1D92EE9B3A80063B0AB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5A4B1DE2EE9B3A80063B0AB /* CaBoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CaBoApp.xcdatamodel; sourceTree = "<group>"; };
+		D5A4B1E72EE9B6830063B0AB /* PreloaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloaderView.swift; sourceTree = "<group>"; };
+		D5A4B1E92EE9B7450063B0AB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D5A4B1EB2EE9B74E0063B0AB /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		D5A4B1EF2EE9B7D00063B0AB /* OnboardingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEnum.swift; sourceTree = "<group>"; };
+		D5AD14D82EE9BDFD00C7A261 /* LinearGradientEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradientEnum.swift; sourceTree = "<group>"; };
+		D5AD14DA2EE9C38700C7A261 /* ColorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEnum.swift; sourceTree = "<group>"; };
+		D5AD14DC2EE9D37C00C7A261 /* IconEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconEnum.swift; sourceTree = "<group>"; };
+		D5AD14DF2EE9DDBF00C7A261 /* LayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +67,10 @@
 		D5A4B1D12EE9B3A70063B0AB /* CaBoApp */ = {
 			isa = PBXGroup;
 			children = (
+				D5AD14DE2EE9DDB500C7A261 /* Extension */,
+				D5A4B1ED2EE9B7BE0063B0AB /* Model */,
+				D5A4B1E52EE9B6690063B0AB /* View */,
 				D5A4B1D22EE9B3A70063B0AB /* CaBoAppApp.swift */,
-				D5A4B1D42EE9B3A70063B0AB /* ContentView.swift */,
 				D5A4B1D62EE9B3A80063B0AB /* Assets.xcassets */,
 				D5A4B1DD2EE9B3A80063B0AB /* CaBoApp.xcdatamodeld */,
 				D5A4B1D82EE9B3A80063B0AB /* Preview Content */,
@@ -68,6 +84,51 @@
 				D5A4B1D92EE9B3A80063B0AB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D5A4B1E52EE9B6690063B0AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D5A4B1E62EE9B66F0063B0AB /* Component */,
+				D5A4B1E92EE9B7450063B0AB /* OnboardingView.swift */,
+				D5A4B1EB2EE9B74E0063B0AB /* MainScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D5A4B1E62EE9B66F0063B0AB /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				D5A4B1E72EE9B6830063B0AB /* PreloaderView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		D5A4B1ED2EE9B7BE0063B0AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D5A4B1EE2EE9B7C30063B0AB /* EnumModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D5A4B1EE2EE9B7C30063B0AB /* EnumModel */ = {
+			isa = PBXGroup;
+			children = (
+				D5A4B1EF2EE9B7D00063B0AB /* OnboardingEnum.swift */,
+				D5AD14D82EE9BDFD00C7A261 /* LinearGradientEnum.swift */,
+				D5AD14DA2EE9C38700C7A261 /* ColorEnum.swift */,
+				D5AD14DC2EE9D37C00C7A261 /* IconEnum.swift */,
+			);
+			path = EnumModel;
+			sourceTree = "<group>";
+		};
+		D5AD14DE2EE9DDB500C7A261 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D5AD14DF2EE9DDBF00C7A261 /* LayoutExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +201,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5A4B1D52EE9B3A70063B0AB /* ContentView.swift in Sources */,
 				D5A4B1DF2EE9B3A80063B0AB /* CaBoApp.xcdatamodeld in Sources */,
+				D5AD14D92EE9BDFD00C7A261 /* LinearGradientEnum.swift in Sources */,
+				D5AD14DD2EE9D37C00C7A261 /* IconEnum.swift in Sources */,
+				D5AD14E02EE9DDBF00C7A261 /* LayoutExtension.swift in Sources */,
+				D5A4B1EC2EE9B74E0063B0AB /* MainScreenView.swift in Sources */,
+				D5A4B1EA2EE9B7450063B0AB /* OnboardingView.swift in Sources */,
+				D5A4B1F02EE9B7D00063B0AB /* OnboardingEnum.swift in Sources */,
 				D5A4B1D32EE9B3A70063B0AB /* CaBoAppApp.swift in Sources */,
+				D5AD14DB2EE9C38700C7A261 /* ColorEnum.swift in Sources */,
+				D5A4B1E82EE9B6830063B0AB /* PreloaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +346,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +378,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

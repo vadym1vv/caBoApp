@@ -9,11 +9,17 @@ import SwiftUI
 
 @main
 struct CaBoAppApp: App {
-
+    
+    init() {
+        UserDefaults.standard.register(defaults: [
+            "isFirstOpening": true,
+        ])
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-              
+            PreloaderView()
+            
         }
     }
 }

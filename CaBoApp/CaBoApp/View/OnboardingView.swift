@@ -1,0 +1,123 @@
+//
+//  OnboardingView.swift
+//  CaBoApp
+//
+//  Created by vadym vasylaki on 10.12.2025.
+//
+
+import SwiftUI
+
+struct OnboardingView: View {
+    
+    @State private var selectedTab: OnboardingEum = .discoverCuban
+    
+    var body: some View {
+        VStack {
+            VStack(spacing: UIScreen.main.bounds.height / 20) {
+                
+                HStack  {
+                    if (selectedTab.rawValue >= OnboardingEum.allCases.count - 1) {
+                        Button {
+                            withAnimation {
+                                selectedTab = .discoverCuban
+                            }
+                        } label: {
+                            Text("Back")
+                                .frame(height: 36)
+                                .padding(.horizontal)
+                                .foregroundColor(ColorEnum.colFF5D4D.color)
+                                .background(ColorEnum.colFFFFFF.color)
+                                .clipShape(RoundedRectangle(cornerRadius: 16))
+                        }
+                    }
+                    Spacer()
+                    NavigationLink {
+                        MainScreenView()
+                    } label: {
+                        Text("SKIP")
+                            .frame(height: 36)
+                            .padding(.horizontal)
+                            .foregroundColor(ColorEnum.colFF5D4D.color)
+                            .background(ColorEnum.colFFFFFF.color)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                    }
+                }
+                .padding(.top, getSafeArea().top)
+                
+                VStack {
+                    TabView(selection: $selectedTab) {
+                        ForEach(OnboardingEum.allCases) { onboarding in
+                            VStack {
+                                Text(onboarding.title)
+                                Image(onboarding.icon)
+                                    .resizable()
+                                    .scaledToFit()
+                                
+                                Text(onboarding.description)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .padding()
+                        }
+                    }
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    
+                    HStack {
+                        ForEach(OnboardingEum.allCases.indices, id: \.self) { tabIndex in
+                            Circle()
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(selectedTab.rawValue == tabIndex ? ColorEnum.colFF6F61.color : ColorEnum.colC4C4C4.color)
+                        }
+                    }
+                    .padding(.bottom)
+                }
+//                .frame(height: UIScreen.main.bounds.height / 1.4)
+                .background(ColorEnum.colFFFFFF.color)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+//                Spacer()
+                if (selectedTab.rawValue < OnboardingEum.allCases.count - 1) {
+                    Button {
+                        withAnimation {
+                            selectedTab = OnboardingEum(rawValue: selectedTab.rawValue + 1)!
+                        }
+                    } label: {
+                        Text("CONTINUE")
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .background(LinearGradientEnum.onboardingBtnBg.linearGradientColors)
+                            .foregroundColor(ColorEnum.colFFFFFF.color)
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                    }
+                    .padding(.bottom, getSafeArea().bottom)
+
+                } else {
+                    NavigationLink {
+                        MainScreenView()
+                    } label: {
+                        Text("START EXPLORING")
+                            .frame(height: 50)
+                            .frame(maxWidth: .infinity)
+                            .background(LinearGradientEnum.onboardingBtnBg.linearGradientColors)
+                            .foregroundColor(ColorEnum.colFFFFFF.color)
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                    }
+                    .padding(.bottom, getSafeArea().bottom)
+
+                }
+//                Spacer()
+            }
+            .padding(.horizontal)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(LinearGradientEnum.onboardingBg.linearGradientColors)
+        .ignoresSafeArea()
+        .navigationBarHidden(true)
+    }
+}
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            OnboardingView()
+        }
+    }
+}
