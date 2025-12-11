@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "cultureLessonsButton.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

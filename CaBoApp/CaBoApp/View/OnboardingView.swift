@@ -43,17 +43,20 @@ struct OnboardingView: View {
                     }
                 }
                 .padding(.top, getSafeArea().top)
+                .font(FontEnum.joSaMedium16.font)
                 
                 VStack {
                     TabView(selection: $selectedTab) {
                         ForEach(OnboardingEum.allCases) { onboarding in
                             VStack {
                                 Text(onboarding.title)
+                                    .font(FontEnum.joSaMedium20.font)
                                 Image(onboarding.icon)
                                     .resizable()
                                     .scaledToFit()
                                 
                                 Text(onboarding.description)
+                                    .font(FontEnum.joSaRegular16.font)
                                     .multilineTextAlignment(.center)
                             }
                             .padding()
@@ -81,6 +84,7 @@ struct OnboardingView: View {
                         }
                     } label: {
                         Text("CONTINUE")
+                            .font(FontEnum.joSaBold16.font)
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
                             .background(LinearGradientEnum.onboardingBtnBg.linearGradientColors)
@@ -94,6 +98,7 @@ struct OnboardingView: View {
                         MainScreenView()
                     } label: {
                         Text("START EXPLORING")
+                            .font(FontEnum.joSaBold16.font)
                             .frame(height: 50)
                             .frame(maxWidth: .infinity)
                             .background(LinearGradientEnum.onboardingBtnBg.linearGradientColors)
