@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "streetCarnivalVibes.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

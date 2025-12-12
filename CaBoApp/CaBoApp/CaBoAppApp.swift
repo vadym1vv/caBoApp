@@ -13,6 +13,7 @@ struct CaBoAppApp: App {
     init() {
         UserDefaults.standard.register(defaults: [
             "isFirstOpening": true,
+            "lastRecomdationDateDay" : Calendar.current.date(byAdding: .day, value: 1, to: Date())!
         ])
     }
     
