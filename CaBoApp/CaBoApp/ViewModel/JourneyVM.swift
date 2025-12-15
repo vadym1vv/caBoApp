@@ -12,7 +12,7 @@ struct JourneyStorage {
     private static let typeKey = "lastJourneyType"
     private static let indexKey = "lastItemIndex"
 
-    static func save(type: JourneyType, index: Int) {
+    static func saveJournyrState(type: JourneyType, index: Int) {
         UserDefaults.standard.set(type.rawValue, forKey: typeKey)
         UserDefaults.standard.set(index, forKey: indexKey)
     }
@@ -66,7 +66,7 @@ class JourneyManager: ObservableObject {
         }
         
     
-        JourneyStorage.save(type: currentType, index: currentIndex)
+        JourneyStorage.saveJournyrState(type: currentType, index: currentIndex)
     }
   
     var currentCocktail: CocktailModel? {
@@ -128,7 +128,7 @@ extension JourneyManager {
     }
     
     var totalProgressWidth: CGFloat {
-        UIScreen.main.bounds.width / 2 - 70
+        UIScreen.main.bounds.width / 2 - 40
     }
     
     var readProgressWidth: CGFloat {

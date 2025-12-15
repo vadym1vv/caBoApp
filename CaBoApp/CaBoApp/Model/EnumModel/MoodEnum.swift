@@ -7,7 +7,9 @@
 
 import Foundation
 
-enum MoodEnum: Identifiable, CaseIterable {
-    var id: Self {self}
+enum MoodEnum: String, Identifiable, CaseIterable, Codable {
+    var id: String { rawValue } // Use rawValue for Identifiable
+    
+    // Case names must match JSON values exactly (all lowercase)
     case relax, party, deep, romantic
 }

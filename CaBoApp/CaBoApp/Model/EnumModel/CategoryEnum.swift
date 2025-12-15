@@ -50,4 +50,9 @@ enum CategoryEnum: String, CaseIterable, Identifiable {
             HomeSessionsView()
         }
     }
+    
+//    @ViewBuilder
+//    var categoryItems: some View {
+//        
+//    }
 }

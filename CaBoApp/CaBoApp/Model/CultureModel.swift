@@ -5,8 +5,10 @@
 //  Created by vadym vasylaki on 11.12.2025.
 //
 
+import Foundation
 
-struct CultureModel {
+struct CultureModel: CategoryProtocol, Codable, Identifiable {
+    var id: String { title + image }
     let title: String
     let image: String
     let modeEnum: MoodEnum

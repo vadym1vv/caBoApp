@@ -35,7 +35,7 @@ struct JourneyComponent: View {
                             .foregroundColor(ColorEnum.col47338F.color)
                     }
                     .frame(height: 9)
-                    .frame(width: UIScreen.main.bounds.width / 2 - 70)
+                    .frame(width: UIScreen.main.bounds.width / 2 - 40)
                     Text("\(manager.currentPrecentProgress)%")
                         .font(FontEnum.joSaSemibold16.font)
                 }

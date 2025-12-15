@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct CocktailsView: View {
+    
+    @Environment(\.presentationMode) private var presentationMode
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TopBarNavigationComponent(
+                leadingView:
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        HStack {
+                            Image(IconEnum.backBtn.icon)
+                        }
+                    },
+                centerView:
+                    EmptyView(),
+                trailingView:
+                    EmptyView()
+            )
+            ScrollView(showsIndicators: false) {
+                ForEach(GlobalConstant.cocktailsModels) { item in
+                    
+                }
+            }
+        }
     }
 }
 

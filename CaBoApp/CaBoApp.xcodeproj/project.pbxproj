@@ -19,6 +19,14 @@
 		D510E5B22EEB3BEE00550779 /* FontEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E5B12EEB3BEE00550779 /* FontEnum.swift */; };
 		D510E5B42EEB414E00550779 /* DailyCategoryRecomendationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E5B32EEB414E00550779 /* DailyCategoryRecomendationComponent.swift */; };
 		D510E5B62EEB421500550779 /* DailyRecomendationsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E5B52EEB421500550779 /* DailyRecomendationsVM.swift */; };
+		D53383082EEC388F001FAE2A /* RecomendedTodayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53383072EEC388F001FAE2A /* RecomendedTodayComponent.swift */; };
+		D54A62302EEC87D7000C902A /* journey_data.json in Resources */ = {isa = PBXBuildFile; fileRef = D54A622F2EEC87D7000C902A /* journey_data.json */; };
+		D54A62322EECA664000C902A /* DoubleRowCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A62312EECA664000C902A /* DoubleRowCardComponent.swift */; };
+		D54A62352EECA6DF000C902A /* CoreDataSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A62342EECA6DF000C902A /* CoreDataSettings.swift */; };
+		D54A62372EECA740000C902A /* CoreDataUserProgressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A62362EECA740000C902A /* CoreDataUserProgressVM.swift */; };
+		D54A62392EECAC5A000C902A /* JosefinSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D54A62382EECAC59000C902A /* JosefinSans-Italic.ttf */; };
+		D54A623B2EECB870000C902A /* SingleRowCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A623A2EECB870000C902A /* SingleRowCardComponent.swift */; };
+		D57D06A52EEC670100D5DA67 /* JourneyDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57D06A42EEC670100D5DA67 /* JourneyDataLoader.swift */; };
 		D5A4B1D32EE9B3A70063B0AB /* CaBoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A4B1D22EE9B3A70063B0AB /* CaBoAppApp.swift */; };
 		D5A4B1D72EE9B3A80063B0AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5A4B1D62EE9B3A80063B0AB /* Assets.xcassets */; };
 		D5A4B1DA2EE9B3A80063B0AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5A4B1D92EE9B3A80063B0AB /* Preview Assets.xcassets */; };
@@ -66,6 +74,14 @@
 		D510E5B12EEB3BEE00550779 /* FontEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEnum.swift; sourceTree = "<group>"; };
 		D510E5B32EEB414E00550779 /* DailyCategoryRecomendationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCategoryRecomendationComponent.swift; sourceTree = "<group>"; };
 		D510E5B52EEB421500550779 /* DailyRecomendationsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecomendationsVM.swift; sourceTree = "<group>"; };
+		D53383072EEC388F001FAE2A /* RecomendedTodayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendedTodayComponent.swift; sourceTree = "<group>"; };
+		D54A622F2EEC87D7000C902A /* journey_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = journey_data.json; sourceTree = "<group>"; };
+		D54A62312EECA664000C902A /* DoubleRowCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRowCardComponent.swift; sourceTree = "<group>"; };
+		D54A62342EECA6DF000C902A /* CoreDataSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSettings.swift; sourceTree = "<group>"; };
+		D54A62362EECA740000C902A /* CoreDataUserProgressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserProgressVM.swift; sourceTree = "<group>"; };
+		D54A62382EECAC59000C902A /* JosefinSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-Italic.ttf"; sourceTree = "<group>"; };
+		D54A623A2EECB870000C902A /* SingleRowCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRowCardComponent.swift; sourceTree = "<group>"; };
+		D57D06A42EEC670100D5DA67 /* JourneyDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDataLoader.swift; sourceTree = "<group>"; };
 		D5A4B1CF2EE9B3A70063B0AB /* CaBoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaBoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A4B1D22EE9B3A70063B0AB /* CaBoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaBoAppApp.swift; sourceTree = "<group>"; };
 		D5A4B1D62EE9B3A80063B0AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +130,8 @@
 		D510E5A12EEB3AA000550779 /* SystemResources */ = {
 			isa = PBXGroup;
 			children = (
+				D54A62382EECAC59000C902A /* JosefinSans-Italic.ttf */,
+				D54A622F2EEC87D7000C902A /* journey_data.json */,
 				D510E5A92EEB3AF500550779 /* JosefinSans-Bold.ttf */,
 				D510E5A82EEB3AF500550779 /* JosefinSans-Light.ttf */,
 				D510E5A72EEB3AF400550779 /* JosefinSans-Medium.ttf */,
@@ -123,6 +141,15 @@
 				D510E5A32EEB3AAF00550779 /* DancingScript-Regular.ttf */,
 			);
 			path = SystemResources;
+			sourceTree = "<group>";
+		};
+		D54A62332EECA6B5000C902A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D54A62342EECA6DF000C902A /* CoreDataSettings.swift */,
+				D54A62362EECA740000C902A /* CoreDataUserProgressVM.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		D5A4B1C62EE9B3A70063B0AB = {
@@ -192,6 +219,9 @@
 				D5C411EB2EEAE79D00DDB8C5 /* JourneyComponent.swift */,
 				D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */,
 				D510E5B32EEB414E00550779 /* DailyCategoryRecomendationComponent.swift */,
+				D53383072EEC388F001FAE2A /* RecomendedTodayComponent.swift */,
+				D54A62312EECA664000C902A /* DoubleRowCardComponent.swift */,
+				D54A623A2EECB870000C902A /* SingleRowCardComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -236,8 +266,10 @@
 		D5C411ED2EEAE98B00DDB8C5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D54A62332EECA6B5000C902A /* CoreData */,
 				D5C411EE2EEAE99B00DDB8C5 /* JourneyVM.swift */,
 				D510E5B52EEB421500550779 /* DailyRecomendationsVM.swift */,
+				D57D06A42EEC670100D5DA67 /* JourneyDataLoader.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -304,7 +336,9 @@
 				D510E5AE2EEB3AF500550779 /* JosefinSans-Bold.ttf in Resources */,
 				D510E5A52EEB3AAF00550779 /* DancingScript-Regular.ttf in Resources */,
 				D5A4B1DA2EE9B3A80063B0AB /* Preview Assets.xcassets in Resources */,
+				D54A62302EEC87D7000C902A /* journey_data.json in Resources */,
 				D510E5AB2EEB3AF500550779 /* JosefinSans-Regular.ttf in Resources */,
+				D54A62392EECAC5A000C902A /* JosefinSans-Italic.ttf in Resources */,
 				D5A4B1D72EE9B3A80063B0AB /* Assets.xcassets in Resources */,
 				D510E5AC2EEB3AF500550779 /* JosefinSans-Medium.ttf in Resources */,
 				D510E5AF2EEB3AF500550779 /* JosefinSans-SemiBold.ttf in Resources */,
@@ -322,9 +356,11 @@
 				D5C411EC2EEAE79D00DDB8C5 /* JourneyComponent.swift in Sources */,
 				D5C411F32EEAEC9700DDB8C5 /* SingleCultureLessonView.swift in Sources */,
 				D5C411F52EEAECA200DDB8C5 /* SinglePlaceView.swift in Sources */,
+				D53383082EEC388F001FAE2A /* RecomendedTodayComponent.swift in Sources */,
 				D5A4B1DF2EE9B3A80063B0AB /* CaBoApp.xcdatamodeld in Sources */,
 				D5C411F12EEAEC8B00DDB8C5 /* SingleCocktailView.swift in Sources */,
 				D5C411E42EEAD63100DDB8C5 /* CultureModel.swift in Sources */,
+				D57D06A52EEC670100D5DA67 /* JourneyDataLoader.swift in Sources */,
 				D5AD14D92EE9BDFD00C7A261 /* LinearGradientEnum.swift in Sources */,
 				D5AD14DD2EE9D37C00C7A261 /* IconEnum.swift in Sources */,
 				D5AD14E02EE9DDBF00C7A261 /* LayoutExtension.swift in Sources */,
@@ -335,15 +371,19 @@
 				D5C411EF2EEAE99B00DDB8C5 /* JourneyVM.swift in Sources */,
 				D5C411F72EEAECAE00DDB8C5 /* SingleHomeSessionView.swift in Sources */,
 				D510E59E2EEB34E100550779 /* SettingsView.swift in Sources */,
+				D54A62372EECA740000C902A /* CoreDataUserProgressVM.swift in Sources */,
 				D5C411D22EEACD6400DDB8C5 /* CocktailModel.swift in Sources */,
+				D54A62322EECA664000C902A /* DoubleRowCardComponent.swift in Sources */,
 				D5C411DC2EEAD06300DDB8C5 /* CocktailsView.swift in Sources */,
 				D5A4B1EA2EE9B7450063B0AB /* OnboardingView.swift in Sources */,
 				D5C411D82EEACF3F00DDB8C5 /* TimeForSessionEnum.swift in Sources */,
+				D54A62352EECA6DF000C902A /* CoreDataSettings.swift in Sources */,
 				D5C411D62EEACEFB00DDB8C5 /* DificultyEnum.swift in Sources */,
 				D510E5B22EEB3BEE00550779 /* FontEnum.swift in Sources */,
 				D5C411E02EEAD08E00DDB8C5 /* PlacesView.swift in Sources */,
 				D510E5B62EEB421500550779 /* DailyRecomendationsVM.swift in Sources */,
 				D510E5A02EEB398F00550779 /* TopBarNavigationComponent.swift in Sources */,
+				D54A623B2EECB870000C902A /* SingleRowCardComponent.swift in Sources */,
 				D5A4B1F02EE9B7D00063B0AB /* OnboardingEnum.swift in Sources */,
 				D5A4B1D32EE9B3A70063B0AB /* CaBoAppApp.swift in Sources */,
 				D5AD14DB2EE9C38700C7A261 /* ColorEnum.swift in Sources */,
