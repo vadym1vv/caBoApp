@@ -9,10 +9,40 @@ import SwiftUI
 
 struct SingleHomeSessionView: View {
     
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    
     let homeSessionModel: HomeSessionModel
     
+    @State private var isItemFavorite: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ScrollView {
+                SingleIconActionCategoryComponent(
+                    isItemFavorite: $isItemFavorite, imgStr: homeSessionModel.image,
+                    title: homeSessionModel.title,
+                    bottomLeadingComponent: HStack {
+                        Text("Cocktail")
+                    }) {
+                        coreDataUserProgressVM.updateItem(itemName: homeSessionModel.title, toggleFavorite: true)
+                    }
+                
+                VStack {
+                    ItemDetailsCardComponent(icon: .culturePrepare, title: "Prepare", bodyText: homeSessionModel.prepare, background: .colEDE7FA, borderColor: .col7443FF, iconForegroundColor: .col926EF8)
+                    ItemDetailsCardComponent(icon: .cultureMix, title: "Mix", bodyText: homeSessionModel.mix, background: .colEDE7FA, borderColor: .col7443FF, iconForegroundColor: .col926EF8)
+                    ItemDetailsCardComponent(icon: .cultureListen, title: "Listen", bodyText: homeSessionModel.listen, background: .colEDE7FA, borderColor: .col7443FF, iconForegroundColor: .col926EF8)
+                    ItemDetailsCardComponent(icon: .cultureReflect, title: "Reflect", bodyText: homeSessionModel.reflect, background: .colEDE7FA, borderColor: .col7443FF, iconForegroundColor: .col926EF8)
+                }
+                .padding(.horizontal)
+            }
+        }
+        .background(LinearGradientEnum.purpleSingleItemBackground.linearGradientColors)
+        .onAppear(perform: {
+            isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == homeSessionModel.title })
+        })
+        .navigationBarHidden(true)
+        .ignoresSafeArea()
+        
     }
 }
 

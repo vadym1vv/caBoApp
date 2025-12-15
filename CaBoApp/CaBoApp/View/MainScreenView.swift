@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MainScreenView: View {
     
-    @Environment(\.colorScheme) private var colorScheme
     
-    @StateObject private var coreDataUserProgressVM: CoreDataUserProgressVM = CoreDataUserProgressVM()
+    
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
     
     var body: some View {
         VStack {
@@ -19,6 +19,7 @@ struct MainScreenView: View {
                 HStack {
                     Text("Hola, Max")
                         .font(FontEnum.joSaBold24.font)
+                    //        .padding(.top, getSafeArea().top)
                     Spacer()
                     NavigationLink {
                         SettingsView()
@@ -28,7 +29,7 @@ struct MainScreenView: View {
                 }
                 Text("Tonight’s Cuba at a glance")
                     .font(FontEnum.daScMedium30.font)
-                JourneyComponent()
+                JourneyComponent(coreDataUserProgressVM: coreDataUserProgressVM)
                 Text("Quick actions")
                     .font(FontEnum.joSaMedium20.font)
                 HStack {
@@ -71,7 +72,7 @@ struct MainScreenView: View {
     //                }
     //            }
                 Spacer()
-                RecomendedTodayComponent()
+                RecomendedTodayComponent(coreDataUserProgressVM: coreDataUserProgressVM)
                     .padding(.bottom, getSafeArea().bottom)
                 
             }
@@ -79,13 +80,13 @@ struct MainScreenView: View {
             .padding(.vertical, 5)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.top, getSafeArea().top)
-        .background(colorScheme == .light ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
+
+        
         .onAppear(perform: {
             UserDefaults.standard.setValue(false, forKey: "isFirstOpening")
         })
-        .ignoresSafeArea()
-        .navigationBarHidden(true)
+        
+//        .navigationBarHidden(true)
     }
 }
 
@@ -93,6 +94,7 @@ struct MainScreenView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MainScreenView()
+                .environmentObject(CoreDataUserProgressVM())
         }
     }
 }

@@ -32,7 +32,7 @@ struct OnboardingView: View {
                     }
                     Spacer()
                     NavigationLink {
-                        MainScreenView()
+                        RootTabView()
                     } label: {
                         Text("SKIP")
                             .frame(height: 36)
@@ -95,7 +95,7 @@ struct OnboardingView: View {
 
                 } else {
                     NavigationLink {
-                        MainScreenView()
+                        RootTabView()
                     } label: {
                         Text("START EXPLORING")
                             .font(FontEnum.joSaBold16.font)

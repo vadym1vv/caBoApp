@@ -11,6 +11,8 @@ struct PlacesView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     private let placesModel: [PlacesModel] = GlobalConstant.placesModels
@@ -38,6 +40,7 @@ struct PlacesView: View {
                         ForEach(placesModel) { placeModel in
                             NavigationLink {
                               SinglePlaceView(placeModel: placeModel)
+                                    .environmentObject(coreDataUserProgressVM)
                             } label: {
                                 DoubleRowCardComponent(itemName: placeModel.title, itemDescription: placeModel.facts, itemImg: placeModel.image)
                             }

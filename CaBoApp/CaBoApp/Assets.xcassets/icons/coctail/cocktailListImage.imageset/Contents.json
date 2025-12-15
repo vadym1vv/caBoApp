@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "noto-v1_tropical-drink.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

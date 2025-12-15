@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecomendedTodayComponent: View {
-    
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     @StateObject private var viewModel = DailyRecomendationsMV()
     
     var body: some View {
@@ -17,11 +17,11 @@ struct RecomendedTodayComponent: View {
                 .font(FontEnum.joSaMedium20.font)
                 .foregroundColor(ColorEnum.col181818.color)
             HStack {
-                recommendationView(for: viewModel.recomendationKey1)
+                recommendationView(for: viewModel.recomendationKey1, coreDataUserProgressVM: coreDataUserProgressVM)
                 Spacer()
-                recommendationView(for: viewModel.recomendationKey2)
+                recommendationView(for: viewModel.recomendationKey2, coreDataUserProgressVM: coreDataUserProgressVM)
                 Spacer()
-                recommendationView(for: viewModel.recomendationKey3)
+                recommendationView(for: viewModel.recomendationKey3, coreDataUserProgressVM: coreDataUserProgressVM)
             }
         }
         .onAppear {
@@ -30,7 +30,7 @@ struct RecomendedTodayComponent: View {
     }
 }
 @ViewBuilder
-func recommendationView(for index: Int) -> some View {
+func recommendationView(for index: Int, coreDataUserProgressVM: CoreDataUserProgressVM) -> some View {
     let category = GlobalConstant.journayCollections[index]
 
     if let cocktail = GlobalConstant.cocktailsModels.first(where: {
@@ -38,6 +38,7 @@ func recommendationView(for index: Int) -> some View {
     }) {
         NavigationLink {
             SingleCocktailView(cocktailModel: cocktail)
+                .environmentObject(coreDataUserProgressVM)
         } label: {
             recommendationCell(for: category)
         }
@@ -47,6 +48,7 @@ func recommendationView(for index: Int) -> some View {
     }) {
         NavigationLink {
             SingleCultureLessonView(cultureModel: lesson)
+                .environmentObject(coreDataUserProgressVM)
         } label: {
             recommendationCell(for: category)
         }
@@ -56,6 +58,7 @@ func recommendationView(for index: Int) -> some View {
     }) {
         NavigationLink {
             SinglePlaceView(placeModel: place)
+                .environmentObject(coreDataUserProgressVM)
         } label: {
             recommendationCell(for: category)
         }
@@ -65,6 +68,7 @@ func recommendationView(for index: Int) -> some View {
     }) {
         NavigationLink {
             SingleHomeSessionView(homeSessionModel: home)
+                .environmentObject(coreDataUserProgressVM)
         } label: {
             recommendationCell(for: category)
         }
@@ -94,7 +98,7 @@ struct RecomendedTodayComponent_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Spacer()
-            RecomendedTodayComponent()
+            RecomendedTodayComponent(coreDataUserProgressVM: CoreDataUserProgressVM())
                 .padding()
         }
     }
