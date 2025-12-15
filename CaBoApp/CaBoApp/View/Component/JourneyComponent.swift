@@ -9,6 +9,8 @@ import SwiftUI
 
 struct JourneyComponent: View {
     
+   @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    
     @StateObject private var manager = JourneyManager()
     @State private var navigateToNextJourney: Bool = false
     
@@ -16,6 +18,7 @@ struct JourneyComponent: View {
         HStack {
             NavigationLink(isActive: $navigateToNextJourney) {
                 JourneyDetailView(manager: manager)
+                    .environmentObject(coreDataUserProgressVM)
             } label: {
                 EmptyView()
             }
@@ -74,8 +77,9 @@ struct JourneyComponent: View {
 }
 struct JourneyComponent_Previews: PreviewProvider {
     static var previews: some View {
-        JourneyComponent()
+        JourneyComponent(coreDataUserProgressVM: CoreDataUserProgressVM())
             .padding(.horizontal)
+            .environmentObject(CoreDataUserProgressVM())
     }
 }
 

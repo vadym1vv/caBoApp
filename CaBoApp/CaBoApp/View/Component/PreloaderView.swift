@@ -22,7 +22,7 @@ struct PreloaderView: View {
                     EmptyView()
                 }
                 NavigationLink(isActive: $navigateToMainScreen) {
-                    MainScreenView()
+                    RootTabView()
                 } label: {
                     EmptyView()
                 }

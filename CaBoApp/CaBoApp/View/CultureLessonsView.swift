@@ -25,7 +25,7 @@ struct CultureLessonsView: View {
             NavigationLink(isActive: $navigateToCultureLessonView) {
                 if let cultureLessonToNavigate {
                     SingleCultureLessonView(cultureModel: cultureLessonToNavigate)
-//                        .environmentObject(coreDataUserProgressVM)
+                        .environmentObject(coreDataUserProgressVM)
                 }
             } label: {
                 EmptyView()
@@ -37,7 +37,7 @@ struct CultureLessonsView: View {
                         presentationMode.wrappedValue.dismiss()
                     } label: {HStack {
                         Image(IconEnum.backBtn.icon)
-                        Text("Places")
+                        Text("Culture lessons")
                             .font(FontEnum.joSaBold24.font)
                             .foregroundColor(ColorEnum.col181818.color)
                     }
@@ -51,7 +51,9 @@ struct CultureLessonsView: View {
                     ForEach(cultureLessonsModels) { cultureLesson in
                         SingleRowCardComponent(itemName: cultureLesson.title, itemDescription: cultureLesson.facts, itemImg: cultureLesson.image, background: .colC4E9E1) {
                             cultureLessonToNavigate = cultureLesson
-                            navigateToCultureLessonView = true
+                            withAnimation {
+                                navigateToCultureLessonView = true
+                            }
                         }
                     }
                 }

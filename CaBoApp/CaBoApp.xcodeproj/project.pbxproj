@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		935EDB542EF07486003A1E96 /* ItemDetailsCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB532EF07486003A1E96 /* ItemDetailsCardComponent.swift */; };
+		935EDB562EF09160003A1E96 /* SingleIconActionCategoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB552EF09160003A1E96 /* SingleIconActionCategoryComponent.swift */; };
+		935EDB582EF0B944003A1E96 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB572EF0B944003A1E96 /* SearchView.swift */; };
+		935EDB5C2EF0B956003A1E96 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB5B2EF0B956003A1E96 /* HistoryView.swift */; };
+		935EDB5E2EF0B95E003A1E96 /* StatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB5D2EF0B95E003A1E96 /* StatView.swift */; };
+		935EDB602EF0B9AE003A1E96 /* TabComponentEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB5F2EF0B9AE003A1E96 /* TabComponentEnum.swift */; };
+		935EDB622EF0BA23003A1E96 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB612EF0BA23003A1E96 /* FavoritesView.swift */; };
+		935EDB642EF0BC1B003A1E96 /* TabBarNavigationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB632EF0BC1B003A1E96 /* TabBarNavigationComponent.swift */; };
+		935EDB662EF0C244003A1E96 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB652EF0C244003A1E96 /* RootTabView.swift */; };
 		D510E59E2EEB34E100550779 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E59D2EEB34E100550779 /* SettingsView.swift */; };
 		D510E5A02EEB398F00550779 /* TopBarNavigationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */; };
 		D510E5A42EEB3AAF00550779 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D510E5A22EEB3AAF00550779 /* DancingScript-Medium.ttf */; };
@@ -61,6 +70,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		935EDB532EF07486003A1E96 /* ItemDetailsCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsCardComponent.swift; sourceTree = "<group>"; };
+		935EDB552EF09160003A1E96 /* SingleIconActionCategoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleIconActionCategoryComponent.swift; sourceTree = "<group>"; };
+		935EDB572EF0B944003A1E96 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		935EDB5B2EF0B956003A1E96 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		935EDB5D2EF0B95E003A1E96 /* StatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatView.swift; sourceTree = "<group>"; };
+		935EDB5F2EF0B9AE003A1E96 /* TabComponentEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabComponentEnum.swift; sourceTree = "<group>"; };
+		935EDB612EF0BA23003A1E96 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		935EDB632EF0BC1B003A1E96 /* TabBarNavigationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNavigationComponent.swift; sourceTree = "<group>"; };
+		935EDB652EF0C244003A1E96 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		D510E59D2EEB34E100550779 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarNavigationComponent.swift; sourceTree = "<group>"; };
 		D510E5A22EEB3AAF00550779 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
@@ -208,6 +226,11 @@
 				D5C411F42EEAECA200DDB8C5 /* SinglePlaceView.swift */,
 				D5C411F62EEAECAE00DDB8C5 /* SingleHomeSessionView.swift */,
 				D510E59D2EEB34E100550779 /* SettingsView.swift */,
+				935EDB572EF0B944003A1E96 /* SearchView.swift */,
+				935EDB5B2EF0B956003A1E96 /* HistoryView.swift */,
+				935EDB5D2EF0B95E003A1E96 /* StatView.swift */,
+				935EDB612EF0BA23003A1E96 /* FavoritesView.swift */,
+				935EDB652EF0C244003A1E96 /* RootTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +245,9 @@
 				D53383072EEC388F001FAE2A /* RecomendedTodayComponent.swift */,
 				D54A62312EECA664000C902A /* DoubleRowCardComponent.swift */,
 				D54A623A2EECB870000C902A /* SingleRowCardComponent.swift */,
+				935EDB532EF07486003A1E96 /* ItemDetailsCardComponent.swift */,
+				935EDB552EF09160003A1E96 /* SingleIconActionCategoryComponent.swift */,
+				935EDB632EF0BC1B003A1E96 /* TabBarNavigationComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -251,6 +277,7 @@
 				D5C411D72EEACF3F00DDB8C5 /* TimeForSessionEnum.swift */,
 				D5C411D92EEACFF200DDB8C5 /* CategoryEnum.swift */,
 				D510E5B12EEB3BEE00550779 /* FontEnum.swift */,
+				935EDB5F2EF0B9AE003A1E96 /* TabComponentEnum.swift */,
 			);
 			path = EnumModel;
 			sourceTree = "<group>";
@@ -359,13 +386,20 @@
 				D53383082EEC388F001FAE2A /* RecomendedTodayComponent.swift in Sources */,
 				D5A4B1DF2EE9B3A80063B0AB /* CaBoApp.xcdatamodeld in Sources */,
 				D5C411F12EEAEC8B00DDB8C5 /* SingleCocktailView.swift in Sources */,
+				935EDB5C2EF0B956003A1E96 /* HistoryView.swift in Sources */,
 				D5C411E42EEAD63100DDB8C5 /* CultureModel.swift in Sources */,
 				D57D06A52EEC670100D5DA67 /* JourneyDataLoader.swift in Sources */,
+				935EDB642EF0BC1B003A1E96 /* TabBarNavigationComponent.swift in Sources */,
+				935EDB5E2EF0B95E003A1E96 /* StatView.swift in Sources */,
+				935EDB542EF07486003A1E96 /* ItemDetailsCardComponent.swift in Sources */,
 				D5AD14D92EE9BDFD00C7A261 /* LinearGradientEnum.swift in Sources */,
 				D5AD14DD2EE9D37C00C7A261 /* IconEnum.swift in Sources */,
 				D5AD14E02EE9DDBF00C7A261 /* LayoutExtension.swift in Sources */,
+				935EDB602EF0B9AE003A1E96 /* TabComponentEnum.swift in Sources */,
 				D5C411DE2EEAD08500DDB8C5 /* CultureLessonsView.swift in Sources */,
 				D5A4B1EC2EE9B74E0063B0AB /* MainScreenView.swift in Sources */,
+				935EDB582EF0B944003A1E96 /* SearchView.swift in Sources */,
+				935EDB562EF09160003A1E96 /* SingleIconActionCategoryComponent.swift in Sources */,
 				D5C411EA2EEAD7D200DDB8C5 /* GlobalConstant.swift in Sources */,
 				D5C411D42EEACEDB00DDB8C5 /* MoodEnum.swift in Sources */,
 				D5C411EF2EEAE99B00DDB8C5 /* JourneyVM.swift in Sources */,
@@ -380,10 +414,12 @@
 				D54A62352EECA6DF000C902A /* CoreDataSettings.swift in Sources */,
 				D5C411D62EEACEFB00DDB8C5 /* DificultyEnum.swift in Sources */,
 				D510E5B22EEB3BEE00550779 /* FontEnum.swift in Sources */,
+				935EDB622EF0BA23003A1E96 /* FavoritesView.swift in Sources */,
 				D5C411E02EEAD08E00DDB8C5 /* PlacesView.swift in Sources */,
 				D510E5B62EEB421500550779 /* DailyRecomendationsVM.swift in Sources */,
 				D510E5A02EEB398F00550779 /* TopBarNavigationComponent.swift in Sources */,
 				D54A623B2EECB870000C902A /* SingleRowCardComponent.swift in Sources */,
+				935EDB662EF0C244003A1E96 /* RootTabView.swift in Sources */,
 				D5A4B1F02EE9B7D00063B0AB /* OnboardingEnum.swift in Sources */,
 				D5A4B1D32EE9B3A70063B0AB /* CaBoAppApp.swift in Sources */,
 				D5AD14DB2EE9C38700C7A261 /* ColorEnum.swift in Sources */,

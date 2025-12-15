@@ -11,6 +11,8 @@ struct CocktailsView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     private let cocktailsModels: [CocktailModel] = GlobalConstant.cocktailsModels
@@ -38,6 +40,7 @@ struct CocktailsView: View {
                         ForEach(cocktailsModels) { cocktailModel in
                             NavigationLink {
                               SingleCocktailView(cocktailModel: cocktailModel)
+                                    .environmentObject(coreDataUserProgressVM)
                             } label: {
                                 DoubleRowCardComponent(itemName: cocktailModel.title, itemDescription: cocktailModel.facts, itemImg: cocktailModel.image)
                             }
@@ -59,5 +62,6 @@ struct CocktailsView: View {
 struct Cocktails_Previews: PreviewProvider {
     static var previews: some View {
         CocktailsView()
+            .environmentObject(CoreDataUserProgressVM())
     }
 }

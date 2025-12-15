@@ -10,6 +10,9 @@ import SwiftUI
 struct HomeSessionsView: View {
     
     @Environment(\.presentationMode) private var presentationMode
+    
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    
     @State private var navigateToHomeSession: Bool = false
     @State private var homeSessionToNavigate: HomeSessionModel? = nil
     
@@ -22,6 +25,7 @@ struct HomeSessionsView: View {
             NavigationLink(isActive: $navigateToHomeSession) {
                 if let homeSessionToNavigate {
                     SingleHomeSessionView(homeSessionModel: homeSessionToNavigate)
+                        .environmentObject(coreDataUserProgressVM)
                 }
             } label: {
                 EmptyView()
@@ -33,7 +37,7 @@ struct HomeSessionsView: View {
                         presentationMode.wrappedValue.dismiss()
                     } label: {HStack {
                         Image(IconEnum.backBtn.icon)
-                        Text("Places")
+                        Text("Home sessions")
                             .font(FontEnum.joSaBold24.font)
                             .foregroundColor(ColorEnum.col181818.color)
                     }
@@ -47,9 +51,10 @@ struct HomeSessionsView: View {
                     ForEach(placesModel) { homeSessionModel in
                         SingleRowCardComponent(itemName: homeSessionModel.title, itemDescription: homeSessionModel.timeForSession.rawValue, itemImg: homeSessionModel.image, background: .colEDE7FA) {
                             homeSessionToNavigate = homeSessionModel
-                            navigateToHomeSession = true
+                            withAnimation {
+                                navigateToHomeSession = true
+                            }
                         }
-                        
                     }
                 }
                 .padding(.horizontal)
