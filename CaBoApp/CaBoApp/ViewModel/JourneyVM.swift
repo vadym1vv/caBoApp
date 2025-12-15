@@ -128,7 +128,7 @@ extension JourneyManager {
     }
     
     var totalProgressWidth: CGFloat {
-        UIScreen.main.bounds.width / 2 - 40
+        UIScreen.main.bounds.width / 2.5 - 60
     }
     
     var readProgressWidth: CGFloat {

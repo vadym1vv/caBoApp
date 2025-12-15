@@ -26,7 +26,7 @@ struct JourneyComponent: View {
                 HStack {
                     ZStack(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 16)
-                            .frame(width: UIScreen.main.bounds.width / 2 - 60)
+                            .frame(width: UIScreen.main.bounds.width / 2.5 - 60)
                             .foregroundColor(ColorEnum.col47338F30.color)
                             
                         
@@ -35,9 +35,10 @@ struct JourneyComponent: View {
                             .foregroundColor(ColorEnum.col47338F.color)
                     }
                     .frame(height: 9)
-                    .frame(width: UIScreen.main.bounds.width / 2 - 40)
+                    .frame(width: UIScreen.main.bounds.width / 2.5 - 60)
                     Text("\(manager.currentPrecentProgress)%")
                         .font(FontEnum.joSaSemibold16.font)
+                        .padding(.trailing)
                 }
                 .padding(.bottom)
                 Text("Next step:\n‘Havana Sunrise Spritz’")

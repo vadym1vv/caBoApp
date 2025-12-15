@@ -72,12 +72,14 @@ struct MainScreenView: View {
     //            }
                 Spacer()
                 RecomendedTodayComponent()
+                    .padding(.bottom, getSafeArea().bottom)
                 
             }
             .padding(.horizontal)
             .padding(.vertical, 5)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.top, getSafeArea().top)
         .background(colorScheme == .light ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .onAppear(perform: {
             UserDefaults.standard.setValue(false, forKey: "isFirstOpening")
