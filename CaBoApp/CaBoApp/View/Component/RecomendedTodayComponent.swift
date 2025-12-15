@@ -37,7 +37,7 @@ func recommendationView(for index: Int) -> some View {
         $0.title == category.title && $0.image == category.image
     }) {
         NavigationLink {
-            SingleCocktailView(coctailModel: cocktail)
+            SingleCocktailView(cocktailModel: cocktail)
         } label: {
             recommendationCell(for: category)
         }

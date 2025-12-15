@@ -11,7 +11,9 @@ struct CocktailsView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     
+    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
+    private let cocktailsModels: [CocktailModel] = GlobalConstant.cocktailsModels
     
     var body: some View {
         VStack {
@@ -19,22 +21,38 @@ struct CocktailsView: View {
                 leadingView:
                     Button {
                         presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        HStack {
-                            Image(IconEnum.backBtn.icon)
-                        }
+                    } label: {HStack {
+                        Image(IconEnum.backBtn.icon)
+                        Text("Cocktails")
+                            .font(FontEnum.joSaBold24.font)
+                            .foregroundColor(ColorEnum.col181818.color)
+                    }
                     },
                 centerView:
                     EmptyView(),
                 trailingView:
-                    EmptyView()
-            )
-            ScrollView(showsIndicators: false) {
-                ForEach(GlobalConstant.cocktailsModels) { item in
-                    
+                    EmptyView())
+            ScrollView {
+                VStack {
+                    LazyVGrid(columns: columns) {
+                        ForEach(cocktailsModels) { cocktailModel in
+                            NavigationLink {
+                              SingleCocktailView(cocktailModel: cocktailModel)
+                            } label: {
+                                DoubleRowCardComponent(itemName: cocktailModel.title, itemDescription: cocktailModel.facts, itemImg: cocktailModel.image)
+                            }
+                            
+                        }
+                    }
                 }
+                .padding(.horizontal)
             }
+            
         }
+        .padding(.top, getSafeArea().top)
+        .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
+        .ignoresSafeArea()
+        .navigationBarHidden(true)
     }
 }
 

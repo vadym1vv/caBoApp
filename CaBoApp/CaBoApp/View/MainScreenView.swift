@@ -11,6 +11,8 @@ struct MainScreenView: View {
     
     @Environment(\.colorScheme) private var colorScheme
     
+    @StateObject private var coreDataUserProgressVM: CoreDataUserProgressVM = CoreDataUserProgressVM()
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -34,6 +36,7 @@ struct MainScreenView: View {
                     ForEach(CategoryEnum.allCases) { category in
                         NavigationLink {
                             category.categoryView
+                                .environmentObject(coreDataUserProgressVM)
                         } label: {
                             VStack {
                                 Image(category.iconButton)
@@ -76,6 +79,9 @@ struct MainScreenView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(colorScheme == .light ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
+        .onAppear(perform: {
+            UserDefaults.setValue(true, forKey: "isFirstOpening")
+        })
         .ignoresSafeArea()
         .navigationBarHidden(true)
     }
