@@ -80,7 +80,7 @@ struct MainScreenView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(colorScheme == .light ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .onAppear(perform: {
-            UserDefaults.setValue(true, forKey: "isFirstOpening")
+            UserDefaults.standard.setValue(false, forKey: "isFirstOpening")
         })
         .ignoresSafeArea()
         .navigationBarHidden(true)
