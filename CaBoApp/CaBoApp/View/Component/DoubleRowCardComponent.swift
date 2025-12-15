@@ -1,0 +1,66 @@
+//
+//  DoubleRowCardComponent.swift
+//  CaBoApp
+//
+//  Created by vadym vasylaki on 12.12.2025.
+//
+
+import SwiftUI
+
+struct DoubleRowCardComponent: View {
+    
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    
+    let itemName: String
+    let itemDescription: String
+    let itemImg: String
+    
+    var isFavoriteIcon: String {
+        coreDataUserProgressVM.items.contains(where: {$0.isFavorite && $0.itemName == itemName}) ? IconEnum.favIconOn.icon : IconEnum.favIconOff.icon
+    }
+    
+    var body: some View {
+        VStack {
+            VStack(alignment: .leading, spacing: 10) {
+                ZStack(alignment: .topTrailing) {
+                    Image(itemImg)
+                        .resizable()
+                        .scaledToFill()
+                    Button {
+                        coreDataUserProgressVM.updateItem(itemName: itemName, toggleFavorite: true)
+                    } label: {
+                        Image(isFavoriteIcon)
+                    }
+                    .padding(10)
+                    .padding(.top, 5)
+                }
+                .frame(height: UIScreen.main.bounds.height / 4)
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                
+                Text(itemName)
+                    .font(FontEnum.joSaBold18.font)
+                    .lineLimit(2)
+                Text(itemDescription)
+                    .font(FontEnum.joSaItalic16.font)
+                    .lineLimit(2)
+            }
+            .padding(5)
+        }
+        .background(ColorEnum.colFFC8AF.color)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .foregroundColor(ColorEnum.col181818.color)
+        .multilineTextAlignment(.leading)
+    }
+}
+
+struct DoubleRowCardComponent_Previews: PreviewProvider {
+    static var previews: some View {
+        HStack{
+            DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
+                .environmentObject(CoreDataUserProgressVM())
+            DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
+                .environmentObject(CoreDataUserProgressVM())
+        }
+    }
+}

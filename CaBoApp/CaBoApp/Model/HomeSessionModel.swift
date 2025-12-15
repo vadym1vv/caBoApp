@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct HomeSessionModel {
+struct HomeSessionModel: CategoryProtocol, Codable, Identifiable {
+    var id: String { title + image }
     let title: String
     let image: String
     let modeEnum: MoodEnum
