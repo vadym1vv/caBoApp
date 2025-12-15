@@ -87,7 +87,7 @@ struct JourneyDetailView: View {
             switch manager.currentType {
             case .cocktails:
                 if let model = manager.currentCocktail {
-                    SingleCocktailView(coctailModel: model)
+                    SingleCocktailView(cocktailModel: model)
                 } else {
                     EmptyView()
                 }

@@ -15,6 +15,7 @@ struct DoubleRowCardComponent: View {
     let itemDescription: String
     let itemImg: String
     
+  
     var isFavoriteIcon: String {
         coreDataUserProgressVM.items.contains(where: {$0.isFavorite && $0.itemName == itemName}) ? IconEnum.favIconOn.icon : IconEnum.favIconOff.icon
     }
@@ -26,6 +27,7 @@ struct DoubleRowCardComponent: View {
                     Image(itemImg)
                         .resizable()
                         .scaledToFill()
+                        .frame(height: UIScreen.main.bounds.height / 5)
                     Button {
                         coreDataUserProgressVM.updateItem(itemName: itemName, toggleFavorite: true)
                     } label: {
@@ -34,7 +36,7 @@ struct DoubleRowCardComponent: View {
                     .padding(10)
                     .padding(.top, 5)
                 }
-                .frame(height: UIScreen.main.bounds.height / 4)
+                
                 .frame(maxWidth: .infinity)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 
@@ -48,6 +50,7 @@ struct DoubleRowCardComponent: View {
             .padding(5)
         }
         .background(ColorEnum.colFFC8AF.color)
+//        .background(background.color)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .foregroundColor(ColorEnum.col181818.color)
         .multilineTextAlignment(.leading)
@@ -56,11 +59,15 @@ struct DoubleRowCardComponent: View {
 
 struct DoubleRowCardComponent_Previews: PreviewProvider {
     static var previews: some View {
-        HStack{
-            DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
-                .environmentObject(CoreDataUserProgressVM())
-            DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
-                .environmentObject(CoreDataUserProgressVM())
+        ScrollView {
+            HStack {
+                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
+                    .environmentObject(CoreDataUserProgressVM())
+                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
+                    .environmentObject(CoreDataUserProgressVM())
+            }
+            .padding(.horizontal)
+            
         }
     }
 }

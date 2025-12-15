@@ -9,15 +9,15 @@ import SwiftUI
 
 struct SingleCocktailView: View {
     
-    let coctailModel: CocktailModel
+    let cocktailModel: CocktailModel
     
     var body: some View {
-        Text(coctailModel.title)
+        Text(cocktailModel.title)
     }
 }
 
 struct SingleCocktailView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleCocktailView(coctailModel: GlobalConstant.cocktailsModels[0])
+        SingleCocktailView(cocktailModel: GlobalConstant.cocktailsModels[0])
     }
 }
