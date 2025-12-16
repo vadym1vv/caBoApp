@@ -24,12 +24,12 @@ class JourneyDataLoader {
     static func loadData() -> JourneyData {
         
         guard let url = Bundle.main.url(forResource: "journey_data", withExtension: "json") else {
-            print("⚠️ Error: 'journey_data.json' not found in Bundle. Check 'Copy Bundle Resources'.")
+            print("Error: 'journey_data.json' not found in Bundle. Check 'Copy Bundle Resources'.")
             return .empty
         }
         
         guard let data = try? Data(contentsOf: url) else {
-            print("⚠️ Error: Could not read data from 'journey_data.json'.")
+            print(" Error: Could not read data from 'journey_data.json'.")
             return .empty
         }
         

@@ -16,6 +16,9 @@
 		935EDB622EF0BA23003A1E96 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB612EF0BA23003A1E96 /* FavoritesView.swift */; };
 		935EDB642EF0BC1B003A1E96 /* TabBarNavigationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB632EF0BC1B003A1E96 /* TabBarNavigationComponent.swift */; };
 		935EDB662EF0C244003A1E96 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935EDB652EF0C244003A1E96 /* RootTabView.swift */; };
+		93AAD3082EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD3072EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift */; };
+		93AAD30A2EF1E55700C1CC23 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD3092EF1E55700C1CC23 /* SearchResultView.swift */; };
+		93AAD30C2EF1FA7D00C1CC23 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */; };
 		D510E59E2EEB34E100550779 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E59D2EEB34E100550779 /* SettingsView.swift */; };
 		D510E5A02EEB398F00550779 /* TopBarNavigationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */; };
 		D510E5A42EEB3AAF00550779 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D510E5A22EEB3AAF00550779 /* DancingScript-Medium.ttf */; };
@@ -50,7 +53,7 @@
 		D5AD14E02EE9DDBF00C7A261 /* LayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AD14DF2EE9DDBF00C7A261 /* LayoutExtension.swift */; };
 		D5C411D22EEACD6400DDB8C5 /* CocktailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C411D12EEACD6400DDB8C5 /* CocktailModel.swift */; };
 		D5C411D42EEACEDB00DDB8C5 /* MoodEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C411D32EEACEDB00DDB8C5 /* MoodEnum.swift */; };
-		D5C411D62EEACEFB00DDB8C5 /* DificultyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C411D52EEACEFB00DDB8C5 /* DificultyEnum.swift */; };
+		D5C411D62EEACEFB00DDB8C5 /* DifficultyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C411D52EEACEFB00DDB8C5 /* DifficultyEnum.swift */; };
 		D5C411D82EEACF3F00DDB8C5 /* TimeForSessionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C411D72EEACF3F00DDB8C5 /* TimeForSessionEnum.swift */; };
 		D5C411DA2EEACFF200DDB8C5 /* CategoryEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C411D92EEACFF200DDB8C5 /* CategoryEnum.swift */; };
 		D5C411DC2EEAD06300DDB8C5 /* CocktailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C411DB2EEAD06300DDB8C5 /* CocktailsView.swift */; };
@@ -79,6 +82,9 @@
 		935EDB612EF0BA23003A1E96 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		935EDB632EF0BC1B003A1E96 /* TabBarNavigationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarNavigationComponent.swift; sourceTree = "<group>"; };
 		935EDB652EF0C244003A1E96 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		93AAD3072EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSearchEntityVM.swift; sourceTree = "<group>"; };
+		93AAD3092EF1E55700C1CC23 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		D510E59D2EEB34E100550779 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarNavigationComponent.swift; sourceTree = "<group>"; };
 		D510E5A22EEB3AAF00550779 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
@@ -115,7 +121,7 @@
 		D5AD14DF2EE9DDBF00C7A261 /* LayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutExtension.swift; sourceTree = "<group>"; };
 		D5C411D12EEACD6400DDB8C5 /* CocktailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailModel.swift; sourceTree = "<group>"; };
 		D5C411D32EEACEDB00DDB8C5 /* MoodEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEnum.swift; sourceTree = "<group>"; };
-		D5C411D52EEACEFB00DDB8C5 /* DificultyEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DificultyEnum.swift; sourceTree = "<group>"; };
+		D5C411D52EEACEFB00DDB8C5 /* DifficultyEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyEnum.swift; sourceTree = "<group>"; };
 		D5C411D72EEACF3F00DDB8C5 /* TimeForSessionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeForSessionEnum.swift; sourceTree = "<group>"; };
 		D5C411D92EEACFF200DDB8C5 /* CategoryEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEnum.swift; sourceTree = "<group>"; };
 		D5C411DB2EEAD06300DDB8C5 /* CocktailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailsView.swift; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 			children = (
 				D54A62342EECA6DF000C902A /* CoreDataSettings.swift */,
 				D54A62362EECA740000C902A /* CoreDataUserProgressVM.swift */,
+				93AAD3072EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 				935EDB5D2EF0B95E003A1E96 /* StatView.swift */,
 				935EDB612EF0BA23003A1E96 /* FavoritesView.swift */,
 				935EDB652EF0C244003A1E96 /* RootTabView.swift */,
+				93AAD3092EF1E55700C1CC23 /* SearchResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,7 +281,7 @@
 				D5AD14DA2EE9C38700C7A261 /* ColorEnum.swift */,
 				D5AD14DC2EE9D37C00C7A261 /* IconEnum.swift */,
 				D5C411D32EEACEDB00DDB8C5 /* MoodEnum.swift */,
-				D5C411D52EEACEFB00DDB8C5 /* DificultyEnum.swift */,
+				D5C411D52EEACEFB00DDB8C5 /* DifficultyEnum.swift */,
 				D5C411D72EEACF3F00DDB8C5 /* TimeForSessionEnum.swift */,
 				D5C411D92EEACFF200DDB8C5 /* CategoryEnum.swift */,
 				D510E5B12EEB3BEE00550779 /* FontEnum.swift */,
@@ -297,6 +305,7 @@
 				D5C411EE2EEAE99B00DDB8C5 /* JourneyVM.swift */,
 				D510E5B52EEB421500550779 /* DailyRecomendationsVM.swift */,
 				D57D06A42EEC670100D5DA67 /* JourneyDataLoader.swift */,
+				93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -394,6 +403,7 @@
 				935EDB542EF07486003A1E96 /* ItemDetailsCardComponent.swift in Sources */,
 				D5AD14D92EE9BDFD00C7A261 /* LinearGradientEnum.swift in Sources */,
 				D5AD14DD2EE9D37C00C7A261 /* IconEnum.swift in Sources */,
+				93AAD30C2EF1FA7D00C1CC23 /* SearchVM.swift in Sources */,
 				D5AD14E02EE9DDBF00C7A261 /* LayoutExtension.swift in Sources */,
 				935EDB602EF0B9AE003A1E96 /* TabComponentEnum.swift in Sources */,
 				D5C411DE2EEAD08500DDB8C5 /* CultureLessonsView.swift in Sources */,
@@ -412,8 +422,9 @@
 				D5A4B1EA2EE9B7450063B0AB /* OnboardingView.swift in Sources */,
 				D5C411D82EEACF3F00DDB8C5 /* TimeForSessionEnum.swift in Sources */,
 				D54A62352EECA6DF000C902A /* CoreDataSettings.swift in Sources */,
-				D5C411D62EEACEFB00DDB8C5 /* DificultyEnum.swift in Sources */,
+				D5C411D62EEACEFB00DDB8C5 /* DifficultyEnum.swift in Sources */,
 				D510E5B22EEB3BEE00550779 /* FontEnum.swift in Sources */,
+				93AAD3082EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift in Sources */,
 				935EDB622EF0BA23003A1E96 /* FavoritesView.swift in Sources */,
 				D5C411E02EEAD08E00DDB8C5 /* PlacesView.swift in Sources */,
 				D510E5B62EEB421500550779 /* DailyRecomendationsVM.swift in Sources */,
@@ -425,6 +436,7 @@
 				D5AD14DB2EE9C38700C7A261 /* ColorEnum.swift in Sources */,
 				D5A4B1E82EE9B6830063B0AB /* PreloaderView.swift in Sources */,
 				D510E5B42EEB414E00550779 /* DailyCategoryRecomendationComponent.swift in Sources */,
+				93AAD30A2EF1E55700C1CC23 /* SearchResultView.swift in Sources */,
 				D5C411E22EEAD09800DDB8C5 /* HomeSessionsView.swift in Sources */,
 				D5C411E82EEAD77100DDB8C5 /* HomeSessionModel.swift in Sources */,
 				D5C411DA2EEACFF200DDB8C5 /* CategoryEnum.swift in Sources */,

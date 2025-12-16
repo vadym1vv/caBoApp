@@ -12,7 +12,7 @@ struct CocktailModel: CategoryProtocol, Codable, Identifiable {
     let title: String
     let image: String
     let modeEnum: MoodEnum
-    let dificulty: DificultyEnum
+    let dificulty: DifficultyEnum
     let ingredients: String
     let origin: String
     let story: String
@@ -24,5 +24,6 @@ protocol CategoryProtocol: Identifiable {
     var id: String { get }
     var image: String { get }
     var title: String { get }
+    var modeEnum: MoodEnum { get }
 }
 

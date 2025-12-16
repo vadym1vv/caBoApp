@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct GlobalConstant {
     private static let rawData = JourneyDataLoader.loadData()
@@ -20,6 +21,8 @@ struct GlobalConstant {
     + cultureLessons
     + placesModels
     + homeSessionsModels
+    
+    static let viewComponentSpacing: CGFloat = UIScreen.main.bounds.height / 50
 }
 
 enum JourneyType: Int, CaseIterable {
