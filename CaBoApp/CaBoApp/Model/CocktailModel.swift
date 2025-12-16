@@ -24,5 +24,6 @@ protocol CategoryProtocol: Identifiable {
     var id: String { get }
     var image: String { get }
     var title: String { get }
+    var modeEnum: MoodEnum { get }
 }
 

@@ -8,9 +8,8 @@
 import SwiftUI
 
 enum DifficultyEnum: String, Identifiable, CaseIterable, Codable {
-    var id: String { rawValue } // Use rawValue for Identifiable
-    
-    // Case names must match JSON values exactly (all lowercase)
+    var id: String { rawValue }
+  
     case easy, medium, advanced
     
     @ViewBuilder

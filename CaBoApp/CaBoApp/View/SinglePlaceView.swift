@@ -18,41 +18,7 @@ struct SinglePlaceView: View {
     var body: some View {
         VStack {
             ScrollView {
-                //                ZStack {
-                //                    Image(cocktailModel.image)
-                //                        .resizable()
-                //                        .scaledToFill()
-                //                        .frame(width: UIScreen.main.bounds.width)
-                //                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                //
-                //                    VStack {
-                //                        TopBarNavigationComponent(leadingView: Button(action: {
-                //
-                //                        }, label: {
-                //                            Image(IconEnum.backBtn.icon)
-                //                        }), centerView: Text(cocktailModel.title), trailingView: Button(action: {
-                //
-                //                        }, label: {
-                //                            Image(isFavoriteIcon)
-                //                        }))
-                //                        .padding(.top, getSafeArea().top)
-                //                        Spacer()
-                //                    }
-                //
-                //                    VStack {
-                //                        Spacer()
-                //                        HStack {
-                //                            Text("Cocktail")
-                //                                .padding()
-                //                                .background(ColorEnum.colFFFFFF.color)
-                //                            Spacer()
-                //                        }
-                //                    }
-                //                    .padding()
-                //
-                //                }
-                //                .frame(height: UIScreen.main.bounds.height / 2)
-                
+
                 SingleIconActionCategoryComponent(
                     isItemFavorite: $isItemFavorite, imgStr: placeModel.image,
                     title: placeModel.title,
