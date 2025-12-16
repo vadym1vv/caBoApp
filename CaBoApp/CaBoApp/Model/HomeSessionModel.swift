@@ -12,7 +12,7 @@ struct HomeSessionModel: CategoryProtocol, Codable, Identifiable {
     let title: String
     let image: String
     let modeEnum: MoodEnum
-    let dificulty: DificultyEnum
+    let dificulty: DifficultyEnum
     let timeForSession: TimeForSessionEnum
     let prepare: String
     let mix: String

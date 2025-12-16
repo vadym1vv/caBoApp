@@ -16,7 +16,7 @@ class CoreDataUserProgressVM: CoreDataSettings {
         fetchEntity()
     }
     
-    func updateItem(itemName: String, itemType: String? = nil, toggleFavorite: Bool? = nil, introducedDate: Date? = nil) {
+    func updateItem(itemName: String, itemType: String? = nil, toggleFavorite: Bool? = nil, introducedDate: Date? = nil, searchedDate: Date? = nil) {
         let itemToUpdate = items.first(where: {$0.itemName == itemName}) ?? ItemEntity(context: container.viewContext)
         if (toggleFavorite != nil) {
             itemToUpdate.isFavorite = !itemToUpdate.isFavorite

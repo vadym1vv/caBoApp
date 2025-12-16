@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DificultyEnum: String, Identifiable, CaseIterable, Codable {
+enum DifficultyEnum: String, Identifiable, CaseIterable, Codable {
     var id: String { rawValue } // Use rawValue for Identifiable
     
     // Case names must match JSON values exactly (all lowercase)

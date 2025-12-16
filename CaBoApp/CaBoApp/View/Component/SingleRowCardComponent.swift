@@ -15,6 +15,7 @@ struct SingleRowCardComponent: View {
     let itemDescription: String
     let itemImg: String
     var background: ColorEnum
+    var showMinutesIcon: Bool = false
     var navigateAction: () -> ()
     
     var isFavoriteIcon: String {
@@ -37,9 +38,14 @@ struct SingleRowCardComponent: View {
                                 .font(FontEnum.joSaBold18.font)
                                 .padding(.vertical, 11)
                                 .lineLimit(2)
-                            Text(itemDescription)
-                                .font(FontEnum.joSaItalic16.font)
-                                .lineLimit(2)
+                            HStack {
+                                if (showMinutesIcon) {
+                                    Image(IconEnum.timeNeededIcon.icon)
+                                }
+                                Text(itemDescription)
+                                    .font(FontEnum.joSaItalic16.font)
+                                    .lineLimit(2)
+                            }
                         }
                         .frame(maxWidth: .infinity)
                        

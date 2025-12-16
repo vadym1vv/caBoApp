@@ -8,8 +8,8 @@
 import Foundation
 
 enum MoodEnum: String, Identifiable, CaseIterable, Codable {
-    var id: String { rawValue } // Use rawValue for Identifiable
+    var id: String { rawValue }
     
-    // Case names must match JSON values exactly (all lowercase)
+    
     case relax, party, deep, romantic
 }

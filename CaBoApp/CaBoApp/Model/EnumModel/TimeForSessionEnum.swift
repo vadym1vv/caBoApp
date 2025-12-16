@@ -10,25 +10,29 @@ import Foundation
 enum TimeForSessionEnum: String, CaseIterable, Identifiable, Codable {
     var id: String { rawValue }
     
-    // Clean cases (no raw value = case name is the value)
-    case tenTwenty
-    case twentyFive
-    case twenty
-    case fortyPlus
-    
-    // Typos in the JSON are manually mapped here:
-    case thirtyFive = "thortyFive" // Fixes the Index 3, Index 4 typo
-    case twentyForty = "twentyFourty" // Fixes the Index 5, Index 7 typo
-    
-    // Computed property for display purposes
-    var uiTitle: String {
+    case tenTwenty = "10-20min"
+    case twentyForty = "20-40min"
+    case twentyFive = "25 min"
+    case twenty = "20 min"
+    case fortyPlus = "40+ min"
+    case thirtyFive = "35 min"
+ 
+    var longDescription: String {
         switch self {
-        case .tenTwenty: return "10-20min"
-        case .twentyForty: return "20-40min"
-        case .twentyFive: return "25 min"
-        case .fortyPlus: return "40+ min"
-        case .twenty: return "20 min"
-        case .thirtyFive: return "35 min"
+        case .tenTwenty:
+            return "10-20 minutes"
+        case .twentyForty:
+            return "20-40 minutes"
+        case .twentyFive:
+            return "25 minutes"
+        case .twenty:
+            return "20 minutes"
+        case .fortyPlus:
+            return "40+ minutes"
+        case .thirtyFive:
+            return "35 minutes"
         }
     }
+    
+    static let timeForFilter: [TimeForSessionEnum] = [.tenTwenty, .twentyForty, .fortyPlus]
 }

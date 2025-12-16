@@ -49,7 +49,7 @@ struct HomeSessionsView: View {
             ScrollView {
                 VStack {
                     ForEach(placesModel) { homeSessionModel in
-                        SingleRowCardComponent(itemName: homeSessionModel.title, itemDescription: homeSessionModel.timeForSession.rawValue, itemImg: homeSessionModel.image, background: .colEDE7FA) {
+                        SingleRowCardComponent(itemName: homeSessionModel.title, itemDescription: homeSessionModel.timeForSession.longDescription, itemImg: homeSessionModel.image, background: .colEDE7FA, showMinutesIcon: true) {
                             homeSessionToNavigate = homeSessionModel
                             withAnimation {
                                 navigateToHomeSession = true
