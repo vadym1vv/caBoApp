@@ -12,6 +12,7 @@ struct PlacesView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
@@ -39,10 +40,10 @@ struct PlacesView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(placesModel) { placeModel in
                             NavigationLink {
-                              SinglePlaceView(placeModel: placeModel)
+                                SinglePlaceView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, placeModel: placeModel)
                                     .environmentObject(coreDataUserProgressVM)
                             } label: {
-                                DoubleRowCardComponent(itemName: placeModel.title, itemDescription: placeModel.facts, itemImg: placeModel.image, categoryEnum: .places)
+                                DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: placeModel.title, itemDescription: placeModel.facts, itemImg: placeModel.image, categoryEnum: .places)
                             }
                             
                         }
@@ -64,6 +65,7 @@ struct PlacesView_Previews: PreviewProvider {
         NavigationView {
             PlacesView()
                 .environmentObject(CoreDataUserProgressVM())
+                .environmentObject(CoreDataJournalVM())
         }
     }
 }

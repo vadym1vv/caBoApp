@@ -19,6 +19,7 @@
 		93AAD3082EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD3072EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift */; };
 		93AAD30A2EF1E55700C1CC23 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD3092EF1E55700C1CC23 /* SearchResultView.swift */; };
 		93AAD30C2EF1FA7D00C1CC23 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */; };
+		93D1D8062EF31F77007C2893 /* CoreDataJournalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D1D8052EF31F77007C2893 /* CoreDataJournalVM.swift */; };
 		D510E59E2EEB34E100550779 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E59D2EEB34E100550779 /* SettingsView.swift */; };
 		D510E5A02EEB398F00550779 /* TopBarNavigationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */; };
 		D510E5A42EEB3AAF00550779 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D510E5A22EEB3AAF00550779 /* DancingScript-Medium.ttf */; };
@@ -85,6 +86,7 @@
 		93AAD3072EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSearchEntityVM.swift; sourceTree = "<group>"; };
 		93AAD3092EF1E55700C1CC23 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
+		93D1D8052EF31F77007C2893 /* CoreDataJournalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataJournalVM.swift; sourceTree = "<group>"; };
 		D510E59D2EEB34E100550779 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarNavigationComponent.swift; sourceTree = "<group>"; };
 		D510E5A22EEB3AAF00550779 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-Medium.ttf"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				D54A62342EECA6DF000C902A /* CoreDataSettings.swift */,
 				D54A62362EECA740000C902A /* CoreDataUserProgressVM.swift */,
 				93AAD3072EF1AE4200C1CC23 /* CoreDataSearchEntityVM.swift */,
+				93D1D8052EF31F77007C2893 /* CoreDataJournalVM.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				D5C411EC2EEAE79D00DDB8C5 /* JourneyComponent.swift in Sources */,
 				D5C411F32EEAEC9700DDB8C5 /* SingleCultureLessonView.swift in Sources */,
 				D5C411F52EEAECA200DDB8C5 /* SinglePlaceView.swift in Sources */,
+				93D1D8062EF31F77007C2893 /* CoreDataJournalVM.swift in Sources */,
 				D53383082EEC388F001FAE2A /* RecomendedTodayComponent.swift in Sources */,
 				D5A4B1DF2EE9B3A80063B0AB /* CaBoApp.xcdatamodeld in Sources */,
 				D5C411F12EEAEC8B00DDB8C5 /* SingleCocktailView.swift in Sources */,

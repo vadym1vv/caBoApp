@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SinglePlaceView: View {
     
-    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
     let placeModel: PlacesModel
     
@@ -41,6 +42,7 @@ struct SinglePlaceView: View {
         .background(LinearGradientEnum.yellowSingleItemBackground.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == placeModel.title })
+            coreDataJournalVM.registerNewJournalEntity(itemTitle: placeModel.title, itemCategory: CategoryEnum.places.rawValue)
         })
         .navigationBarHidden(true)
         .ignoresSafeArea()
@@ -50,6 +52,6 @@ struct SinglePlaceView: View {
 
 struct SinglePlaceView_Previews: PreviewProvider {
     static var previews: some View {
-        SinglePlaceView(placeModel: GlobalConstant.placesModels[0])
+        SinglePlaceView(coreDataUserProgressVM: CoreDataUserProgressVM(), coreDataJournalVM: CoreDataJournalVM(), placeModel: GlobalConstant.placesModels[0])
     }
 }

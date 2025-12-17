@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SingleRowCardComponent: View {
     
-    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     
     let itemName: String
     let itemDescription: String
@@ -83,8 +83,7 @@ struct SingleRowCardComponent: View {
 
 struct SingleRowCardComponent_Previews: PreviewProvider {
     static var previews: some View {
-        SingleRowCardComponent(itemName: "Malecón", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, background: ColorEnum.colC4E9E1, categoryEnum: CategoryEnum.coctails, navigateAction: {})
-            .environmentObject(CoreDataUserProgressVM())
+        SingleRowCardComponent(coreDataUserProgressVM: CoreDataUserProgressVM(), itemName: "Malecón", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, background: ColorEnum.colC4E9E1, categoryEnum: CategoryEnum.coctails, navigateAction: {})
             .padding()
         
     }

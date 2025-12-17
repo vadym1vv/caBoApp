@@ -10,15 +10,19 @@ import SwiftUI
 struct FavoritesView: View {
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
     @State private var selectedCategory: [CategoryEnum] = CategoryEnum.allCases
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
-    var sortedItems: [ItemEntity] {
+    var sortedItems: [any CategoryProtocol] {
         let selectedCategoryDescription: [String] = selectedCategory.map({$0.rawValue})
-        return coreDataUserProgressVM.items.filter { itemEntity in
+        let favoritesFormCoreDataToShow = coreDataUserProgressVM.items.filter { itemEntity in
             return itemEntity.isFavorite && selectedCategoryDescription.contains(itemEntity.itemType ?? "")
+        }
+        return GlobalConstant.journayCollections.filter { categoryProtocolItem in
+            return favoritesFormCoreDataToShow.contains(where: {$0.itemName == categoryProtocolItem.title})
         }
     }
     
@@ -35,9 +39,7 @@ struct FavoritesView: View {
                     selectedCategory = CategoryEnum.allCases
                 } label: {
                     Text("All")
-//                        .frame(height: 70)
-                        .frame(maxHeight: .infinity)
-                        .padding(.horizontal)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(selectedCategory == CategoryEnum.allCases ? ColorEnum.colFFC8AF.color : ColorEnum.colFFFFFF.color)
                     
                         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -55,8 +57,7 @@ struct FavoritesView: View {
                     } label: {
                         Text(category.shortDescription)
 //                            .frame(height: 70)
-                            .frame(maxHeight: .infinity)
-                            .padding(.horizontal, 8)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(selectedCategory.contains(where: {$0 == category}) && selectedCategory != CategoryEnum.allCases ? ColorEnum.colFFC8AF.color : ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
@@ -64,14 +65,40 @@ struct FavoritesView: View {
             }
             .frame(height: UIScreen.main.bounds.height / 25)
             
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: columns) {
-                    ForEach(sortedItems, id: \.self) { sortedItem in
-                            DoubleRowCardComponent(itemName: <#T##String#>, itemDescription: <#T##String#>, itemImg: <#T##String#>, categoryEnum: <#T##CategoryEnum#>)
+            if (!sortedItems.isEmpty){
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: columns) {
+                        ForEach(sortedItems, id: \.id) { item in
+                            CategoryNavigationLink(category: item, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM) { resolvedItem in
+                                        
+                                        // resolvedItem is 'Any', so we cast to specific types to get specific fields
+                                        if let cocktail = resolvedItem as? CocktailModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
+                                        } else if let lesson = resolvedItem as? CultureModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: lesson.title, itemDescription: lesson.facts, itemImg: lesson.image, categoryEnum: .cultureLessons)
+                                        } else if let place = resolvedItem as? PlacesModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: place.title, itemDescription: place.facts, itemImg: place.image, categoryEnum: .places)
+                                        } else if let home = resolvedItem as? HomeSessionModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: home.title, itemDescription: home.timeForSession.rawValue, itemImg: home.image, categoryEnum: .homeSessions)
+                                        }
+                                    }
+                                }
                     }
                 }
+            } else {
+                VStack {
+                    Image(IconEnum.journalFavIcon.icon)
+                        .padding(.vertical)
+                        .padding(.top, 40)
+                    Text("There are no favorites yet. Click the star icon on any card to save it here.")
+                        .font(FontEnum.joSaMedium18.font)
+                    
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
             }
         }
+        .padding(.horizontal)
         .frame(maxWidth: .infinity)
         .font(FontEnum.joSaMedium14.font)
     }
@@ -80,6 +107,8 @@ struct FavoritesView: View {
 #Preview {
     VStack {
         FavoritesView()
+            .environmentObject(CoreDataUserProgressVM())
+            .environmentObject(CoreDataJournalVM())
         Spacer()
     }
     .background(LinearGradientEnum.mainScreenBg.linearGradientColors)

@@ -12,10 +12,11 @@ struct SearchResultView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
     var searchResults: [any CategoryProtocol]
     
-    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
+    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
         VStack {
@@ -34,24 +35,61 @@ struct SearchResultView: View {
                     EmptyView(),
                 trailingView:
                     EmptyView())
+            .padding(.top, getSafeArea().top)
             if (!searchResults.isEmpty) {
                 ScrollView {
                     LazyVGrid(columns: columns) {
-                        ForEach(searchResults, id: \.id) { searchResult in
-                            recommendationView(category: searchResult, coreDataUserProgressVM: coreDataUserProgressVM)
-                        }
+//                        ForEach(searchResults, id: \.id) { searchResult in
+//                            recommendationView(category: searchResult, coreDataUserProgressVM: coreDataUserProgressVM)
+//                        }
+                        ForEach(searchResults, id: \.id) { item in
+                            CategoryNavigationLink(category: item, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM) { resolvedItem in
+                                        
+                                        // resolvedItem is 'Any', so we cast to specific types to get specific fields
+                                        if let cocktail = resolvedItem as? CocktailModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
+                                        } else if let lesson = resolvedItem as? CultureModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: lesson.title, itemDescription: lesson.facts, itemImg: lesson.image, categoryEnum: .cultureLessons)
+                                        } else if let place = resolvedItem as? PlacesModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: place.title, itemDescription: place.facts, itemImg: place.image, categoryEnum: .places)
+                                        } else if let home = resolvedItem as? HomeSessionModel {
+                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: home.title, itemDescription: home.timeForSession.rawValue, itemImg: home.image, categoryEnum: .homeSessions)
+                                        }
+                                    }
+                                }
                     }
                 }
             } else {
-                Image(IconEnum.searchResultsIcon.icon)
-                Text("Nothing here yet.")
-                Text("Try another category or remove some filters.")
+                
+                VStack {
+                    Image(IconEnum.searchResultsIcon.icon)
+                        .padding(.vertical)
+                        .padding(.top, 40)
+                    Text("Nothing here yet. Try another category or remove some filters.")
+                        .font(FontEnum.joSaMedium18.font)
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("Reset filters")
+                            .font(FontEnum.joSaBold16.font)
+                            .foregroundColor(ColorEnum.colFFFFFF.color)
+                            .frame(width: UIScreen.main.bounds.width / 2, height: 44)
+                            .background(LinearGradientEnum.onboardingBtnBg.linearGradientColors)
+                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                            
+                    }
+
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
             }
         }
+        .padding(.horizontal)
         .font(FontEnum.joSaMedium18.font)
         .foregroundColor(ColorEnum.col181818.color)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
+        .ignoresSafeArea(edges: .top)
         .navigationBarHidden(true)
     }
 }
@@ -63,7 +101,7 @@ struct SearchResultView: View {
     let dummyCulture = GlobalConstant.cultureLessons.first!
     
     NavigationView {
-        SearchResultView(coreDataUserProgressVM: CoreDataUserProgressVM(), searchResults: [dummyCocktail, dummySession, dummyCulture])
+        SearchResultView(coreDataUserProgressVM: CoreDataUserProgressVM(), coreDataJournalVM: CoreDataJournalVM(), searchResults: [])
            
     }
     

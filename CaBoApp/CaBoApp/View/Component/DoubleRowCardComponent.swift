@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DoubleRowCardComponent: View {
     
-    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     
     let itemName: String
     let itemDescription: String
@@ -62,10 +62,10 @@ struct DoubleRowCardComponent_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
             HStack {
-                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
-                    .environmentObject(CoreDataUserProgressVM())
-                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
-                    .environmentObject(CoreDataUserProgressVM())
+                DoubleRowCardComponent(coreDataUserProgressVM: CoreDataUserProgressVM(), itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
+//                    .environmentObject(CoreDataUserProgressVM())
+                DoubleRowCardComponent(coreDataUserProgressVM: CoreDataUserProgressVM(), itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
+//                    .environmentObject(CoreDataUserProgressVM())
             }
             .padding(.horizontal)
             

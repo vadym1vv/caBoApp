@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SingleHomeSessionView: View {
     
-    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
     let homeSessionModel: HomeSessionModel
     
@@ -39,6 +40,7 @@ struct SingleHomeSessionView: View {
         .background(LinearGradientEnum.purpleSingleItemBackground.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == homeSessionModel.title })
+            coreDataJournalVM.registerNewJournalEntity(itemTitle: homeSessionModel.title, itemCategory: CategoryEnum.homeSessions.rawValue)
         })
         .navigationBarHidden(true)
         .ignoresSafeArea()
@@ -48,6 +50,6 @@ struct SingleHomeSessionView: View {
 
 struct SingleHomeSessionView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleHomeSessionView(homeSessionModel: GlobalConstant.homeSessionsModels[0])
+        SingleHomeSessionView(coreDataUserProgressVM: CoreDataUserProgressVM(), coreDataJournalVM: CoreDataJournalVM(), homeSessionModel: GlobalConstant.homeSessionsModels[0])
     }
 }

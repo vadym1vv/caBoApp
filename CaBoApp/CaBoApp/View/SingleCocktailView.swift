@@ -2,7 +2,8 @@ import SwiftUI
 
 struct SingleCocktailView: View {
     
-    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
     let cocktailModel: CocktailModel
     
@@ -66,6 +67,7 @@ struct SingleCocktailView: View {
         .background(LinearGradientEnum.yellowSingleItemBackground.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == cocktailModel.title })
+            coreDataJournalVM.registerNewJournalEntity(itemTitle: cocktailModel.title, itemCategory: CategoryEnum.coctails.rawValue)
         })
         .navigationBarHidden(true)
         .ignoresSafeArea()
@@ -74,7 +76,7 @@ struct SingleCocktailView: View {
 
 struct SingleCocktailView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleCocktailView(cocktailModel: GlobalConstant.cocktailsModels[0])
+        SingleCocktailView(coreDataUserProgressVM: CoreDataUserProgressVM(), coreDataJournalVM: CoreDataJournalVM(), cocktailModel: GlobalConstant.cocktailsModels[0])
             .environmentObject(CoreDataUserProgressVM())
     }
 }
