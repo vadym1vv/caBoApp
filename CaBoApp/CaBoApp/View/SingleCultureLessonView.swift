@@ -25,7 +25,7 @@ struct SingleCultureLessonView: View {
                     bottomLeadingComponent: HStack {
                         Text("Cocktail")
                     }) {
-                        coreDataUserProgressVM.updateItem(itemName: cultureModel.title, toggleFavorite: true)
+                        coreDataUserProgressVM.updateFavoriteItem(itemName: cultureModel.title, categoryEnum: CategoryEnum.cultureLessons.rawValue, toggleFavorite: true)
                     }
                 
                 VStack {

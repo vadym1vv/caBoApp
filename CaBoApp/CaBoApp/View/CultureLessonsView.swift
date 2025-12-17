@@ -49,7 +49,7 @@ struct CultureLessonsView: View {
             ScrollView {
                 VStack {
                     ForEach(cultureLessonsModels) { cultureLesson in
-                        SingleRowCardComponent(itemName: cultureLesson.title, itemDescription: cultureLesson.facts, itemImg: cultureLesson.image, background: .colC4E9E1) {
+                        SingleRowCardComponent(itemName: cultureLesson.title, itemDescription: cultureLesson.facts, itemImg: cultureLesson.image, background: .colC4E9E1, categoryEnum: CategoryEnum.cultureLessons) {
                             cultureLessonToNavigate = cultureLesson
                             withAnimation {
                                 navigateToCultureLessonView = true

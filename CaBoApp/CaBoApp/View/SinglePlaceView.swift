@@ -25,7 +25,7 @@ struct SinglePlaceView: View {
                     bottomLeadingComponent: HStack {
                         Text("Cocktail")
                     }) {
-                        coreDataUserProgressVM.updateItem(itemName: placeModel.title, toggleFavorite: true)
+                        coreDataUserProgressVM.updateFavoriteItem(itemName: placeModel.title, categoryEnum: CategoryEnum.places.rawValue, toggleFavorite: true)
                     }
                 
                 VStack {

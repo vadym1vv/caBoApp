@@ -14,6 +14,7 @@ struct DoubleRowCardComponent: View {
     let itemName: String
     let itemDescription: String
     let itemImg: String
+    let categoryEnum: CategoryEnum
     
   
     var isFavoriteIcon: String {
@@ -29,7 +30,7 @@ struct DoubleRowCardComponent: View {
                         .scaledToFill()
                         .frame(height: UIScreen.main.bounds.height / 5)
                     Button {
-                        coreDataUserProgressVM.updateItem(itemName: itemName, toggleFavorite: true)
+                        coreDataUserProgressVM.updateFavoriteItem(itemName: itemName, categoryEnum: categoryEnum.rawValue, toggleFavorite: true)
                     } label: {
                         Image(isFavoriteIcon)
                     }
@@ -61,9 +62,9 @@ struct DoubleRowCardComponent_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
             HStack {
-                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
+                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
                     .environmentObject(CoreDataUserProgressVM())
-                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon)
+                DoubleRowCardComponent(itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
                     .environmentObject(CoreDataUserProgressVM())
             }
             .padding(.horizontal)

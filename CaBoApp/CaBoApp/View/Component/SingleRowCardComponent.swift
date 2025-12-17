@@ -15,6 +15,7 @@ struct SingleRowCardComponent: View {
     let itemDescription: String
     let itemImg: String
     var background: ColorEnum
+    let categoryEnum: CategoryEnum
     var showMinutesIcon: Bool = false
     var navigateAction: () -> ()
     
@@ -50,7 +51,7 @@ struct SingleRowCardComponent: View {
                         .frame(maxWidth: .infinity)
                        
                             Button {
-                                coreDataUserProgressVM.updateItem(itemName: itemName, toggleFavorite: true)
+                                coreDataUserProgressVM.updateFavoriteItem(itemName: itemName, categoryEnum: categoryEnum.rawValue, toggleFavorite: true)
                             } label: {
                                 Image(isFavoriteIcon)
                             }
@@ -82,7 +83,7 @@ struct SingleRowCardComponent: View {
 
 struct SingleRowCardComponent_Previews: PreviewProvider {
     static var previews: some View {
-        SingleRowCardComponent(itemName: "Malecón", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, background: ColorEnum.colC4E9E1, navigateAction: {})
+        SingleRowCardComponent(itemName: "Malecón", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, background: ColorEnum.colC4E9E1, categoryEnum: CategoryEnum.coctails, navigateAction: {})
             .environmentObject(CoreDataUserProgressVM())
             .padding()
         

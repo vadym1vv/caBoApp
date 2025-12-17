@@ -23,7 +23,7 @@ struct SingleCocktailView: View {
                 SingleIconActionCategoryComponent(isItemFavorite: $isItemFavorite, imgStr: cocktailModel.image, title: cocktailModel.title, bottomLeadingComponent: HStack {
                     Text("Cocktail")
                 }) {
-                    coreDataUserProgressVM.updateItem(itemName: cocktailModel.title, toggleFavorite: true)
+                    coreDataUserProgressVM.updateFavoriteItem(itemName: cocktailModel.title, categoryEnum: CategoryEnum.coctails.rawValue, toggleFavorite: true)
                 }
                 
                 VStack {

@@ -24,7 +24,7 @@ struct SingleHomeSessionView: View {
                     bottomLeadingComponent: HStack {
                         Text("Cocktail")
                     }) {
-                        coreDataUserProgressVM.updateItem(itemName: homeSessionModel.title, toggleFavorite: true)
+                        coreDataUserProgressVM.updateFavoriteItem(itemName: homeSessionModel.title, categoryEnum: CategoryEnum.homeSessions.rawValue, toggleFavorite: true)
                     }
                 
                 VStack {

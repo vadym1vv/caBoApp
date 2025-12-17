@@ -42,7 +42,7 @@ struct CocktailsView: View {
                               SingleCocktailView(cocktailModel: cocktailModel)
                                     .environmentObject(coreDataUserProgressVM)
                             } label: {
-                                DoubleRowCardComponent(itemName: cocktailModel.title, itemDescription: cocktailModel.facts, itemImg: cocktailModel.image)
+                                DoubleRowCardComponent(itemName: cocktailModel.title, itemDescription: cocktailModel.facts, itemImg: cocktailModel.image, categoryEnum: .coctails)
                             }
                             
                         }

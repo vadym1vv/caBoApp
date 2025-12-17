@@ -42,7 +42,7 @@ struct PlacesView: View {
                               SinglePlaceView(placeModel: placeModel)
                                     .environmentObject(coreDataUserProgressVM)
                             } label: {
-                                DoubleRowCardComponent(itemName: placeModel.title, itemDescription: placeModel.facts, itemImg: placeModel.image)
+                                DoubleRowCardComponent(itemName: placeModel.title, itemDescription: placeModel.facts, itemImg: placeModel.image, categoryEnum: .places)
                             }
                             
                         }
