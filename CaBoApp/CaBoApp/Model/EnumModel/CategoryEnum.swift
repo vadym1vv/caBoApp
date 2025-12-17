@@ -37,6 +37,32 @@ enum CategoryEnum: String, CaseIterable, Identifiable {
         }
     }
     
+    var longDescription: String {
+        switch self {
+        case .coctails:
+            return "Learned cocktails"
+        case .cultureLessons:
+            return "Familiar with the culture"
+        case .places:
+            return "Places viewed"
+        case .homeSessions:
+            return "Sessions completed"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .coctails:
+            return ColorEnum.colFF6F61.color
+        case .cultureLessons:
+            return ColorEnum.col008080.color
+        case .places:
+            return ColorEnum.colF98F75.color
+        case .homeSessions:
+            return ColorEnum.col926EF8.color
+        }
+    }
+    
     @ViewBuilder
     var categoryView: some View {
         switch self {
@@ -51,8 +77,4 @@ enum CategoryEnum: String, CaseIterable, Identifiable {
         }
     }
     
-//    @ViewBuilder
-//    var categoryItems: some View {
-//        
-//    }
 }

@@ -10,13 +10,12 @@ import SwiftUI
 struct CultureLessonsView: View {
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
     @Environment(\.presentationMode) private var presentationMode
     
     @State private var navigateToCultureLessonView: Bool = false
     @State private var cultureLessonToNavigate: CultureModel? = nil
-    
-    
     
     private let cultureLessonsModels: [CultureModel] = GlobalConstant.cultureLessons
     
@@ -24,8 +23,7 @@ struct CultureLessonsView: View {
         VStack {
             NavigationLink(isActive: $navigateToCultureLessonView) {
                 if let cultureLessonToNavigate {
-                    SingleCultureLessonView(cultureModel: cultureLessonToNavigate)
-                        .environmentObject(coreDataUserProgressVM)
+                    SingleCultureLessonView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, cultureModel: cultureLessonToNavigate)
                 }
             } label: {
                 EmptyView()
@@ -49,7 +47,7 @@ struct CultureLessonsView: View {
             ScrollView {
                 VStack {
                     ForEach(cultureLessonsModels) { cultureLesson in
-                        SingleRowCardComponent(itemName: cultureLesson.title, itemDescription: cultureLesson.facts, itemImg: cultureLesson.image, background: .colC4E9E1) {
+                        SingleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cultureLesson.title, itemDescription: cultureLesson.facts, itemImg: cultureLesson.image, background: .colC4E9E1, categoryEnum: CategoryEnum.cultureLessons) {
                             cultureLessonToNavigate = cultureLesson
                             withAnimation {
                                 navigateToCultureLessonView = true
@@ -71,5 +69,6 @@ struct CultureLessonsView_Previews: PreviewProvider {
     static var previews: some View {
         CultureLessonsView()
             .environmentObject(CoreDataUserProgressVM())
+            .environmentObject(CoreDataJournalVM())
     }
 }

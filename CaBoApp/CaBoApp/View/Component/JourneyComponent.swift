@@ -10,6 +10,7 @@ import SwiftUI
 struct JourneyComponent: View {
     
    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
     @StateObject private var manager = JourneyManager()
     @State private var navigateToNextJourney: Bool = false
@@ -17,7 +18,7 @@ struct JourneyComponent: View {
     var body: some View {
         HStack {
             NavigationLink(isActive: $navigateToNextJourney) {
-                JourneyDetailView(manager: manager)
+                JourneyDetailView(manager: manager, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
                     .environmentObject(coreDataUserProgressVM)
             } label: {
                 EmptyView()
@@ -77,7 +78,7 @@ struct JourneyComponent: View {
 }
 struct JourneyComponent_Previews: PreviewProvider {
     static var previews: some View {
-        JourneyComponent(coreDataUserProgressVM: CoreDataUserProgressVM())
+        JourneyComponent(coreDataUserProgressVM: CoreDataUserProgressVM(), coreDataJournalVM: CoreDataJournalVM())
             .padding(.horizontal)
             .environmentObject(CoreDataUserProgressVM())
     }
@@ -86,32 +87,33 @@ struct JourneyComponent_Previews: PreviewProvider {
 
 struct JourneyDetailView: View {
     @ObservedObject var manager: JourneyManager
-    
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     var body: some View {
         Group {
             switch manager.currentType {
             case .cocktails:
                 if let model = manager.currentCocktail {
-                    SingleCocktailView(cocktailModel: model)
+                    SingleCocktailView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, cocktailModel: model)
                 } else {
                     EmptyView()
                 }
                 
             case .culture:
                 if let model = manager.currentCulture {
-                    SingleCultureLessonView(cultureModel: model)
+                    SingleCultureLessonView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM,cultureModel: model)
                 }
                 
             case .places:
                 if let model = manager.currentPlace {
-                    SinglePlaceView(placeModel: model)
+                    SinglePlaceView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM,placeModel: model)
                 } else {
                     EmptyView()
                 }
                 
             case .homeSessions:
                 if let model = manager.currentSession {
-                    SingleHomeSessionView(homeSessionModel: model)
+                    SingleHomeSessionView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM,homeSessionModel: model)
                 } else {
                     EmptyView()
                 }

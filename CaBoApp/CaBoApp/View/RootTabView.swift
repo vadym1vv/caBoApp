@@ -10,8 +10,8 @@ import SwiftUI
 struct RootTabView: View {
     @Environment(\.colorScheme) private var colorScheme
     
-//    @Environment(\.presentationMode) private var presentationMode
     @StateObject private var coreDataUserProgressVM: CoreDataUserProgressVM = CoreDataUserProgressVM()
+    @StateObject private var coreDataJournalVM: CoreDataJournalVM = CoreDataJournalVM()
     
     @State private var tabComponentEnum: TabComponentEnum = .home
     
@@ -19,6 +19,7 @@ struct RootTabView: View {
         VStack {
             tabComponentEnum.tabView
                 .environmentObject(coreDataUserProgressVM)
+                .environmentObject(coreDataJournalVM)
                 .padding(.top, getSafeArea().top)
             TabBarNavigationComponent(selectedTabComponentEnum: $tabComponentEnum)
                 .padding(.horizontal)

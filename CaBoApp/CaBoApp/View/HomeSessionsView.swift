@@ -12,6 +12,7 @@ struct HomeSessionsView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject var coreDataJournalVM: CoreDataJournalVM
     
     @State private var navigateToHomeSession: Bool = false
     @State private var homeSessionToNavigate: HomeSessionModel? = nil
@@ -24,8 +25,7 @@ struct HomeSessionsView: View {
         VStack {
             NavigationLink(isActive: $navigateToHomeSession) {
                 if let homeSessionToNavigate {
-                    SingleHomeSessionView(homeSessionModel: homeSessionToNavigate)
-                        .environmentObject(coreDataUserProgressVM)
+                    SingleHomeSessionView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, homeSessionModel: homeSessionToNavigate)
                 }
             } label: {
                 EmptyView()
@@ -49,7 +49,7 @@ struct HomeSessionsView: View {
             ScrollView {
                 VStack {
                     ForEach(placesModel) { homeSessionModel in
-                        SingleRowCardComponent(itemName: homeSessionModel.title, itemDescription: homeSessionModel.timeForSession.longDescription, itemImg: homeSessionModel.image, background: .colEDE7FA, showMinutesIcon: true) {
+                        SingleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: homeSessionModel.title, itemDescription: homeSessionModel.timeForSession.longDescription, itemImg: homeSessionModel.image, background: .colEDE7FA, categoryEnum: CategoryEnum.homeSessions, showMinutesIcon: true) {
                             homeSessionToNavigate = homeSessionModel
                             withAnimation {
                                 navigateToHomeSession = true
@@ -73,6 +73,7 @@ struct HomeSessionsView_Previews: PreviewProvider {
         NavigationView {
             HomeSessionsView()
                 .environmentObject(CoreDataUserProgressVM())
+                .environmentObject(CoreDataJournalVM())
         }
     }
 }

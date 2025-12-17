@@ -6,6 +6,11 @@
         <attribute name="itemName" optional="YES" attributeType="String"/>
         <attribute name="itemType" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="JournalItemEntity" representedClassName="JournalItemEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="itemCategory" optional="YES" attributeType="String"/>
+        <attribute name="itemTitle" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="SearchEntity" representedClassName="SearchEntity" syncable="YES" codeGenerationType="class">
         <attribute name="difficulty" optional="YES" attributeType="String"/>
         <attribute name="mood" optional="YES" attributeType="String"/>

@@ -12,6 +12,7 @@ struct MainScreenView: View {
     
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
     var body: some View {
         VStack {
@@ -29,7 +30,7 @@ struct MainScreenView: View {
                 }
                 Text("Tonight’s Cuba at a glance")
                     .font(FontEnum.daScMedium30.font)
-                JourneyComponent(coreDataUserProgressVM: coreDataUserProgressVM)
+                JourneyComponent(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
                 Text("Quick actions")
                     .font(FontEnum.joSaMedium20.font)
                 HStack {
@@ -38,6 +39,7 @@ struct MainScreenView: View {
                         NavigationLink {
                             category.categoryView
                                 .environmentObject(coreDataUserProgressVM)
+                                .environmentObject(coreDataJournalVM)
                         } label: {
                             VStack {
                                 Image(category.iconButton)
@@ -72,7 +74,7 @@ struct MainScreenView: View {
     //                }
     //            }
                 Spacer()
-                RecomendedTodayComponent(coreDataUserProgressVM: coreDataUserProgressVM)
+                RecomendedTodayComponent(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
                     .padding(.bottom, getSafeArea().bottom)
                 
             }
@@ -95,6 +97,7 @@ struct MainScreenView_Previews: PreviewProvider {
         NavigationView {
             MainScreenView()
                 .environmentObject(CoreDataUserProgressVM())
+                .environmentObject(CoreDataJournalVM())
         }
     }
 }

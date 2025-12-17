@@ -12,6 +12,7 @@ struct CocktailsView: View {
     @Environment(\.presentationMode) private var presentationMode
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
@@ -39,10 +40,10 @@ struct CocktailsView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(cocktailsModels) { cocktailModel in
                             NavigationLink {
-                              SingleCocktailView(cocktailModel: cocktailModel)
+                                SingleCocktailView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, cocktailModel: cocktailModel)
                                     .environmentObject(coreDataUserProgressVM)
                             } label: {
-                                DoubleRowCardComponent(itemName: cocktailModel.title, itemDescription: cocktailModel.facts, itemImg: cocktailModel.image)
+                                DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktailModel.title, itemDescription: cocktailModel.facts, itemImg: cocktailModel.image, categoryEnum: .coctails)
                             }
                             
                         }
@@ -63,5 +64,6 @@ struct Cocktails_Previews: PreviewProvider {
     static var previews: some View {
         CocktailsView()
             .environmentObject(CoreDataUserProgressVM())
+            .environmentObject(CoreDataJournalVM())
     }
 }

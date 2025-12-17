@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SingleCultureLessonView: View {
     
-    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
     @State private var isItemFavorite: Bool = false
     
@@ -25,7 +26,7 @@ struct SingleCultureLessonView: View {
                     bottomLeadingComponent: HStack {
                         Text("Cocktail")
                     }) {
-                        coreDataUserProgressVM.updateItem(itemName: cultureModel.title, toggleFavorite: true)
+                        coreDataUserProgressVM.updateFavoriteItem(itemName: cultureModel.title, categoryEnum: CategoryEnum.cultureLessons.rawValue, toggleFavorite: true)
                     }
                 
                 VStack {
@@ -41,6 +42,7 @@ struct SingleCultureLessonView: View {
         .background(LinearGradientEnum.greenSingleItemBackground.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == cultureModel.title })
+            coreDataJournalVM.registerNewJournalEntity(itemTitle: cultureModel.title, itemCategory: CategoryEnum.cultureLessons.rawValue)
         })
         .navigationBarHidden(true)
         .ignoresSafeArea()
@@ -50,6 +52,6 @@ struct SingleCultureLessonView: View {
 
 struct SingleCultureLessonView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleCultureLessonView(cultureModel: GlobalConstant.cultureLessons[0])
+        SingleCultureLessonView(coreDataUserProgressVM: CoreDataUserProgressVM(), coreDataJournalVM: CoreDataJournalVM(), cultureModel: GlobalConstant.cultureLessons[0])
     }
 }

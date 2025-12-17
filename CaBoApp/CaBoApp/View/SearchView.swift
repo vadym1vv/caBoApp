@@ -11,6 +11,9 @@ struct SearchView: View {
     
     @StateObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM = CoreDataSearchEntityVM()
     
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
+    
     @StateObject private var searchVM: SearchVM = SearchVM()
     @State private var performNavigationToSearchResults: Bool = false
     @State private var searchResults: [any CategoryProtocol] = []
@@ -19,7 +22,7 @@ struct SearchView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             NavigationLink(isActive: $performNavigationToSearchResults) {
-                SearchResultView(searchResults: searchResults)
+                SearchResultView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, searchResults: searchResults)
             } label: {
                 EmptyView()
             }
@@ -253,6 +256,8 @@ struct SearchView: View {
     VStack {
         VStack {
             SearchView()
+                .environmentObject(CoreDataJournalVM())
+                .environmentObject(CoreDataUserProgressVM())
         }
         .padding(.horizontal)
     }
