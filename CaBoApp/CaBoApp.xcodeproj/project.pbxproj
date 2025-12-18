@@ -21,6 +21,7 @@
 		93AAD30A2EF1E55700C1CC23 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD3092EF1E55700C1CC23 /* SearchResultView.swift */; };
 		93AAD30C2EF1FA7D00C1CC23 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */; };
 		93B4D6E22EF4641B001A89B6 /* ExportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B4D6E12EF4641B001A89B6 /* ExportUtility.swift */; };
+		93B4D6E42EF46AA0001A89B6 /* RectangleWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B4D6E32EF46AA0001A89B6 /* RectangleWrapper.swift */; };
 		93CD1C102EF414CF0000602F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CD1C0F2EF414CF0000602F /* StoreKit.framework */; };
 		93CD1C122EF415380000602F /* StoreKitConfigurationFile.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 93CD1C112EF415380000602F /* StoreKitConfigurationFile.storekit */; };
 		93CD1C142EF423740000602F /* PaywallComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD1C132EF423740000602F /* PaywallComponent.swift */; };
@@ -94,6 +95,7 @@
 		93AAD3092EF1E55700C1CC23 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		93B4D6E12EF4641B001A89B6 /* ExportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUtility.swift; sourceTree = "<group>"; };
+		93B4D6E32EF46AA0001A89B6 /* RectangleWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleWrapper.swift; sourceTree = "<group>"; };
 		93CD1C0F2EF414CF0000602F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		93CD1C112EF415380000602F /* StoreKitConfigurationFile.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfigurationFile.storekit; sourceTree = "<group>"; };
 		93CD1C132EF423740000602F /* PaywallComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallComponent.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 		D5A4B1E52EE9B6690063B0AB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D5A4B1E72EE9B6830063B0AB /* PreloaderView.swift */,
 				D5A4B1E62EE9B66F0063B0AB /* Component */,
 				D5A4B1E92EE9B7450063B0AB /* OnboardingView.swift */,
 				D5A4B1EB2EE9B74E0063B0AB /* MainScreenView.swift */,
@@ -282,7 +285,6 @@
 		D5A4B1E62EE9B66F0063B0AB /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				D5A4B1E72EE9B6830063B0AB /* PreloaderView.swift */,
 				D5C411EB2EEAE79D00DDB8C5 /* JourneyComponent.swift */,
 				D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */,
 				D510E5B32EEB414E00550779 /* DailyCategoryRecomendationComponent.swift */,
@@ -293,6 +295,7 @@
 				935EDB552EF09160003A1E96 /* SingleIconActionCategoryComponent.swift */,
 				935EDB632EF0BC1B003A1E96 /* TabBarNavigationComponent.swift */,
 				93CD1C132EF423740000602F /* PaywallComponent.swift */,
+				93B4D6E32EF46AA0001A89B6 /* RectangleWrapper.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				D5C411D22EEACD6400DDB8C5 /* CocktailModel.swift in Sources */,
 				D54A62322EECA664000C902A /* DoubleRowCardComponent.swift in Sources */,
 				D5C411DC2EEAD06300DDB8C5 /* CocktailsView.swift in Sources */,
+				93B4D6E42EF46AA0001A89B6 /* RectangleWrapper.swift in Sources */,
 				D5A4B1EA2EE9B7450063B0AB /* OnboardingView.swift in Sources */,
 				D5C411D82EEACF3F00DDB8C5 /* TimeForSessionEnum.swift in Sources */,
 				D54A62352EECA6DF000C902A /* CoreDataSettings.swift in Sources */,

@@ -14,6 +14,8 @@ struct CultureLessonsView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     @State private var navigateToCultureLessonView: Bool = false
     @State private var cultureLessonToNavigate: CultureModel? = nil
     
@@ -37,7 +39,7 @@ struct CultureLessonsView: View {
                         Image(IconEnum.backBtn.icon)
                         Text("Culture lessons")
                             .font(FontEnum.joSaBold24.font)
-                            .foregroundColor(ColorEnum.col181818.color)
+                            .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                     }
                     },
                 centerView:
@@ -59,7 +61,7 @@ struct CultureLessonsView: View {
             }
         }
         .padding(.top, getSafeArea().top)
-        .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .ignoresSafeArea()
         .navigationBarHidden(true)
     }

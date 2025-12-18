@@ -5,14 +5,12 @@ struct SingleCocktailView: View {
     @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
-    let cocktailModel: CocktailModel
+    
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     
     @State private var isItemFavorite: Bool = false
-    
-//    var isFavoriteIcon: String {
-//        coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == cocktailModel.title }) ? IconEnum.favIconOn.icon : IconEnum.favIconOff.icon
-//    }
-    
+    let cocktailModel: CocktailModel
+
     var ingredientList: [String] {
         return cocktailModel.ingredients.split(separator: "\n").map { String($0).trimmingCharacters(in: .whitespaces) }
     }
@@ -22,7 +20,13 @@ struct SingleCocktailView: View {
             ScrollView {
 
                 SingleIconActionCategoryComponent(isItemFavorite: $isItemFavorite, imgStr: cocktailModel.image, title: cocktailModel.title, bottomLeadingComponent: HStack {
-                    Text("Cocktail")
+                    RectangleWrapperComponent(component: Text("Cocktail"))
+                    RectangleWrapperComponent(component: HStack {
+                        cocktailModel.dificulty.difficultyStars
+                        Text(cocktailModel.dificulty.rawValue.capitalized)
+                    })
+                    
+                    RectangleWrapperComponent(component: Text(cocktailModel.modeEnum.rawValue))
                 }) {
                     coreDataUserProgressVM.updateFavoriteItem(itemName: cocktailModel.title, categoryEnum: CategoryEnum.coctails.rawValue, toggleFavorite: true)
                 }
@@ -64,7 +68,7 @@ struct SingleCocktailView: View {
                 .padding(.horizontal)
             }
         }
-        .background(LinearGradientEnum.yellowSingleItemBackground.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == cocktailModel.title })
             coreDataJournalVM.registerNewJournalEntity(itemTitle: cocktailModel.title, itemCategory: CategoryEnum.coctails.rawValue)

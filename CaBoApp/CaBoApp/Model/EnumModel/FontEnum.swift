@@ -11,7 +11,7 @@ enum FontEnum: CaseIterable {
     
     case daScRegular24, daScMedium30
     case joSaLight16
-    case joSaLRegular18, joSaRegular16, joSaRegular14
+    case joSaLRegular18, joSaRegular20, joSaRegular16, joSaRegular14
     case joSaMedium20, joSaMedium18, joSaMedium16, joSaMedium14
     case joSaSemibold20, joSaSemibold18, joSaSemibold16
     case joSaBold24, joSaBold18, joSaBold16
@@ -27,6 +27,8 @@ enum FontEnum: CaseIterable {
             return Font.custom("JosefinSans-Light", size: 16)
         case .joSaLRegular18:
             return Font.custom("JosefinSans-Regular", size: 18)
+        case .joSaRegular20:
+            return Font.custom("JosefinSans-Regular", size: 20)
         case .joSaRegular16:
             return Font.custom("JosefinSans-Regular", size: 16)
         case .joSaRegular14:

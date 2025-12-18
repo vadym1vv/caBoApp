@@ -11,6 +11,8 @@ struct SearchResultView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
@@ -30,6 +32,7 @@ struct SearchResultView: View {
                         }
                         Text("Search results")
                             .font(FontEnum.joSaBold24.font)
+                            .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                     },
                 centerView:
                     EmptyView(),
@@ -78,6 +81,7 @@ struct SearchResultView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                             
                     }
+                    .padding(.top)
 
                     Spacer()
                 }
@@ -86,10 +90,10 @@ struct SearchResultView: View {
         }
         .padding(.horizontal)
         .font(FontEnum.joSaMedium18.font)
-        .foregroundColor(ColorEnum.col181818.color)
+        .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
-        .ignoresSafeArea(edges: .top)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
+        .ignoresSafeArea()
         .navigationBarHidden(true)
     }
 }

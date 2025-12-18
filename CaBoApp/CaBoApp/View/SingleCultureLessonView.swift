@@ -12,6 +12,8 @@ struct SingleCultureLessonView: View {
     @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     @State private var isItemFavorite: Bool = false
     
     let cultureModel: CultureModel
@@ -24,7 +26,8 @@ struct SingleCultureLessonView: View {
                     isItemFavorite: $isItemFavorite, imgStr: cultureModel.image,
                     title: cultureModel.title,
                     bottomLeadingComponent: HStack {
-                        Text("Cocktail")
+                        RectangleWrapperComponent(component: Text("Culture lessons"))
+                        RectangleWrapperComponent(component: Text(cultureModel.modeEnum.rawValue.capitalized))
                     }) {
                         coreDataUserProgressVM.updateFavoriteItem(itemName: cultureModel.title, categoryEnum: CategoryEnum.cultureLessons.rawValue, toggleFavorite: true)
                     }
@@ -39,7 +42,7 @@ struct SingleCultureLessonView: View {
                 .padding(.horizontal)
             }
         }
-        .background(LinearGradientEnum.greenSingleItemBackground.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == cultureModel.title })
             coreDataJournalVM.registerNewJournalEntity(itemTitle: cultureModel.title, itemCategory: CategoryEnum.cultureLessons.rawValue)

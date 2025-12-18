@@ -79,6 +79,7 @@ struct PaywallComponent: View {
                     .frame(maxWidth: UIScreen.main.bounds.width / 4)
                 }
             }
+            .foregroundColor(ColorEnum.col181818.color)
             .padding()
         }
         .background(ColorEnum.colFFFFFF.color)

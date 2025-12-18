@@ -108,6 +108,7 @@ struct StatView: View {
             }
             Spacer()
         }
+        .font(FontEnum.joSaRegular16.font)
     }
 
     
@@ -183,10 +184,12 @@ extension StatView {
                         .frame(width: 36, height: 36)
                         .padding(.leading)
                     Text(item.category.longDescription).font(.subheadline)
+                        .font(FontEnum.joSaRegular16.font)
                     Spacer()
                     Text("\(item.count)").fontWeight(.bold)
                         .frame(width: 36, height: 36)
                         .background(ColorEnum.colFFA07A.color)
+                        .font(FontEnum.joSaRegular20.font)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                         .padding(12)
                         .opacity(item.count > 0 ? 1 : 0.5)

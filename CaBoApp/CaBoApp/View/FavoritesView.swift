@@ -12,6 +12,8 @@ struct FavoritesView: View {
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     @State private var selectedCategory: [CategoryEnum] = CategoryEnum.allCases
     
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
@@ -41,7 +43,7 @@ struct FavoritesView: View {
                     Text("All")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(selectedCategory == CategoryEnum.allCases ? ColorEnum.colFFC8AF.color : ColorEnum.colFFFFFF.color)
-                    
+                        .foregroundColor(ColorEnum.col181818.color)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
                 ForEach(CategoryEnum.allCases) { category in
@@ -60,9 +62,11 @@ struct FavoritesView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(selectedCategory.contains(where: {$0 == category}) && selectedCategory != CategoryEnum.allCases ? ColorEnum.colFFC8AF.color : ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .foregroundColor(ColorEnum.col181818.color)
                     }
                 }
             }
+            .font(FontEnum.joSaMedium14.font)
             .frame(height: UIScreen.main.bounds.height / 25)
             
             if (!sortedItems.isEmpty){
@@ -71,7 +75,7 @@ struct FavoritesView: View {
                         ForEach(sortedItems, id: \.id) { item in
                             CategoryNavigationLink(category: item, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM) { resolvedItem in
                                         
-                                        // resolvedItem is 'Any', so we cast to specific types to get specific fields
+                                        
                                         if let cocktail = resolvedItem as? CocktailModel {
                                             DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
                                         } else if let lesson = resolvedItem as? CultureModel {
@@ -91,6 +95,7 @@ struct FavoritesView: View {
                         .padding(.vertical)
                         .padding(.top, 40)
                     Text("There are no favorites yet. Click the star icon on any card to save it here.")
+                    
                         .font(FontEnum.joSaMedium18.font)
                     
                     Spacer()
@@ -98,9 +103,11 @@ struct FavoritesView: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
         .padding(.horizontal)
         .frame(maxWidth: .infinity)
         .font(FontEnum.joSaMedium14.font)
+        .foregroundColor(ColorEnum.col181818.color)
     }
 }
 

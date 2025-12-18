@@ -38,7 +38,8 @@ struct SingleIconActionCategoryComponent<BottomLeadingComponent: View>: View {
                             Image(IconEnum.backBtn.icon)
                         }),
                     centerView:
-                        Text(title),
+                       RectangleWrapperComponent(component: Text(title)
+                        .font(FontEnum.joSaSemibold18.font)),
                     trailingView:
                         Button(action: {
                             isItemFavorite.toggle()

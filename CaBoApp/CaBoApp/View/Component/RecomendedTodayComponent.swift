@@ -12,12 +12,13 @@ struct RecomendedTodayComponent: View {
     @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     @StateObject private var viewModel = DailyRecomendationsMV()
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Recommended today")
                 .font(FontEnum.joSaMedium20.font)
-                .foregroundColor(ColorEnum.col181818.color)
-            
+                
             HStack {
                 // Item 1
                 makeLink(index: viewModel.recomendationKey1)
@@ -32,7 +33,9 @@ struct RecomendedTodayComponent: View {
         .onAppear {
             viewModel.updateRecomendationsByDate()
         }
+        .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
     }
+    
     
     // Helper to safely get index and create link
     @ViewBuilder
@@ -47,103 +50,6 @@ struct RecomendedTodayComponent: View {
         }
     }
 }
-//@ViewBuilder
-//func recommendationView(category: any CategoryProtocol, showDescription: Bool,  coreDataUserProgressVM: CoreDataUserProgressVM) -> some View {
-//
-//
-//    if let cocktail = GlobalConstant.cocktailsModels.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SingleCocktailView(cocktailModel: cocktail)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            recommendationCell(for: category)
-//        }
-//
-//    } else if let lesson = GlobalConstant.cultureLessons.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SingleCultureLessonView(cultureModel: lesson)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            recommendationCell(for: category)
-//        }
-//
-//    } else if let place = GlobalConstant.placesModels.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SinglePlaceView(placeModel: place)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            recommendationCell(for: category)
-//        }
-//
-//    } else if let home = GlobalConstant.homeSessionsModels.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SingleHomeSessionView(homeSessionModel: home)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            recommendationCell(for: category)
-//        }
-//    } else {
-//        EmptyView()
-//    }
-//}
-//
-//
-//
-//@ViewBuilder
-//func favoritesDoubleRowCardView(category: any CategoryProtocol, showDescription: Bool,  coreDataUserProgressVM: CoreDataUserProgressVM) -> some View {
-//
-//
-//    if let cocktail = GlobalConstant.cocktailsModels.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SingleCocktailView(cocktailModel: cocktail)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            DoubleRowCardComponent(itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
-//        }
-//
-//    } else if let lesson = GlobalConstant.cultureLessons.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SingleCultureLessonView(cultureModel: lesson)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            DoubleRowCardComponent(itemName: lesson.title, itemDescription: lesson.facts, itemImg: lesson.image, categoryEnum: .cultureLessons)
-//        }
-//
-//    } else if let place = GlobalConstant.placesModels.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SinglePlaceView(placeModel: place)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            DoubleRowCardComponent(itemName: place.title, itemDescription: place.facts, itemImg: place.image, categoryEnum: .places)
-//        }
-//
-//    } else if let home = GlobalConstant.homeSessionsModels.first(where: {
-//        $0.title == category.title && $0.image == category.image
-//    }) {
-//        NavigationLink {
-//            SingleHomeSessionView(homeSessionModel: home)
-//                .environmentObject(coreDataUserProgressVM)
-//        } label: {
-//            DoubleRowCardComponent(itemName: home.title, itemDescription: home.timeForSession.rawValue, itemImg: home.image, categoryEnum: .homeSessions)
-//        }
-//    } else {
-//        EmptyView()
-//    }
-//}
 
 @ViewBuilder
 func recommendationCell(for category: any CategoryProtocol) -> some View {
@@ -154,7 +60,6 @@ func recommendationCell(for category: any CategoryProtocol) -> some View {
             .frame(width: 110, height: 110)
             .clipShape(RoundedRectangle(cornerRadius: 12))
         Text(category.title)
-            .foregroundColor(ColorEnum.col181818.color)
             .font(FontEnum.joSaSemibold16.font)
             .multilineTextAlignment(.leading)
             .lineLimit(2)
@@ -254,7 +159,6 @@ struct RecommendationCell: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             
             Text(category.title)
-                .foregroundColor(ColorEnum.col181818.color)
                 .font(FontEnum.joSaSemibold16.font)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)

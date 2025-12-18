@@ -12,9 +12,11 @@ struct SingleHomeSessionView: View {
     @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
-    let homeSessionModel: HomeSessionModel
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     
     @State private var isItemFavorite: Bool = false
+    
+    let homeSessionModel: HomeSessionModel
     
     var body: some View {
         VStack {
@@ -23,7 +25,20 @@ struct SingleHomeSessionView: View {
                     isItemFavorite: $isItemFavorite, imgStr: homeSessionModel.image,
                     title: homeSessionModel.title,
                     bottomLeadingComponent: HStack {
-                        Text("Cocktail")
+                        RectangleWrapperComponent(component: Text("Home\nsessions"))
+                            .multilineTextAlignment(.center)
+                        RectangleWrapperComponent(component: HStack {
+                            homeSessionModel.dificulty.difficultyStars
+                            Text(homeSessionModel.dificulty.rawValue.capitalized)
+                        })
+                        .lineLimit(1)
+                        RectangleWrapperComponent(component: Text(homeSessionModel.modeEnum.rawValue.capitalized))
+                        RectangleWrapperComponent(component: HStack {
+                            Image(IconEnum.timeNeededIcon.icon)
+                            Text(homeSessionModel.timeForSession.rawValue)
+                                .lineLimit(1)
+                        })
+                        
                     }) {
                         coreDataUserProgressVM.updateFavoriteItem(itemName: homeSessionModel.title, categoryEnum: CategoryEnum.homeSessions.rawValue, toggleFavorite: true)
                     }
@@ -37,7 +52,7 @@ struct SingleHomeSessionView: View {
                 .padding(.horizontal)
             }
         }
-        .background(LinearGradientEnum.purpleSingleItemBackground.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == homeSessionModel.title })
             coreDataJournalVM.registerNewJournalEntity(itemTitle: homeSessionModel.title, itemCategory: CategoryEnum.homeSessions.rawValue)

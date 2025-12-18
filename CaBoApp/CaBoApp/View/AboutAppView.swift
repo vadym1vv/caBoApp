@@ -11,6 +11,8 @@ struct AboutAppView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     var body: some View {
         VStack {
             TopBarNavigationComponent(leadingView: HStack {
@@ -21,12 +23,14 @@ struct AboutAppView: View {
                 }
                 Text("About CaBo App")
                     .font(FontEnum.joSaBold24.font)
+                   
                 
             }, centerView: EmptyView(), trailingView: EmptyView())
             .padding(.top, getSafeArea().top)
             VStack(spacing: 24) {
                 Image(IconEnum.caboLogo.icon)
-                Text(Bundle.main.semanticVersion)
+                Text("Version\(Bundle.main.semanticVersion)")
+                    .font(FontEnum.joSaMedium18.font)
                 Text("CaBo App is your offline companion to Cuban flavors and stories.")
                     .multilineTextAlignment(.center)
                     .font(FontEnum.joSaLRegular18.font)
@@ -73,11 +77,13 @@ struct AboutAppView: View {
             }
             .padding(.bottom, getSafeArea().bottom)
             .padding(.horizontal, UIScreen.main.bounds.width / 10)
+            .font(FontEnum.joSaMedium16.font)
             //            .frame(width:  UIScreen.main.bounds.width / 1.4)
         }
+        .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .foregroundColor(ColorEnum.col181818.color)
-        .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .ignoresSafeArea()
         .navigationBarHidden(true)
     }

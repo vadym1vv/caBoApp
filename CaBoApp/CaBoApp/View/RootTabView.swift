@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RootTabView: View {
-    @Environment(\.colorScheme) private var colorScheme
+//    @Environment(\.colorScheme) private var colorScheme
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     
     @StateObject private var coreDataUserProgressVM: CoreDataUserProgressVM = CoreDataUserProgressVM()
     @StateObject private var coreDataJournalVM: CoreDataJournalVM = CoreDataJournalVM()
@@ -28,7 +29,7 @@ struct RootTabView: View {
                 .padding(.bottom, getSafeArea().bottom)
         }
         .frame(height: UIScreen.main.bounds.height)
-        .background(colorScheme == .light ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .navigationBarHidden(true)
         .ignoresSafeArea()
 
