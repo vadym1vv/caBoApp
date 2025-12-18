@@ -9,9 +9,8 @@ import SwiftUI
 
 struct SearchView: View {
     
-    @StateObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM = CoreDataSearchEntityVM()
-    
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
     @StateObject private var searchVM: SearchVM = SearchVM()

@@ -34,10 +34,15 @@ class JourneyManager: ObservableObject {
     @Published var currentIndex: Int
     
     init() {
-       
         let savedState = JourneyStorage.load()
-        self.currentType = savedState.type
-        self.currentIndex = savedState.index
+       currentType = savedState.type
+       currentIndex = savedState.index
+    }
+    
+    func resetState() {
+        let savedState = JourneyStorage.load()
+       currentType = savedState.type
+       currentIndex = savedState.index
     }
     
     func next() {

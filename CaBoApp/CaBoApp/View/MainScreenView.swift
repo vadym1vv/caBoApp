@@ -13,6 +13,7 @@ struct MainScreenView: View {
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
+    @EnvironmentObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM
     
     var body: some View {
         VStack {
@@ -24,6 +25,10 @@ struct MainScreenView: View {
                     Spacer()
                     NavigationLink {
                         SettingsView()
+                            .environmentObject(coreDataUserProgressVM)
+                            .environmentObject(coreDataJournalVM)
+                            .environmentObject(coreDataSearchEntityVM)
+                        
                     } label: {
                         Image(IconEnum.settings.icon)
                     }
@@ -98,6 +103,7 @@ struct MainScreenView_Previews: PreviewProvider {
             MainScreenView()
                 .environmentObject(CoreDataUserProgressVM())
                 .environmentObject(CoreDataJournalVM())
+                .environmentObject(CoreDataSearchEntityVM())
         }
     }
 }

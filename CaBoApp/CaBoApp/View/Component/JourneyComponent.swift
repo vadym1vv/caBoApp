@@ -74,6 +74,9 @@ struct JourneyComponent: View {
         .background(ColorEnum.col7443FF.color)
         .foregroundColor(ColorEnum.colFFFFFF.color)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .onAppear {
+            manager.resetState()
+        }
     }
 }
 struct JourneyComponent_Previews: PreviewProvider {

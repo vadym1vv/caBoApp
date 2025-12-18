@@ -42,4 +42,9 @@ class CoreDataSearchEntityVM: CoreDataSettings {
     func fetchEntity() {
         searchRequests = fetchEntities(SearchEntity.self)
     }
+    
+    override func deleteAllEntities(entityName: String = "SearchEntity") {
+        super.deleteAllEntities(entityName: entityName)
+        fetchEntity()
+    }
 }
