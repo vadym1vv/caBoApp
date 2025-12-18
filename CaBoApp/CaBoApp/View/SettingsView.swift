@@ -23,25 +23,26 @@ struct SettingsView: View {
     
     var body: some View {
         ZStack {
-            if (showUnlockResetPaywall || showUnlockExportPaywall){
-                ColorEnum.col181818.color.opacity(0.7)
-                    .zIndex(1)
-            }
-            
             if (showUnlockResetPaywall) {
-                PaywallComponent(showPurchasePlaywall: $showUnlockResetPaywall, titleIcon: .exportDataIcon, purchaseTitle: "Export data (CSV/JSON)", purchaseDescription: "Enable export to CaBo to save recipes, rituals, and cultural sessions for your projects.", purchaseButtonLabel: "Unlock Export") {
+                PaywallComponent(showPurchasePlaywall: $showUnlockResetPaywall, titleIcon: .resetIcon, purchaseTitle: "Reset progress", purchaseDescription: "This one-time purchase lets you completely reset your CaBo journey whenever you want.", purchaseButtonLabel: "Unlock Reset") {
                     if !isResetUnlocked {
                         IAPManager.shared.purchase(productID: "com.caboapp.reset")
                     }
                 }
+                .zIndex(1)
             }
-            
+           
             if (showUnlockExportPaywall) {
-                PaywallComponent(showPurchasePlaywall: $showUnlockResetPaywall, titleIcon: .resetIcon, purchaseTitle: "Reset progress", purchaseDescription: "This one-time purchase lets you completely reset your CaBo journey whenever you want.", purchaseButtonLabel: "Unlock Reset") {
+                PaywallComponent(showPurchasePlaywall: $showUnlockExportPaywall, titleIcon: .exportDataIcon, purchaseTitle: "Export data (CSV/JSON)", purchaseDescription: "Enable export to CaBo to save recipes, rituals, and cultural sessions for your projects.", purchaseButtonLabel: "Unlock Export") {
                     if !isExportUnlocked {
                         IAPManager.shared.purchase(productID: "com.caboapp.export")
                     }
                 }
+                .zIndex(1)
+            }
+            if (showUnlockResetPaywall || showUnlockExportPaywall){
+                ColorEnum.col181818.color.opacity(0.7)
+                    .zIndex(0.9)
             }
             
             VStack {
@@ -184,11 +185,13 @@ struct SettingsView: View {
                             }
                             .padding([.top, .horizontal])
                             Button {
-                                showUnlockExportPaywall = true
+                                withAnimation {
+                                    showUnlockExportPaywall = true
+                                }
                             } label: {
                                 HStack {
                                     if !isExportUnlocked { Image(IconEnum.lockIconSmall.icon) }
-                                    Text(isExportUnlocked ? "Export Unlocked" : "Unlock Export")
+                                    Text("Unlock Export")
                                         .font(FontEnum.joSaMedium16.font)
                                 }
                                 .frame(maxWidth: .infinity)
@@ -219,7 +222,9 @@ struct SettingsView: View {
                             .padding([.top, .horizontal])
                           
                             Button {
-                                showUnlockResetPaywall = true
+                                withAnimation {
+                                    showUnlockResetPaywall = true
+                                }
                             } label: {
                                 HStack {
                                     Image(IconEnum.lockIconSmall.icon)
@@ -240,15 +245,20 @@ struct SettingsView: View {
                 }
                 .padding(.horizontal)
                 
+                if (isResetUnlocked) {
+                    Spacer()
+                }
                 Spacer()
                 
                 VStack {
-                    if (false) {
+                    if (isResetUnlocked) {
                         Button {
                             
                         } label: {
                             HStack {
                                 Image(IconEnum.resetIcon.icon)
+                                    .renderingMode(.template)
+                                    .foregroundColor(ColorEnum.colFFFFFF.color)
                                 Text("Reset progress")
                             }
                             .frame(maxWidth: .infinity)

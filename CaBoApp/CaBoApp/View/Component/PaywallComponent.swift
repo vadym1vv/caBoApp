@@ -21,15 +21,21 @@ struct PaywallComponent: View {
             VStack(spacing: 8) {
                 HStack {
                     Image(titleIcon.icon)
+                        .renderingMode(.template)
+                        .foregroundColor(ColorEnum.colFF6F61.color)
                     Text(purchaseTitle)
                         .font(FontEnum.joSaMedium18.font)
                 }
                 Text(purchaseDescription)
+                    .font(FontEnum.joSaRegular14.font)
                 Text("$1.99")
                     .font(FontEnum.joSaBold18.font)
                     .foregroundColor(ColorEnum.col181818.color)
                 Button {
                     unlockAction()
+                    withAnimation {
+                        showPurchasePlaywall = false
+                    }
                 } label: {
                     HStack {
                         Image(IconEnum.lockIconSmall.icon)
