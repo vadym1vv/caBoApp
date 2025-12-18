@@ -42,6 +42,7 @@ struct SingleHomeSessionView: View {
                     }) {
                         coreDataUserProgressVM.updateFavoriteItem(itemName: homeSessionModel.title, categoryEnum: CategoryEnum.homeSessions.rawValue, toggleFavorite: true)
                     }
+                    .padding(.top, getSafeArea().top - 12)
                 
                 VStack {
                     ItemDetailsCardComponent(icon: .culturePrepare, title: "Prepare", bodyText: homeSessionModel.prepare, background: .colEDE7FA, borderColor: .col7443FF, iconForegroundColor: .col926EF8)
@@ -50,6 +51,7 @@ struct SingleHomeSessionView: View {
                     ItemDetailsCardComponent(icon: .cultureReflect, title: "Reflect", bodyText: homeSessionModel.reflect, background: .colEDE7FA, borderColor: .col7443FF, iconForegroundColor: .col926EF8)
                 }
                 .padding(.horizontal)
+                .padding(.top, getSafeArea().top)
             }
         }
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)

@@ -31,6 +31,7 @@ struct SingleCultureLessonView: View {
                     }) {
                         coreDataUserProgressVM.updateFavoriteItem(itemName: cultureModel.title, categoryEnum: CategoryEnum.cultureLessons.rawValue, toggleFavorite: true)
                     }
+                    .padding(.top, getSafeArea().top - 12)
                 
                 VStack {
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitOrigin, title: "Origin", bodyText: cultureModel.origin, background: .colC4E9E1, borderColor: .col008080, iconForegroundColor: .col20B2AA)
@@ -40,6 +41,7 @@ struct SingleCultureLessonView: View {
                     
                 }
                 .padding(.horizontal)
+                .padding(.top, getSafeArea().top)
             }
         }
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)

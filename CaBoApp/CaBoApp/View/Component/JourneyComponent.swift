@@ -54,7 +54,9 @@ struct JourneyComponent: View {
             Spacer()
             VStack {
                 Image(IconEnum.startSessionImg.icon)
-
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.height / 10, height: UIScreen.main.bounds.height / 10)
                 Button {
                     navigateToNextJourney = true
                     manager.next()
@@ -62,7 +64,7 @@ struct JourneyComponent: View {
                     Text("Start session")
                         .padding(.horizontal)
                         .font(FontEnum.joSaSemibold16.font)
-                        .frame(height: 44)
+                        .frame(height: UIScreen.main.bounds.height / 25)
                         .background(ColorEnum.colFFFFFF.color)
                         .foregroundColor(ColorEnum.col181818.color)
                         .clipShape(RoundedRectangle(cornerRadius: 12))

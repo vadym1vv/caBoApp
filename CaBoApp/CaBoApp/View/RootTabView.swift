@@ -26,7 +26,7 @@ struct RootTabView: View {
                 .padding(.top, getSafeArea().top)
             TabBarNavigationComponent(selectedTabComponentEnum: $tabComponentEnum)
                 .padding(.horizontal)
-                .padding(.bottom, getSafeArea().bottom)
+                .padding(.bottom, getSafeArea().bottom + 5)
         }
         .frame(height: UIScreen.main.bounds.height)
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)

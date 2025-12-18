@@ -19,11 +19,10 @@ struct MainScreenView: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: GlobalConstant.viewComponentSpacing) {
                 HStack {
                     Text("Hola, Max")
                         .font(FontEnum.joSaBold24.font)
-                    //        .padding(.top, getSafeArea().top)
                     Spacer()
                     NavigationLink {
                         SettingsView()
@@ -35,8 +34,10 @@ struct MainScreenView: View {
                         Image(IconEnum.settings.icon)
                     }
                 }
+                
                 Text("Tonight’s Cuba at a glance")
                     .font(FontEnum.daScMedium30.font)
+                    .padding(.top, -20)
                 JourneyComponent(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
                 Text("Quick actions")
                     .font(FontEnum.joSaMedium20.font)
@@ -50,6 +51,9 @@ struct MainScreenView: View {
                         } label: {
                             VStack {
                                 Image(category.iconButton)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: UIScreen.main.bounds.height / 15, height: UIScreen.main.bounds.height / 15)
                                 Text(category.rawValue.capitalized)
                                     .font(FontEnum.joSaRegular16.font)
                             }

@@ -21,7 +21,7 @@ struct StatView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Statistics")
-                .font(.system(size: 28, weight: .bold))
+                .font(FontEnum.joSaBold24.font)
                 .padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -50,6 +50,7 @@ struct StatView: View {
             
             
             legendList
+            Spacer()
             HStack {
                 Spacer()
                 ZStack {
@@ -67,7 +68,7 @@ struct StatView: View {
                     
                 }
                 .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3)
-                .padding(.vertical, 30)
+//                .padding(.vertical, 30)
                 Spacer()
                 
                 VStack {
