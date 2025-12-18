@@ -12,7 +12,7 @@ struct SettingsView: View {
     
     @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     @AppStorage("com.caboapp.export") private var isExportUnlocked: Bool = false
-        @AppStorage("com.caboapp.reset") private var isResetUnlocked: Bool = false
+    @AppStorage("com.caboapp.reset") private var isResetUnlocked: Bool = false
     @State private var sessionReminder: Bool = false
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
@@ -22,8 +22,6 @@ struct SettingsView: View {
     @State private var showUnlockExportPaywall: Bool = false
     @State private var showUnlockResetPaywall: Bool = false
     @State private var showResetAlert: Bool = false
-    
-    
     
     @Environment(\.presentationMode) private var presentationMode
     
@@ -37,7 +35,7 @@ struct SettingsView: View {
                 }
                 .zIndex(1)
             }
-           
+            
             if (showUnlockExportPaywall) {
                 PaywallComponent(showPurchasePlaywall: $showUnlockExportPaywall, titleIcon: .exportDataIcon, unlockIcon: IconEnum.lockIconSmall, purchaseTitle: "Export data (CSV/JSON)", purchaseDescription: "Enable export to CaBo to save recipes, rituals, and cultural sessions for your projects.", purchaseButtonLabel: "Unlock Export") {
                     if !isExportUnlocked {
@@ -150,12 +148,12 @@ struct SettingsView: View {
                                 Text("Export Data(CSV/JSON)")
                                     .font(FontEnum.joSaMedium18.font)
                             }
-                                .font(FontEnum.joSaLight16.font)
-                                .padding(.top, 5)
+                            .font(FontEnum.joSaLight16.font)
+                            .padding(.top, 5)
                             
                             HStack {
                                 Button {
-                                    showUnlockResetPaywall = true
+                                    exportData(format: .csv)
                                 } label: {
                                     Text("Export in CSV format")
                                         .font(FontEnum.joSaRegular16.font)
@@ -167,10 +165,9 @@ struct SettingsView: View {
                                         .foregroundColor(ColorEnum.col181818.color)
                                         .clipShape(RoundedRectangle(cornerRadius: 24))
                                 }
-                               
-                               
+                                
                                 Button {
-                                    showUnlockExportPaywall = true
+                                    exportData(format: .json)
                                 } label: {
                                     Text("Export in JSON format")
                                         .font(FontEnum.joSaRegular16.font)
@@ -181,7 +178,7 @@ struct SettingsView: View {
                                         .foregroundColor(ColorEnum.col181818.color)
                                         .clipShape(RoundedRectangle(cornerRadius: 24))
                                 }
-                               
+                                
                             }
                             .padding([.horizontal, .bottom], 6)
                         }
@@ -237,7 +234,7 @@ struct SettingsView: View {
                                 if !isResetUnlocked { Text("$1.99").font(FontEnum.joSaBold16.font) }
                             }
                             .padding([.top, .horizontal])
-                          
+                            
                             Button {
                                 withAnimation {
                                     showUnlockResetPaywall = true
@@ -288,23 +285,21 @@ struct SettingsView: View {
                         }
                     }
                     
-                   
-                        NavigationLink {
-                            AboutAppView()
-                        } label: {
-                            HStack {
-                                Image(IconEnum.aboutAppIcon.icon)
-                                Text("About the app")
-                            }
-                            .frame(maxWidth: .infinity)
-                            .frame(height: UIScreen.main.bounds.height / 18)
-                            .background(ColorEnum.colFFFFFF.color)
-                            .foregroundColor(ColorEnum.col181818.color)
-                            .clipShape(RoundedRectangle(cornerRadius: 24))
+                    NavigationLink {
+                        AboutAppView()
+                    } label: {
+                        HStack {
+                            Image(IconEnum.aboutAppIcon.icon)
+                            Text("About the app")
                         }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: UIScreen.main.bounds.height / 18)
+                        .background(ColorEnum.colFFFFFF.color)
+                        .foregroundColor(ColorEnum.col181818.color)
+                        .clipShape(RoundedRectangle(cornerRadius: 24))
+                    }
                     
                 }
-    //            .padding(.bottom, 15)
                 .frame(width:  UIScreen.main.bounds.width / 1.4)
                 Spacer()
                 
@@ -316,10 +311,103 @@ struct SettingsView: View {
         .ignoresSafeArea()
         .navigationBarHidden(true)
         .onAppear {
-                    IAPManager.shared.fetchProducts()
-                }
+            IAPManager.shared.fetchProducts()
+        }
         
     }
+    
+    
+    enum ExportFormat { case csv, json }
+    
+    private func exportData(format: ExportFormat) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
+        switch format {
+        case .csv:
+            generateCSV(formatter: dateFormatter)
+        case .json:
+            generateJSON(formatter: dateFormatter)
+        }
+    }
+    
+    private func generateCSV(formatter: DateFormatter) {
+        var csvString = "Section,Title,Category/Type,Date,Details\n"
+        
+        for item in coreDataUserProgressVM.items {
+            let name = cleanCSV(item.itemName)
+            let type = cleanCSV(item.itemType)
+            let date = formatter.string(from: item.introducedDate ?? Date())
+            let details = item.isFavorite ? "Favorite" : ""
+            csvString += "Progress,\(name),\(type),\(date),\(details)\n"
+        }
+        
+        for entry in coreDataJournalVM.journalItemEntities {
+            let title = cleanCSV(entry.itemTitle)
+            let cat = cleanCSV(entry.itemCategory)
+            let date = formatter.string(from: entry.date ?? Date())
+            csvString += "Journal,\(title),\(cat),\(date),\n"
+        }
+        
+        for search in coreDataSearchEntityVM.searchRequests {
+            let query = cleanCSV(search.searchString)
+            let type = cleanCSV(search.typeCategory)
+            let date = formatter.string(from: search.searchDate ?? Date())
+            let details = "Mood: \(search.mood ?? "-") | Diff: \(search.difficulty ?? "-")"
+            csvString += "Search,\(query),\(type),\(date),\(cleanCSV(details))\n"
+        }
+        
+        ExportUtility.shareFile(content: csvString, fileName: "CaBo_Export.csv")
+    }
+    
+    private func generateJSON(formatter: DateFormatter) {
+        
+        let exportDict: [String: Any] = [
+            "userProgress": coreDataUserProgressVM.items.map { item in
+                return [
+                    "name": item.itemName ?? "",
+                    "type": item.itemType ?? "",
+                    "isFavorite": item.isFavorite,
+                    "date": formatter.string(from: item.introducedDate ?? Date())
+                ]
+            },
+            "journalEntries": coreDataJournalVM.journalItemEntities.map { entry in
+                return [
+                    "title": entry.itemTitle ?? "",
+                    "category": entry.itemCategory ?? "",
+                    "date": formatter.string(from: entry.date ?? Date())
+                ]
+            },
+            "searchHistory": coreDataSearchEntityVM.searchRequests.map { search in
+                return [
+                    "query": search.searchString ?? "",
+                    "type": search.typeCategory ?? "",
+                    "mood": search.mood ?? "",
+                    "difficulty": search.difficulty ?? "",
+                    "timeNeeded": search.timeNeeded ?? "",
+                    "date": formatter.string(from: search.searchDate ?? Date())
+                ]
+            }
+        ]
+        
+        
+        if let jsonData = try? JSONSerialization.data(withJSONObject: exportDict, options: .prettyPrinted),
+           let jsonString = String(data: jsonData, encoding: .utf8) {
+            ExportUtility.shareFile(content: jsonString, fileName: "CaBo_Export.json")
+        }
+    }
+    
+    
+    private func cleanCSV(_ text: String?) -> String {
+        guard let text = text else { return "" }
+        if text.contains(",") || text.contains("\n") {
+            return "\"\(text.replacingOccurrences(of: "\"", with: "\"\""))\""
+        }
+        return text
+    }
+    
 }
 
 struct SettingsView_Previews: PreviewProvider {
@@ -330,3 +418,6 @@ struct SettingsView_Previews: PreviewProvider {
             .environmentObject(CoreDataJournalVM())
     }
 }
+
+
+
