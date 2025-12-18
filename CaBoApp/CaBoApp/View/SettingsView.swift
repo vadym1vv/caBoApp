@@ -69,6 +69,7 @@ struct SettingsView: View {
                     }
                     Text("Settings")
                         .font(FontEnum.joSaBold24.font)
+                        .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                     
                 }, centerView: EmptyView(), trailingView: EmptyView())
                 .padding(.top, getSafeArea().top)
@@ -109,7 +110,9 @@ struct SettingsView: View {
                             }
                             Button {
                                 withAnimation {
-                                    isLightTheme = false
+                                    withAnimation {
+                                        isLightTheme = false
+                                    }
                                 }
                             } label: {
                                 Text("Cuban Night")
@@ -125,10 +128,12 @@ struct SettingsView: View {
                     .frame(height: 54)
                     .background(ColorEnum.colFFC8AF.color)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .foregroundColor(ColorEnum.col181818.color)
                     Text("Preferences")
                     HStack {
                         Text("Session reminder")
                             .font(FontEnum.joSaMedium18.font)
+                            .foregroundColor(ColorEnum.col181818.color)
                             .padding()
                         Spacer()
                         Toggle(isOn: $sessionReminder) {
@@ -146,6 +151,7 @@ struct SettingsView: View {
                             HStack {
                                 Image(IconEnum.exportDataIcon.icon)
                                 Text("Export Data(CSV/JSON)")
+                                    .foregroundColor(ColorEnum.col181818.color)
                                     .font(FontEnum.joSaMedium18.font)
                             }
                             .font(FontEnum.joSaLight16.font)
@@ -174,7 +180,7 @@ struct SettingsView: View {
                                         .frame(maxWidth: .infinity)
                                         .frame(minHeight: 44)
                                         .padding(.horizontal, 3)
-                                        .background(ColorEnum.colFFA07A.color)
+                                        .background(ColorEnum.colF0A89A.color)
                                         .foregroundColor(ColorEnum.col181818.color)
                                         .clipShape(RoundedRectangle(cornerRadius: 24))
                                 }
@@ -197,6 +203,7 @@ struct SettingsView: View {
                                 Spacer()
                                 if !isExportUnlocked { Text("$1.99").font(FontEnum.joSaBold16.font) }
                             }
+                            .foregroundColor(ColorEnum.col181818.color)
                             .padding([.top, .horizontal])
                             Button {
                                 withAnimation {
@@ -233,6 +240,7 @@ struct SettingsView: View {
                                 Spacer()
                                 if !isResetUnlocked { Text("$1.99").font(FontEnum.joSaBold16.font) }
                             }
+                            .foregroundColor(ColorEnum.col181818.color)
                             .padding([.top, .horizontal])
                             
                             Button {
@@ -306,8 +314,8 @@ struct SettingsView: View {
             }
         }
         .font(FontEnum.joSaMedium20.font)
-        .foregroundColor(ColorEnum.col181818.color)
-        .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
+        .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .ignoresSafeArea()
         .navigationBarHidden(true)
         .onAppear {

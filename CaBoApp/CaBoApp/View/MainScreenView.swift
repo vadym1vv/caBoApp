@@ -15,6 +15,8 @@ struct MainScreenView: View {
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     @EnvironmentObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -38,7 +40,7 @@ struct MainScreenView: View {
                 JourneyComponent(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
                 Text("Quick actions")
                     .font(FontEnum.joSaMedium20.font)
-                HStack {
+                HStack(alignment: .top) {
                     Spacer()
                     ForEach(CategoryEnum.allCases) { category in
                         NavigationLink {
@@ -50,7 +52,6 @@ struct MainScreenView: View {
                                 Image(category.iconButton)
                                 Text(category.rawValue.capitalized)
                                     .font(FontEnum.joSaRegular16.font)
-                                    .foregroundColor(ColorEnum.col181818.color)
                             }
                         }
                         .padding(5)
@@ -86,6 +87,7 @@ struct MainScreenView: View {
             .padding(.horizontal)
             .padding(.vertical, 5)
         }
+        .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
         

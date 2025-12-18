@@ -12,9 +12,11 @@ struct SinglePlaceView: View {
     @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
-    let placeModel: PlacesModel
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     
     @State private var isItemFavorite: Bool = false
+    
+    let placeModel: PlacesModel
     
     var body: some View {
         VStack {
@@ -24,7 +26,8 @@ struct SinglePlaceView: View {
                     isItemFavorite: $isItemFavorite, imgStr: placeModel.image,
                     title: placeModel.title,
                     bottomLeadingComponent: HStack {
-                        Text("Cocktail")
+                        RectangleWrapperComponent(component: Text("Places"))
+                        RectangleWrapperComponent(component: Text(placeModel.modeEnum.rawValue.capitalized))
                     }) {
                         coreDataUserProgressVM.updateFavoriteItem(itemName: placeModel.title, categoryEnum: CategoryEnum.places.rawValue, toggleFavorite: true)
                     }
@@ -39,7 +42,7 @@ struct SinglePlaceView: View {
                 .padding(.horizontal)
             }
         }
-        .background(LinearGradientEnum.yellowSingleItemBackground.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .onAppear(perform: {
             isItemFavorite = coreDataUserProgressVM.items.contains(where: { $0.isFavorite && $0.itemName == placeModel.title })
             coreDataJournalVM.registerNewJournalEntity(itemTitle: placeModel.title, itemCategory: CategoryEnum.places.rawValue)

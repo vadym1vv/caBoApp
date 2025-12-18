@@ -13,6 +13,8 @@ struct HistoryView: View {
     
     @State private var selectedCategory: [CategoryEnum] = CategoryEnum.allCases
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var sortedItems: [JournalItemEntity] {
@@ -57,6 +59,7 @@ struct HistoryView: View {
             HStack {
                 Text("Journal")
                     .font(FontEnum.joSaBold24.font)
+                    .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                 Spacer()
             }
             HStack {
@@ -102,6 +105,7 @@ struct HistoryView: View {
                         ForEach(groupedItems, id: \.key) { header, items in
                             
                             Text(header)
+                                .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                                 .font(FontEnum.joSaBold18.font)
                                 .padding(.top, 10)
                             
@@ -155,6 +159,7 @@ struct HistoryView: View {
                     
                     Spacer()
                 }
+                .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                 .frame(maxWidth: .infinity)
             }
             

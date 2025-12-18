@@ -14,6 +14,8 @@ struct HomeSessionsView: View {
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
     @EnvironmentObject var coreDataJournalVM: CoreDataJournalVM
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     @State private var navigateToHomeSession: Bool = false
     @State private var homeSessionToNavigate: HomeSessionModel? = nil
     
@@ -39,7 +41,7 @@ struct HomeSessionsView: View {
                         Image(IconEnum.backBtn.icon)
                         Text("Home sessions")
                             .font(FontEnum.joSaBold24.font)
-                            .foregroundColor(ColorEnum.col181818.color)
+                            .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                     }
                     },
                 centerView:
@@ -62,7 +64,7 @@ struct HomeSessionsView: View {
             
         }
         .padding(.top, getSafeArea().top)
-        .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .ignoresSafeArea()
         .navigationBarHidden(true)
     }

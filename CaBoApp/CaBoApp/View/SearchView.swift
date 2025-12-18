@@ -13,6 +13,8 @@ struct SearchView: View {
     @EnvironmentObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
+    
     @StateObject private var searchVM: SearchVM = SearchVM()
     @State private var performNavigationToSearchResults: Bool = false
     @State private var searchResults: [any CategoryProtocol] = []
@@ -48,7 +50,7 @@ struct SearchView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 
                 Text("Type")
-                HStack {
+                HStack(alignment: .top) {
                     Spacer()
                     ForEach(CategoryEnum.allCases) { category in
                         Button {
@@ -63,7 +65,6 @@ struct SearchView: View {
                                     .opacity(category == searchVM.typeCategory ? 0.3 : 1)
                                 Text(category.rawValue.capitalized)
                                     .font(FontEnum.joSaRegular16.font)
-                                    .foregroundColor(ColorEnum.col181818.color)
                                     .opacity(category == searchVM.typeCategory ? 0.5 : 1)
                             }
                         }
@@ -90,6 +91,7 @@ struct SearchView: View {
                                 .frame(maxWidth: .infinity)
                                 .background(searchVM.moodEnum == mood ? ColorEnum.colC4C4C4.color : ColorEnum.colFFFFFF.color)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .foregroundColor(ColorEnum.col181818.color)
                         }
                     }
                 }
@@ -115,11 +117,8 @@ struct SearchView: View {
                                 Text(difficulty.rawValue.capitalized)
                                     .font(FontEnum.joSaMedium14.font)
                                     .frame(height: UIScreen.main.bounds.height / 25)
-                                
-                                
-                                
+                                    .foregroundColor(ColorEnum.col181818.color)
                             }
-                            
                             .padding(.horizontal, 8)
                             .background(searchVM.difficultyEnum == difficulty ? ColorEnum.colC4C4C4.color : ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -149,6 +148,7 @@ struct SearchView: View {
                                 Text(timeForSession.rawValue)
                                     .font(FontEnum.joSaMedium14.font)
                                     .frame(height: UIScreen.main.bounds.height / 25)
+                                    .foregroundColor(ColorEnum.col181818.color)
                                 
                             }
                             .padding(.horizontal, 8)
@@ -192,6 +192,7 @@ struct SearchView: View {
                                 HStack {
                                     Image(IconEnum.timeNeededIcon.icon)
                                     Text(searchRequest.searchString ?? searchRequest.typeCategory?.capitalized ?? searchRequest.mood?.capitalized ?? searchRequest.difficulty?.capitalized ?? "")
+                                        .foregroundColor(ColorEnum.col181818.color)
                                     Spacer()
                                 }
                             }
@@ -238,15 +239,19 @@ struct SearchView: View {
                         .frame(height: 44)
                         .frame(maxWidth: .infinity)
                         .background(ColorEnum.colFFFFFF.color)
+                        .foregroundColor(ColorEnum.col181818.color)
                         .clipShape(RoundedRectangle(cornerRadius: 24))
                 }
                 .padding(.horizontal)
                 
                 Spacer()
             }
-            .foregroundColor(ColorEnum.col181818.color)
+            .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
             .font(FontEnum.joSaMedium20.font)
             .padding(.horizontal)
+            .onAppear {
+                searchVM.resetSearchCriteria()
+            }
         }
     }
 }

@@ -14,8 +14,9 @@ struct PlacesView: View {
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     
-    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     
+    private let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     private let placesModel: [PlacesModel] = GlobalConstant.placesModels
     
     var body: some View {
@@ -28,7 +29,7 @@ struct PlacesView: View {
                         Image(IconEnum.backBtn.icon)
                         Text("Places")
                             .font(FontEnum.joSaBold24.font)
-                            .foregroundColor(ColorEnum.col181818.color)
+                            .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
                     }
                     },
                 centerView:
@@ -54,7 +55,7 @@ struct PlacesView: View {
             
         }
         .padding(.top, getSafeArea().top)
-        .background(LinearGradientEnum.mainScreenBg.linearGradientColors)
+        .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .ignoresSafeArea()
         .navigationBarHidden(true)
     }

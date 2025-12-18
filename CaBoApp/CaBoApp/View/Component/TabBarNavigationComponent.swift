@@ -24,17 +24,19 @@ struct TabBarNavigationComponent: View {
                     .scaledToFit()
                     .frame(height: UIScreen.main.bounds.height / 22)
             }
+            .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 5)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 60)
-                    
                     .foregroundColor(ColorEnum.colFFFFFF.color)
                     
                 HStack {
                     ForEach(TabComponentEnum.allCases) { tab in
                         if(tab != selectedTabComponentEnum) {
                             Button {
-                                selectedTabComponentEnum = tab
+                                withAnimation {
+                                    selectedTabComponentEnum = tab
+                                }
                             } label: {
                                 VStack {
                                     Image(tab.tabIcon)
@@ -54,8 +56,6 @@ struct TabBarNavigationComponent: View {
                 .padding(0.5)
                 
             }
-//            .layoutPriority(1)
-            
         }
         .frame(height: UIScreen.main.bounds.height / 12)
     }
