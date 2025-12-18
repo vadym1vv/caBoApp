@@ -15,8 +15,14 @@ struct SettingsView: View {
         @AppStorage("com.caboapp.reset") private var isResetUnlocked: Bool = false
     @State private var sessionReminder: Bool = false
     
+    @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
+    @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
+    @EnvironmentObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM
+    
     @State private var showUnlockExportPaywall: Bool = false
     @State private var showUnlockResetPaywall: Bool = false
+    @State private var showResetAlert: Bool = false
+    
     
     
     @Environment(\.presentationMode) private var presentationMode
@@ -24,7 +30,7 @@ struct SettingsView: View {
     var body: some View {
         ZStack {
             if (showUnlockResetPaywall) {
-                PaywallComponent(showPurchasePlaywall: $showUnlockResetPaywall, titleIcon: .resetIcon, purchaseTitle: "Reset progress", purchaseDescription: "This one-time purchase lets you completely reset your CaBo journey whenever you want.", purchaseButtonLabel: "Unlock Reset") {
+                PaywallComponent(showPurchasePlaywall: $showUnlockResetPaywall, titleIcon: .resetIcon, unlockIcon: IconEnum.lockIconSmall, purchaseTitle: "Reset progress", purchaseDescription: "This one-time purchase lets you completely reset your CaBo journey whenever you want.", purchaseButtonLabel: "Unlock Reset") {
                     if !isResetUnlocked {
                         IAPManager.shared.purchase(productID: "com.caboapp.reset")
                     }
@@ -33,14 +39,25 @@ struct SettingsView: View {
             }
            
             if (showUnlockExportPaywall) {
-                PaywallComponent(showPurchasePlaywall: $showUnlockExportPaywall, titleIcon: .exportDataIcon, purchaseTitle: "Export data (CSV/JSON)", purchaseDescription: "Enable export to CaBo to save recipes, rituals, and cultural sessions for your projects.", purchaseButtonLabel: "Unlock Export") {
+                PaywallComponent(showPurchasePlaywall: $showUnlockExportPaywall, titleIcon: .exportDataIcon, unlockIcon: IconEnum.lockIconSmall, purchaseTitle: "Export data (CSV/JSON)", purchaseDescription: "Enable export to CaBo to save recipes, rituals, and cultural sessions for your projects.", purchaseButtonLabel: "Unlock Export") {
                     if !isExportUnlocked {
                         IAPManager.shared.purchase(productID: "com.caboapp.export")
                     }
                 }
                 .zIndex(1)
             }
-            if (showUnlockResetPaywall || showUnlockExportPaywall){
+            
+            if (showResetAlert) {
+                PaywallComponent(showPurchasePlaywall: $showResetAlert, titleIcon: nil, unlockIcon: .resetIcon, laterIcon: nil, purchaseTitle: "Are you sure?", purchaseDescription: "This will delete all your local data: favorites, stats, journal. This action cannot be undone.", purchaseButtonLabel: "Reset now", cancelBtnDescription: "Cancel") {
+                    coreDataUserProgressVM.deleteAllEntities()
+                    coreDataJournalVM.deleteAllEntities()
+                    coreDataSearchEntityVM.deleteAllEntities()
+                    UserDefaults.standard.set(nil, forKey: "lastJourneyType")
+                    UserDefaults.standard.set(0, forKey: "lastItemIndex")
+                }
+                .zIndex(1)
+            }
+            if (showUnlockResetPaywall || showUnlockExportPaywall || showResetAlert){
                 ColorEnum.col181818.color.opacity(0.7)
                     .zIndex(0.9)
             }
@@ -253,7 +270,9 @@ struct SettingsView: View {
                 VStack {
                     if (isResetUnlocked) {
                         Button {
-                            
+                            withAnimation {
+                                showResetAlert = true
+                            }
                         } label: {
                             HStack {
                                 Image(IconEnum.resetIcon.icon)
@@ -306,5 +325,8 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(CoreDataSearchEntityVM())
+            .environmentObject(CoreDataUserProgressVM())
+            .environmentObject(CoreDataJournalVM())
     }
 }

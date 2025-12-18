@@ -10,27 +10,34 @@ import SwiftUI
 struct PaywallComponent: View {
     
     @Binding var showPurchasePlaywall: Bool
-    let titleIcon: IconEnum
+    let titleIcon: IconEnum?
+    let unlockIcon: IconEnum?
+    var laterIcon: IconEnum? = IconEnum.laterIcon
     let purchaseTitle: String
     let purchaseDescription: String
-    let purchaseButtonLabel: String
+    var purchaseButtonLabel: String
+    var cancelBtnDescription: String = "Maybe later"
     var unlockAction: () -> ()
     
     var body: some View {
         VStack {
             VStack(spacing: 8) {
                 HStack {
-                    Image(titleIcon.icon)
-                        .renderingMode(.template)
-                        .foregroundColor(ColorEnum.colFF6F61.color)
+                    if let titleIcon {
+                        Image(titleIcon.icon)
+                            .renderingMode(.template)
+                            .foregroundColor(ColorEnum.colFF6F61.color)
+                    }
                     Text(purchaseTitle)
                         .font(FontEnum.joSaMedium18.font)
                 }
                 Text(purchaseDescription)
                     .font(FontEnum.joSaRegular14.font)
-                Text("$1.99")
-                    .font(FontEnum.joSaBold18.font)
-                    .foregroundColor(ColorEnum.col181818.color)
+                if(titleIcon != nil) {
+                    Text("$1.99")
+                        .font(FontEnum.joSaBold18.font)
+                        .foregroundColor(ColorEnum.col181818.color)
+                }
                 Button {
                     unlockAction()
                     withAnimation {
@@ -38,7 +45,11 @@ struct PaywallComponent: View {
                     }
                 } label: {
                     HStack {
-                        Image(IconEnum.lockIconSmall.icon)
+                        if let unlockIcon{
+                            Image(unlockIcon.icon)
+                                .renderingMode(.template)
+                                .foregroundColor(ColorEnum.colFFFFFF.color)
+                        }
                         Text(purchaseButtonLabel)
                             .foregroundColor(ColorEnum.colFFFFFF.color)
                     }
@@ -55,8 +66,10 @@ struct PaywallComponent: View {
                     }
                 } label: {
                     HStack {
-                        Image(IconEnum.laterIcon.icon)
-                        Text("Maybe later")
+                        if let laterIcon {
+                            Image(laterIcon.icon)
+                        }
+                        Text(cancelBtnDescription)
                             .foregroundColor(ColorEnum.col181818.color)
                     }
                     .padding(.vertical, 10)
@@ -76,7 +89,7 @@ struct PaywallComponent: View {
 
 #Preview {
     VStack {
-        PaywallComponent(showPurchasePlaywall: .constant(true), titleIcon: .exportDataIcon, purchaseTitle: "Export data (CSV/JSON)", purchaseDescription: "Enable export to CaBo to save recipes, rituals, and cultural sessions for your projects.", purchaseButtonLabel: "Unlock Export", unlockAction: {})
+        PaywallComponent(showPurchasePlaywall: .constant(true), titleIcon: .exportDataIcon, unlockIcon: .resetIcon, purchaseTitle: "Export data (CSV/JSON)", purchaseDescription: "Enable export to CaBo to save recipes, rituals, and cultural sessions for your projects.", purchaseButtonLabel: "Unlock Export", unlockAction: {})
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(LinearGradientEnum.mainScreenBg.linearGradientColors)

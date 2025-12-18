@@ -12,6 +12,7 @@ struct RootTabView: View {
     
     @StateObject private var coreDataUserProgressVM: CoreDataUserProgressVM = CoreDataUserProgressVM()
     @StateObject private var coreDataJournalVM: CoreDataJournalVM = CoreDataJournalVM()
+    @StateObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM = CoreDataSearchEntityVM()
     
     @State private var tabComponentEnum: TabComponentEnum = .home
     
@@ -20,16 +21,14 @@ struct RootTabView: View {
             tabComponentEnum.tabView
                 .environmentObject(coreDataUserProgressVM)
                 .environmentObject(coreDataJournalVM)
+                .environmentObject(coreDataSearchEntityVM)
                 .padding(.top, getSafeArea().top)
             TabBarNavigationComponent(selectedTabComponentEnum: $tabComponentEnum)
                 .padding(.horizontal)
                 .padding(.bottom, getSafeArea().bottom)
         }
-        
         .frame(height: UIScreen.main.bounds.height)
-        
         .background(colorScheme == .light ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
-        
         .navigationBarHidden(true)
         .ignoresSafeArea()
 

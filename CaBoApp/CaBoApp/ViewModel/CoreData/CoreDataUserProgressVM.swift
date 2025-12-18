@@ -35,4 +35,9 @@ class CoreDataUserProgressVM: CoreDataSettings {
     func fetchEntity() {
         items = fetchEntities(ItemEntity.self)
     }
+    
+    override func deleteAllEntities(entityName: String = "ItemEntity") {
+        super.deleteAllEntities(entityName: entityName)
+        fetchEntity()
+    }
 }

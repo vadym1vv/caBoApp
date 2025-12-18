@@ -44,4 +44,9 @@ class CoreDataJournalVM: CoreDataSettings {
     func fetchEntity() {
         journalItemEntities = fetchEntities(JournalItemEntity.self)
     }
+    
+    override func deleteAllEntities(entityName: String = "JournalItemEntity") {
+        super.deleteAllEntities(entityName: entityName)
+        fetchEntity()
+    }
 }
