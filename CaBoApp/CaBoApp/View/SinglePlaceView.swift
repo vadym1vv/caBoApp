@@ -31,6 +31,7 @@ struct SinglePlaceView: View {
                     }) {
                         coreDataUserProgressVM.updateFavoriteItem(itemName: placeModel.title, categoryEnum: CategoryEnum.places.rawValue, toggleFavorite: true)
                     }
+                    .padding(.top, getSafeArea().top - 12)
                 
                 VStack {
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitOrigin, title: "Origin", bodyText: placeModel.origin, background: .colFFC8AF, borderColor: .colFF5D4D, iconForegroundColor: .colFF6F61)
@@ -40,6 +41,7 @@ struct SinglePlaceView: View {
                     
                 }
                 .padding(.horizontal)
+                .padding(.top, getSafeArea().top)
             }
         }
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)

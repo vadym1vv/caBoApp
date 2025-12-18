@@ -91,7 +91,7 @@ struct OnboardingView: View {
                             .foregroundColor(ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                     }
-                    .padding(.bottom, getSafeArea().bottom)
+                    .padding(.bottom, getSafeArea().bottom + 10)
 
                 } else {
                     NavigationLink {
@@ -105,7 +105,7 @@ struct OnboardingView: View {
                             .foregroundColor(ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                     }
-                    .padding(.bottom, getSafeArea().bottom)
+                    .padding(.bottom, getSafeArea().bottom + 10)
 
                 }
 //                Spacer()

@@ -30,10 +30,10 @@ struct SingleCocktailView: View {
                 }) {
                     coreDataUserProgressVM.updateFavoriteItem(itemName: cocktailModel.title, categoryEnum: CategoryEnum.coctails.rawValue, toggleFavorite: true)
                 }
+                .padding(.top, getSafeArea().top - 12)
                 
                 VStack {
                     ZStack {
-                        
                         RoundedRectangle(cornerRadius: 13)
                             .foregroundColor(ColorEnum.colFF5D4D.color)
                         HStack {
@@ -59,6 +59,7 @@ struct SingleCocktailView: View {
                         .padding(1)
                     }
                     .foregroundColor(ColorEnum.col181818.color)
+                    .padding(.top, getSafeArea().top)
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitOrigin, title: "Origin", bodyText: cocktailModel.origin, background: .colFFC8AF, borderColor: .colFF5D4D, iconForegroundColor: .colFF6F61)
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitStory, title: "Story", bodyText: cocktailModel.story, background: .colFFC8AF, borderColor: .colFF5D4D, iconForegroundColor: .colFF6F61)
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitFacts, title: "Facts", bodyText: cocktailModel.facts, background: .colFFC8AF, borderColor: .colFF5D4D, iconForegroundColor: .colFF6F61)

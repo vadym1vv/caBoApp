@@ -125,7 +125,7 @@ struct SettingsView: View {
                         .padding(.vertical,7)
                         .padding(.trailing)
                     }
-                    .frame(height: 54)
+                    .frame(height: UIScreen.main.bounds.height / 15)
                     .background(ColorEnum.colFFC8AF.color)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .foregroundColor(ColorEnum.col181818.color)
@@ -141,7 +141,7 @@ struct SettingsView: View {
                         }
                         .padding()
                     }
-                    .frame(height: 54)
+                    .frame(height: UIScreen.main.bounds.height / 15)
                     .background(ColorEnum.colFFC8AF.color)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     
@@ -313,6 +313,7 @@ struct SettingsView: View {
                 
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .font(FontEnum.joSaMedium20.font)
         .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)

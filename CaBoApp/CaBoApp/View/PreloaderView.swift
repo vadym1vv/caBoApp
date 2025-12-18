@@ -52,7 +52,7 @@ struct PreloaderView: View {
                             isSpinning = true
                         }
                         .padding(.top)
-                        .padding(.bottom, UIScreen.main.bounds.height / 10)
+                        .padding(.bottom, UIScreen.main.bounds.height / 5)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .onAppear {
