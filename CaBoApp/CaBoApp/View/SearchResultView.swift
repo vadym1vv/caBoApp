@@ -45,7 +45,7 @@ struct SearchResultView: View {
                         ForEach(searchResults, id: \.id) { item in
                             CategoryNavigationLink(category: item, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM) { resolvedItem in
                                         
-                                        // resolvedItem is 'Any', so we cast to specific types to get specific fields
+                                        
                                         if let cocktail = resolvedItem as? CocktailModel {
                                             DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
                                         } else if let lesson = resolvedItem as? CultureModel {
