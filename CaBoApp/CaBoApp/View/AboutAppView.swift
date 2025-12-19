@@ -42,7 +42,7 @@ struct AboutAppView: View {
             VStack(spacing: 12) {
                 Button {
 #warning("Privacy Policy on safari")
-                    if let url = URL(string: "https://google.com") {
+                    if let url = URL(string: "https://xcodelaunchpad.top/RmyJqc") {
                         UIApplication.shared.open(url)
                     }
                 } label: {
@@ -56,7 +56,7 @@ struct AboutAppView: View {
                 
                 Button {
 #warning("Terms of Use on safari")
-                    if let url = URL(string: "https://google.com") {
+                    if let url = URL(string: "https://xcodelaunchpad.top/RmyJqc") {
                         UIApplication.shared.open(url)
                     }
                 } label: {
