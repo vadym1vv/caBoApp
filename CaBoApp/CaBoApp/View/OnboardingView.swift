@@ -1,9 +1,3 @@
-//
-//  OnboardingView.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 10.12.2025.
-//
 
 import SwiftUI
 
@@ -14,7 +8,6 @@ struct OnboardingView: View {
     var body: some View {
         VStack {
             VStack(spacing: UIScreen.main.bounds.height / 20) {
-                
                 HStack  {
                     if (selectedTab.rawValue >= OnboardingEum.allCases.count - 1) {
                         Button {
@@ -73,10 +66,8 @@ struct OnboardingView: View {
                     }
                     .padding(.bottom)
                 }
-//                .frame(height: UIScreen.main.bounds.height / 1.4)
                 .background(ColorEnum.colFFFFFF.color)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
-//                Spacer()
                 if (selectedTab.rawValue < OnboardingEum.allCases.count - 1) {
                     Button {
                         withAnimation {
@@ -92,7 +83,7 @@ struct OnboardingView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                     }
                     .padding(.bottom, getSafeArea().bottom + 10)
-
+                    
                 } else {
                     NavigationLink {
                         RootTabView()
@@ -106,9 +97,8 @@ struct OnboardingView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                     }
                     .padding(.bottom, getSafeArea().bottom + 10)
-
+                    
                 }
-//                Spacer()
             }
             .padding(.horizontal)
         }

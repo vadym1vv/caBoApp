@@ -1,9 +1,3 @@
-//
-//  FavoritesView.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 15.12.2025.
-//
 
 import SwiftUI
 
@@ -30,11 +24,11 @@ struct FavoritesView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-        HStack {
-            Text("Favorites")
-                   .font(FontEnum.joSaBold24.font)
-            Spacer()
-        }
+            HStack {
+                Text("Favorites")
+                    .font(FontEnum.joSaBold24.font)
+                Spacer()
+            }
             HStack {
                 Button {
                     selectedCategory = []
@@ -58,7 +52,6 @@ struct FavoritesView: View {
                         }
                     } label: {
                         Text(category.shortDescription)
-//                            .frame(height: 70)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(selectedCategory.contains(where: {$0 == category}) && selectedCategory != CategoryEnum.allCases ? ColorEnum.colFFC8AF.color : ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -74,19 +67,19 @@ struct FavoritesView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(sortedItems, id: \.id) { item in
                             CategoryNavigationLink(category: item, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM) { resolvedItem in
-                                        
-                                        
-                                        if let cocktail = resolvedItem as? CocktailModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
-                                        } else if let lesson = resolvedItem as? CultureModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: lesson.title, itemDescription: lesson.facts, itemImg: lesson.image, categoryEnum: .cultureLessons)
-                                        } else if let place = resolvedItem as? PlacesModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: place.title, itemDescription: place.facts, itemImg: place.image, categoryEnum: .places)
-                                        } else if let home = resolvedItem as? HomeSessionModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: home.title, itemDescription: home.timeForSession.rawValue, itemImg: home.image, categoryEnum: .homeSessions)
-                                        }
-                                    }
+                                
+                                
+                                if let cocktail = resolvedItem as? CocktailModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
+                                } else if let lesson = resolvedItem as? CultureModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: lesson.title, itemDescription: lesson.facts, itemImg: lesson.image, categoryEnum: .cultureLessons)
+                                } else if let place = resolvedItem as? PlacesModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: place.title, itemDescription: place.facts, itemImg: place.image, categoryEnum: .places)
+                                } else if let home = resolvedItem as? HomeSessionModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: home.title, itemDescription: home.timeForSession.rawValue, itemImg: home.image, categoryEnum: .homeSessions)
                                 }
+                            }
+                        }
                     }
                 }
             } else {

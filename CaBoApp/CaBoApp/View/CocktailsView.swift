@@ -1,9 +1,3 @@
-//
-//  Cocktails.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import SwiftUI
 
@@ -52,7 +46,6 @@ struct CocktailsView: View {
                 }
                 .padding(.horizontal)
             }
-            
         }
         .padding(.top, getSafeArea().top)
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)

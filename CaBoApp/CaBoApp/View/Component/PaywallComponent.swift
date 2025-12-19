@@ -1,9 +1,3 @@
-//
-//  PaywallComponent.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 18.12.2025.
-//
 
 import SwiftUI
 
@@ -57,7 +51,6 @@ struct PaywallComponent: View {
                     .frame(width: UIScreen.main.bounds.width / 2)
                     .background(ColorEnum.colFF6F61.color)
                     .clipShape(RoundedRectangle(cornerRadius: 24))
-                    
                 }
                 
                 Button {

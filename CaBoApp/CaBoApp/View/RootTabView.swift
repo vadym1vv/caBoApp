@@ -1,14 +1,7 @@
-//
-//  TabView.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 16.12.2025.
-//
 
 import SwiftUI
 
 struct RootTabView: View {
-//    @Environment(\.colorScheme) private var colorScheme
     @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     
     @StateObject private var coreDataUserProgressVM: CoreDataUserProgressVM = CoreDataUserProgressVM()
@@ -32,7 +25,6 @@ struct RootTabView: View {
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .navigationBarHidden(true)
         .ignoresSafeArea()
-
     }
 }
 

@@ -1,9 +1,3 @@
-//
-//  RecomendedTodayComponent.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 12.12.2025.
-//
 
 import SwiftUI
 
@@ -18,15 +12,11 @@ struct RecomendedTodayComponent: View {
         VStack(alignment: .leading) {
             Text("Recommended today")
                 .font(FontEnum.joSaMedium20.font)
-                
             HStack {
-                // Item 1
                 makeLink(index: viewModel.recomendationKey1)
                 Spacer()
-                // Item 2
                 makeLink(index: viewModel.recomendationKey2)
                 Spacer()
-                // Item 3
                 makeLink(index: viewModel.recomendationKey3)
             }
         }
@@ -36,15 +26,12 @@ struct RecomendedTodayComponent: View {
         .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
     }
     
-    
-    // Helper to safely get index and create link
     @ViewBuilder
     private func makeLink(index: Int) -> some View {
         if GlobalConstant.journayCollections.indices.contains(index) {
             let item = GlobalConstant.journayCollections[index]
             
             CategoryNavigationLink(category: item, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM) { _ in
-                // We don't need the concrete model for the cell, just the category
                 RecommendationCell(category: item)
             }
         }
@@ -89,33 +76,28 @@ struct CategoryNavigationLink<Label: View>: View {
             if let cocktail = resolveCocktail() {
                 NavigationLink {
                     SingleCocktailView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM,cocktailModel: cocktail)
-                    //                        .environmentObject(coreDataVM)
                 } label: {
                     label(cocktail)
                 }
             } else if let lesson = resolveCulture() {
                 NavigationLink {
                     SingleCultureLessonView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, cultureModel: lesson)
-                    //                        .environmentObject(coreDataVM)
                 } label: {
                     label(lesson)
                 }
             } else if let place = resolvePlace() {
                 NavigationLink {
                     SinglePlaceView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, placeModel: place)
-                    //                        .environmentObject(coreDataVM)
                 } label: {
                     label(place)
                 }
             } else if let home = resolveHomeSession() {
                 NavigationLink {
                     SingleHomeSessionView(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM, homeSessionModel: home)
-                    //                        .environmentObject(coreDataVM)
                 } label: {
                     label(home)
                 }
             } else {
-                // If no match found, render nothing or a placeholder
                 EmptyView()
             }
         }
@@ -145,7 +127,6 @@ struct CategoryNavigationLink<Label: View>: View {
         return item.title == category.title && item.image == category.image
     }
 }
-
 
 struct RecommendationCell: View {
     let category: any CategoryProtocol

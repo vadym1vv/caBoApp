@@ -1,15 +1,9 @@
-//
-//  JourneyComponent.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import SwiftUI
 
 struct JourneyComponent: View {
     
-   @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
+    @ObservedObject var coreDataUserProgressVM: CoreDataUserProgressVM
     @ObservedObject var coreDataJournalVM: CoreDataJournalVM
     
     @StateObject private var manager = JourneyManager()
@@ -23,7 +17,7 @@ struct JourneyComponent: View {
             } label: {
                 EmptyView()
             }
-
+            
             VStack(alignment: .leading) {
                 Text("Your Cuban journey")
                     .font(FontEnum.joSaSemibold20.font)
@@ -32,7 +26,7 @@ struct JourneyComponent: View {
                         RoundedRectangle(cornerRadius: 16)
                             .frame(width: UIScreen.main.bounds.width / 2.5 - 60)
                             .foregroundColor(ColorEnum.col47338F30.color)
-                            
+                        
                         
                         RoundedRectangle(cornerRadius: 16)
                             .frame(width: manager.readProgressWidth)
@@ -124,6 +118,5 @@ struct JourneyDetailView: View {
                 }
             }
         }
-//         .navigationTitle(manager.currentType.title)
     }
 }

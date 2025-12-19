@@ -1,9 +1,3 @@
-//
-//  CoreDataJournalVM.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 17.12.2025.
-//
 
 import Foundation
 import CoreData

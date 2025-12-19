@@ -1,9 +1,3 @@
-//
-//  SingleRowCardComponent.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 12.12.2025.
-//
 
 import SwiftUI
 
@@ -49,14 +43,13 @@ struct SingleRowCardComponent: View {
                             }
                         }
                         .frame(maxWidth: .infinity)
-                       
-                            Button {
-                                coreDataUserProgressVM.updateFavoriteItem(itemName: itemName, categoryEnum: categoryEnum.rawValue, toggleFavorite: true)
-                            } label: {
-                                Image(isFavoriteIcon)
-                            }
-                            .padding([.trailing, .top], 5)
                         
+                        Button {
+                            coreDataUserProgressVM.updateFavoriteItem(itemName: itemName, categoryEnum: categoryEnum.rawValue, toggleFavorite: true)
+                        } label: {
+                            Image(isFavoriteIcon)
+                        }
+                        .padding([.trailing, .top], 5)
                     }
                     
                     Button {
@@ -70,7 +63,6 @@ struct SingleRowCardComponent: View {
                             .foregroundColor(ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 24))
                     }
-                    
                 }
                 .padding(.leading, 8)
             }

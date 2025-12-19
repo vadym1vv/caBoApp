@@ -26,7 +26,7 @@
         }
       ],
       "productID" : "com.caboapp.export",
-      "referenceName" : "caboappExport",
+      "referenceName" : "Unlock Export",
       "type" : "NonConsumable"
     },
     {
@@ -41,7 +41,7 @@
         }
       ],
       "productID" : "com.caboapp.reset",
-      "referenceName" : "comCaboappReset",
+      "referenceName" : "Unlock Reset",
       "type" : "NonConsumable"
     }
   ],

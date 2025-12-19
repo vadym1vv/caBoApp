@@ -1,10 +1,3 @@
-//
-//  ExportUtility.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 18.12.2025.
-//
-
 
 import UIKit
 

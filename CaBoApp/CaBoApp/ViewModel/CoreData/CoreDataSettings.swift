@@ -1,12 +1,5 @@
-//
-//  CoreDataSetting.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 12.12.2025.
-//
 
 import Foundation
-
 import CoreData
 
 class CoreDataSettings: ObservableObject {

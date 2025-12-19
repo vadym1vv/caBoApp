@@ -1,9 +1,3 @@
-//
-//  DailyRecomendationsVM.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import Foundation
 class DailyRecomendationsMV: ObservableObject {
@@ -20,7 +14,7 @@ class DailyRecomendationsMV: ObservableObject {
         if let storedDate, Calendar.current.isDate(storedDate, inSameDayAs: today) {
             return
         }
-
+        
         generateNewRecommendations()
         
         UserDefaults.standard.set(today, forKey: "lastRecomdationDateDay")

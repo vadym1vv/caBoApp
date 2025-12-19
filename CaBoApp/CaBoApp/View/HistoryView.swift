@@ -1,9 +1,3 @@
-//
-//  HistoryView.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 15.12.2025.
-//
 
 import SwiftUI
 
@@ -145,7 +139,6 @@ struct HistoryView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                 }
                             }
-                            
                         }
                     }
                 }

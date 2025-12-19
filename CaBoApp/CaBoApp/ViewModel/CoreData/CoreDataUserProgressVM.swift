@@ -1,9 +1,3 @@
-//
-//  CoreDataUserProgressVM.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 12.12.2025.
-//
 
 import Foundation
 import CoreData
@@ -21,9 +15,7 @@ class CoreDataUserProgressVM: CoreDataSettings {
         if (toggleFavorite != nil) {
             itemToUpdate.isFavorite = !itemToUpdate.isFavorite
         }
-       
-            itemToUpdate.itemType = categoryEnum
-       
+        itemToUpdate.itemType = categoryEnum
         if let introducedDate {
             itemToUpdate.introducedDate = introducedDate
         }

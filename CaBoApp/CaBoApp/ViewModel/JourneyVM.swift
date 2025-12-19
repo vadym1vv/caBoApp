@@ -1,9 +1,3 @@
-//
-//  JourneyVM.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import Foundation
 import SwiftUI
@@ -11,18 +5,18 @@ import SwiftUI
 struct JourneyStorage {
     private static let typeKey = "lastJourneyType"
     private static let indexKey = "lastItemIndex"
-
+    
     static func saveJournyrState(type: JourneyType, index: Int) {
         UserDefaults.standard.set(type.rawValue, forKey: typeKey)
         UserDefaults.standard.set(index, forKey: indexKey)
     }
-
-
+    
+    
     static func load() -> (type: JourneyType, index: Int) {
         let typeRaw = UserDefaults.standard.integer(forKey: typeKey)
         let index = UserDefaults.standard.integer(forKey: indexKey)
         
-       
+        
         let type = JourneyType(rawValue: typeRaw) ?? .cocktails
         
         return (type, index)
@@ -35,18 +29,18 @@ class JourneyManager: ObservableObject {
     
     init() {
         let savedState = JourneyStorage.load()
-       currentType = savedState.type
-       currentIndex = savedState.index
+        currentType = savedState.type
+        currentIndex = savedState.index
     }
     
     func resetState() {
         let savedState = JourneyStorage.load()
-       currentType = savedState.type
-       currentIndex = savedState.index
+        currentType = savedState.type
+        currentIndex = savedState.index
     }
     
     func next() {
-       
+        
         let maxCount: Int
         switch currentType {
         case .cocktails: maxCount = GlobalConstant.cocktailsModels.count
@@ -55,7 +49,7 @@ class JourneyManager: ObservableObject {
         case .homeSessions: maxCount = GlobalConstant.homeSessionsModels.count
         }
         
-       
+        
         if currentIndex < maxCount - 1 {
             currentIndex += 1
         } else {
@@ -64,16 +58,16 @@ class JourneyManager: ObservableObject {
                 currentType = nextType
                 currentIndex = 0
             } else {
-               
+                
                 currentType = .cocktails
                 currentIndex = 0
             }
         }
         
-    
+        
         JourneyStorage.saveJournyrState(type: currentType, index: currentIndex)
     }
-  
+    
     var currentCocktail: CocktailModel? {
         guard currentType == .cocktails,
               GlobalConstant.cocktailsModels.indices.contains(currentIndex) else { return nil }
@@ -111,7 +105,7 @@ extension JourneyManager {
     
     var completedItemsCount: Int {
         var count = 0
-
+        
         if currentType.rawValue > JourneyType.cocktails.rawValue {
             count += GlobalConstant.cocktailsModels.count
         }
@@ -121,7 +115,7 @@ extension JourneyManager {
         if currentType.rawValue > JourneyType.places.rawValue {
             count += GlobalConstant.placesModels.count
         }
-
+        
         count += currentIndex
         return count
     }

@@ -1,9 +1,3 @@
-//
-//  JourneyDataLoader.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 12.12.2025.
-//
 
 import Foundation
 

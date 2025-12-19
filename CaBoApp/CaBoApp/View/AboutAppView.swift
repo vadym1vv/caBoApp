@@ -1,9 +1,3 @@
-//
-//  AboutAppView.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 18.12.2025.
-//
 
 import SwiftUI
 
@@ -23,7 +17,7 @@ struct AboutAppView: View {
                 }
                 Text("About CaBo App")
                     .font(FontEnum.joSaBold24.font)
-                   
+                
                 
             }, centerView: EmptyView(), trailingView: EmptyView())
             .padding(.top, getSafeArea().top)
@@ -75,10 +69,9 @@ struct AboutAppView: View {
                 }
                 
             }
-            .padding(.bottom, getSafeArea().bottom)
+            .padding(.bottom, getSafeArea().bottom + 10)
             .padding(.horizontal, UIScreen.main.bounds.width / 10)
             .font(FontEnum.joSaMedium16.font)
-            //            .frame(width:  UIScreen.main.bounds.width / 1.4)
         }
         .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
