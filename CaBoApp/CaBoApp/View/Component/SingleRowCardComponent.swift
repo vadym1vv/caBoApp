@@ -24,7 +24,7 @@ struct SingleRowCardComponent: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width / 4)
-                    .frame(height: UIScreen.main.bounds.height / 4.5)
+                    .frame(height: UIScreen.main.bounds.height / 5)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 VStack(alignment: .leading) {
                     HStack(alignment: .top) {
@@ -51,7 +51,7 @@ struct SingleRowCardComponent: View {
                         }
                         .padding([.trailing, .top], 5)
                     }
-                    
+                    Spacer()
                     Button {
                         navigateAction()
                     } label: {

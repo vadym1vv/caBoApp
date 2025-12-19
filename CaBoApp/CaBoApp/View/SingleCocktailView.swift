@@ -30,7 +30,6 @@ struct SingleCocktailView: View {
                 }) {
                     coreDataUserProgressVM.updateFavoriteItem(itemName: cocktailModel.title, categoryEnum: CategoryEnum.coctails.rawValue, toggleFavorite: true)
                 }
-                .padding(.top, getSafeArea().top - 12)
                 
                 VStack {
                     ZStack {

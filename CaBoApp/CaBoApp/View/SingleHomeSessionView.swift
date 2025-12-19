@@ -35,7 +35,6 @@ struct SingleHomeSessionView: View {
                     }) {
                         coreDataUserProgressVM.updateFavoriteItem(itemName: homeSessionModel.title, categoryEnum: CategoryEnum.homeSessions.rawValue, toggleFavorite: true)
                     }
-                    .padding(.top, getSafeArea().top - 12)
                 
                 VStack {
                     ItemDetailsCardComponent(icon: .culturePrepare, title: "Prepare", bodyText: homeSessionModel.prepare, background: .colEDE7FA, borderColor: .col7443FF, iconForegroundColor: .col926EF8)
