@@ -1,9 +1,3 @@
-//
-//  SearchVM.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 16.12.2025.
-//
 
 import Foundation
 

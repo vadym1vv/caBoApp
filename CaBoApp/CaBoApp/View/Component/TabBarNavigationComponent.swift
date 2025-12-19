@@ -1,9 +1,3 @@
-//
-//  TabBarNavigationComponent.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 15.12.2025.
-//
 
 import SwiftUI
 
@@ -25,11 +19,9 @@ struct TabBarNavigationComponent: View {
                     .frame(height: UIScreen.main.bounds.height / 22)
             }
             .shadow(color: .black.opacity(0.3), radius: 5, x: 0, y: 5)
-            
             ZStack {
                 RoundedRectangle(cornerRadius: 60)
                     .foregroundColor(ColorEnum.colFFFFFF.color)
-                    
                 HStack {
                     ForEach(TabComponentEnum.allCases) { tab in
                         if(tab != selectedTabComponentEnum) {
@@ -46,7 +38,6 @@ struct TabBarNavigationComponent: View {
                                 .frame(maxWidth: .infinity)
                                 .foregroundColor(ColorEnum.colFFFFFF.color)
                             }
-                           
                         }
                     }
                 }
@@ -54,7 +45,6 @@ struct TabBarNavigationComponent: View {
                 .background(LinearGradientEnum.tabBarBgHorizontal.linearGradientColors)
                 .clipShape(RoundedRectangle(cornerRadius: 60))
                 .padding(0.5)
-                
             }
         }
         .frame(height: UIScreen.main.bounds.height / 12)

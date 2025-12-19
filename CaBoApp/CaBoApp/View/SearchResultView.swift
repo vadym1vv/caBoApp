@@ -1,9 +1,3 @@
-//
-//  SearchResultView.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 16.12.2025.
-//
 
 import SwiftUI
 
@@ -42,28 +36,24 @@ struct SearchResultView: View {
             if (!searchResults.isEmpty) {
                 ScrollView {
                     LazyVGrid(columns: columns) {
-//                        ForEach(searchResults, id: \.id) { searchResult in
-//                            recommendationView(category: searchResult, coreDataUserProgressVM: coreDataUserProgressVM)
-//                        }
                         ForEach(searchResults, id: \.id) { item in
                             CategoryNavigationLink(category: item, coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM) { resolvedItem in
-                                        
-                                        
-                                        if let cocktail = resolvedItem as? CocktailModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
-                                        } else if let lesson = resolvedItem as? CultureModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: lesson.title, itemDescription: lesson.facts, itemImg: lesson.image, categoryEnum: .cultureLessons)
-                                        } else if let place = resolvedItem as? PlacesModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: place.title, itemDescription: place.facts, itemImg: place.image, categoryEnum: .places)
-                                        } else if let home = resolvedItem as? HomeSessionModel {
-                                            DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: home.title, itemDescription: home.timeForSession.rawValue, itemImg: home.image, categoryEnum: .homeSessions)
-                                        }
-                                    }
+                                
+                                
+                                if let cocktail = resolvedItem as? CocktailModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: cocktail.title, itemDescription: cocktail.facts, itemImg: cocktail.image, categoryEnum: .coctails)
+                                } else if let lesson = resolvedItem as? CultureModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: lesson.title, itemDescription: lesson.facts, itemImg: lesson.image, categoryEnum: .cultureLessons)
+                                } else if let place = resolvedItem as? PlacesModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: place.title, itemDescription: place.facts, itemImg: place.image, categoryEnum: .places)
+                                } else if let home = resolvedItem as? HomeSessionModel {
+                                    DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: home.title, itemDescription: home.timeForSession.rawValue, itemImg: home.image, categoryEnum: .homeSessions)
                                 }
+                            }
+                        }
                     }
                 }
             } else {
-                
                 VStack {
                     Image(IconEnum.searchResultsIcon.icon)
                         .padding(.vertical)
@@ -79,10 +69,9 @@ struct SearchResultView: View {
                             .frame(width: UIScreen.main.bounds.width / 2, height: 44)
                             .background(LinearGradientEnum.onboardingBtnBg.linearGradientColors)
                             .clipShape(RoundedRectangle(cornerRadius: 24))
-                            
                     }
                     .padding(.top)
-
+                    
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
@@ -106,7 +95,7 @@ struct SearchResultView: View {
     
     NavigationView {
         SearchResultView(coreDataUserProgressVM: CoreDataUserProgressVM(), coreDataJournalVM: CoreDataJournalVM(), searchResults: [])
-           
+        
     }
     
 }

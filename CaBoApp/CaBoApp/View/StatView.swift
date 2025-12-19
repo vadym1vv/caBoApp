@@ -68,7 +68,6 @@ struct StatView: View {
                     
                 }
                 .frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3)
-//                .padding(.vertical, 30)
                 Spacer()
                 
                 VStack {
@@ -111,7 +110,7 @@ struct StatView: View {
         }
         .font(FontEnum.joSaRegular16.font)
     }
-
+    
     
     private var chartData: [CategoryCount] {
         let filtered = filterEntities()
@@ -120,7 +119,7 @@ struct StatView: View {
         let gapSize: Double = 2.0
         
         if total > 0 {
-         
+            
             return CategoryEnum.allCases.map { cat in
                 let count = filtered.filter { $0.itemCategory == cat.rawValue }.count
                 let percentage = Double(count) / total
@@ -158,7 +157,7 @@ struct StatView: View {
             }
         }
     }
-
+    
     private func filterEntities() -> [JournalItemEntity] {
         let now = Date()
         return coreDataJournalVM.journalItemEntities.filter { entity in
@@ -171,7 +170,7 @@ struct StatView: View {
         }
     }
     
-
+    
 }
 
 extension StatView {

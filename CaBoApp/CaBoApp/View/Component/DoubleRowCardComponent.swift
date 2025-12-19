@@ -1,9 +1,3 @@
-//
-//  DoubleRowCardComponent.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 12.12.2025.
-//
 
 import SwiftUI
 
@@ -16,7 +10,7 @@ struct DoubleRowCardComponent: View {
     let itemImg: String
     let categoryEnum: CategoryEnum
     
-  
+    
     var isFavoriteIcon: String {
         coreDataUserProgressVM.items.contains(where: {$0.isFavorite && $0.itemName == itemName}) ? IconEnum.favIconOn.icon : IconEnum.favIconOff.icon
     }
@@ -51,7 +45,6 @@ struct DoubleRowCardComponent: View {
             .padding(5)
         }
         .background(ColorEnum.colFFC8AF.color)
-//        .background(background.color)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .foregroundColor(ColorEnum.col181818.color)
         .multilineTextAlignment(.leading)
@@ -63,9 +56,7 @@ struct DoubleRowCardComponent_Previews: PreviewProvider {
         ScrollView {
             HStack {
                 DoubleRowCardComponent(coreDataUserProgressVM: CoreDataUserProgressVM(), itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
-//                    .environmentObject(CoreDataUserProgressVM())
                 DoubleRowCardComponent(coreDataUserProgressVM: CoreDataUserProgressVM(), itemName: "Malecón Mojito Night", itemDescription: "Mint, lime, and the rhythm of the waves", itemImg: IconEnum.malecónLoversBench.icon, categoryEnum: CategoryEnum.coctails)
-//                    .environmentObject(CoreDataUserProgressVM())
             }
             .padding(.horizontal)
             

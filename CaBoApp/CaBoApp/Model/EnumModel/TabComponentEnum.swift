@@ -1,9 +1,3 @@
-//
-//  TabComponentEnum.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 15.12.2025.
-//
 
 import SwiftUI
 

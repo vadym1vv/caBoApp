@@ -1,9 +1,3 @@
-//
-//  SingleCultureLessonView.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import SwiftUI
 
@@ -21,7 +15,7 @@ struct SingleCultureLessonView: View {
     var body: some View {
         VStack {
             ScrollView {
-
+                
                 SingleIconActionCategoryComponent(
                     isItemFavorite: $isItemFavorite, imgStr: cultureModel.image,
                     title: cultureModel.title,

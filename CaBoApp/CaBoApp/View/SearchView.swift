@@ -1,9 +1,3 @@
-//
-//  SearchView.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 15.12.2025.
-//
 
 import SwiftUI
 
@@ -197,7 +191,6 @@ struct SearchView: View {
                                 }
                             }
                             .padding(.leading)
-                            
                         }
                         .frame(maxWidth: UIScreen.main.bounds.width - 44)
                         Button {
@@ -215,7 +208,6 @@ struct SearchView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     
                 }
-                
                 Button {
                     coreDataSearchEntityVM.updateItem(searchRequest: searchVM.searchInput, type: searchVM.typeCategory?.rawValue, mood: searchVM.moodEnum?.rawValue, difficulty: searchVM.difficultyEnum?.rawValue, timeNeeded: searchVM.timeForSession?.rawValue)
                     searchResults = searchVM.performSearch()

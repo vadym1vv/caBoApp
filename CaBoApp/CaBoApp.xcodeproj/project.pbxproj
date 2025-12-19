@@ -37,7 +37,6 @@
 		D510E5AE2EEB3AF500550779 /* JosefinSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D510E5A92EEB3AF500550779 /* JosefinSans-Bold.ttf */; };
 		D510E5AF2EEB3AF500550779 /* JosefinSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D510E5AA2EEB3AF500550779 /* JosefinSans-SemiBold.ttf */; };
 		D510E5B22EEB3BEE00550779 /* FontEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E5B12EEB3BEE00550779 /* FontEnum.swift */; };
-		D510E5B42EEB414E00550779 /* DailyCategoryRecomendationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E5B32EEB414E00550779 /* DailyCategoryRecomendationComponent.swift */; };
 		D510E5B62EEB421500550779 /* DailyRecomendationsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D510E5B52EEB421500550779 /* DailyRecomendationsVM.swift */; };
 		D53383082EEC388F001FAE2A /* RecomendedTodayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53383072EEC388F001FAE2A /* RecomendedTodayComponent.swift */; };
 		D54A62302EEC87D7000C902A /* journey_data.json in Resources */ = {isa = PBXBuildFile; fileRef = D54A622F2EEC87D7000C902A /* journey_data.json */; };
@@ -112,7 +111,6 @@
 		D510E5AA2EEB3AF500550779 /* JosefinSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JosefinSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		D510E5B02EEB3B3700550779 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D510E5B12EEB3BEE00550779 /* FontEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontEnum.swift; sourceTree = "<group>"; };
-		D510E5B32EEB414E00550779 /* DailyCategoryRecomendationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCategoryRecomendationComponent.swift; sourceTree = "<group>"; };
 		D510E5B52EEB421500550779 /* DailyRecomendationsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRecomendationsVM.swift; sourceTree = "<group>"; };
 		D53383072EEC388F001FAE2A /* RecomendedTodayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendedTodayComponent.swift; sourceTree = "<group>"; };
 		D54A622F2EEC87D7000C902A /* journey_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = journey_data.json; sourceTree = "<group>"; };
@@ -287,7 +285,6 @@
 			children = (
 				D5C411EB2EEAE79D00DDB8C5 /* JourneyComponent.swift */,
 				D510E59F2EEB398F00550779 /* TopBarNavigationComponent.swift */,
-				D510E5B32EEB414E00550779 /* DailyCategoryRecomendationComponent.swift */,
 				D53383072EEC388F001FAE2A /* RecomendedTodayComponent.swift */,
 				D54A62312EECA664000C902A /* DoubleRowCardComponent.swift */,
 				D54A623A2EECB870000C902A /* SingleRowCardComponent.swift */,
@@ -483,7 +480,6 @@
 				D5A4B1D32EE9B3A70063B0AB /* CaBoAppApp.swift in Sources */,
 				D5AD14DB2EE9C38700C7A261 /* ColorEnum.swift in Sources */,
 				D5A4B1E82EE9B6830063B0AB /* PreloaderView.swift in Sources */,
-				D510E5B42EEB414E00550779 /* DailyCategoryRecomendationComponent.swift in Sources */,
 				93AAD30A2EF1E55700C1CC23 /* SearchResultView.swift in Sources */,
 				D5C411E22EEAD09800DDB8C5 /* HomeSessionsView.swift in Sources */,
 				D5C411E82EEAD77100DDB8C5 /* HomeSessionModel.swift in Sources */,

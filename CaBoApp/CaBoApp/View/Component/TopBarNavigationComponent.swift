@@ -1,9 +1,4 @@
-//
-//  TopBarNavigationComponent.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
+
 import SwiftUI
 
 struct TopBarNavigationComponent<LeadingView: View, CenterView: View, TrailingView: View>: View {

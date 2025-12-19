@@ -1,9 +1,3 @@
-//
-//  SingleIconActionCategoryComponent.swift
-//  CaBoApp
-//
-//  Created by Vadym Vasylaki on 15.12.2025.
-//
 
 import SwiftUI
 
@@ -15,11 +9,10 @@ struct SingleIconActionCategoryComponent<BottomLeadingComponent: View>: View {
     
     let imgStr: String
     let title: String
-//    let isFavoriteIcon: Bool
     var bottomLeadingComponent: BottomLeadingComponent
     var toggleFavoriteAction: () -> ()
     
-   
+    
     
     var body: some View {
         ZStack {
@@ -38,8 +31,8 @@ struct SingleIconActionCategoryComponent<BottomLeadingComponent: View>: View {
                             Image(IconEnum.backBtn.icon)
                         }),
                     centerView:
-                       RectangleWrapperComponent(component: Text(title)
-                        .font(FontEnum.joSaSemibold18.font)),
+                        RectangleWrapperComponent(component: Text(title)
+                            .font(FontEnum.joSaSemibold18.font)),
                     trailingView:
                         Button(action: {
                             isItemFavorite.toggle()
@@ -60,7 +53,6 @@ struct SingleIconActionCategoryComponent<BottomLeadingComponent: View>: View {
                 }
             }
             .padding()
-            
         }
         .frame(height: UIScreen.main.bounds.height / 2)
         

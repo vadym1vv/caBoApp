@@ -1,9 +1,3 @@
-//
-//  TimeForSessionEnum.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import Foundation
 
@@ -16,7 +10,7 @@ enum TimeForSessionEnum: String, CaseIterable, Identifiable, Codable {
     case twenty = "20 min"
     case fortyPlus = "40+ min"
     case thirtyFive = "35 min"
- 
+    
     var longDescription: String {
         switch self {
         case .tenTwenty:

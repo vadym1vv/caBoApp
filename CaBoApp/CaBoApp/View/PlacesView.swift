@@ -1,9 +1,3 @@
-//
-//  PlacesView.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import SwiftUI
 
@@ -45,8 +39,7 @@ struct PlacesView: View {
                                     .environmentObject(coreDataUserProgressVM)
                             } label: {
                                 DoubleRowCardComponent(coreDataUserProgressVM: coreDataUserProgressVM, itemName: placeModel.title, itemDescription: placeModel.facts, itemImg: placeModel.image, categoryEnum: .places)
-                            }
-                            
+                            }   
                         }
                     }
                 }

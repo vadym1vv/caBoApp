@@ -1,9 +1,3 @@
-//
-//  HomeSessionsView.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import SwiftUI
 
@@ -19,8 +13,6 @@ struct HomeSessionsView: View {
     @State private var navigateToHomeSession: Bool = false
     @State private var homeSessionToNavigate: HomeSessionModel? = nil
     
-    
-    
     private let placesModel: [HomeSessionModel] = GlobalConstant.homeSessionsModels
     
     var body: some View {
@@ -32,7 +24,7 @@ struct HomeSessionsView: View {
             } label: {
                 EmptyView()
             }
-
+            
             TopBarNavigationComponent(
                 leadingView:
                     Button {

@@ -1,9 +1,3 @@
-//
-//  SinglePlaceView.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 11.12.2025.
-//
 
 import SwiftUI
 
@@ -21,7 +15,6 @@ struct SinglePlaceView: View {
     var body: some View {
         VStack {
             ScrollView {
-
                 SingleIconActionCategoryComponent(
                     isItemFavorite: $isItemFavorite, imgStr: placeModel.image,
                     title: placeModel.title,
@@ -37,8 +30,6 @@ struct SinglePlaceView: View {
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitOrigin, title: "Origin", bodyText: placeModel.origin, background: .colFFC8AF, borderColor: .colFF5D4D, iconForegroundColor: .colFF6F61)
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitOrigin, title: "Story", bodyText: placeModel.story, background: .colFFC8AF, borderColor: .colFF5D4D, iconForegroundColor: .colFF6F61)
                     ItemDetailsCardComponent(icon: IconEnum.componentUnitOrigin, title: "Facts", bodyText: placeModel.facts, background: .colFFC8AF, borderColor: .colFF5D4D, iconForegroundColor: .colFF6F61)
-                    
-                    
                 }
                 .padding(.horizontal)
                 .padding(.top, getSafeArea().top)
@@ -51,7 +42,7 @@ struct SinglePlaceView: View {
         })
         .navigationBarHidden(true)
         .ignoresSafeArea()
-
+        
     }
 }
 

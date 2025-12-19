@@ -1,9 +1,3 @@
-//
-//  MainScreenView.swift
-//  CaBoApp
-//
-//  Created by vadym vasylaki on 10.12.2025.
-//
 
 import SwiftUI
 
@@ -62,44 +56,18 @@ struct MainScreenView: View {
                     }
                     Spacer()
                 }
-    //            Text("Categories")
-    //                .font(FontEnum.joSaMedium20.font)
-    //            HStack {
-    //                ForEach(CategoryEnum.allCases) { category in
-    //                    NavigationLink {
-    //                        category.categoryView
-    //                    } label: {
-    //                        Button {
-    //
-    //                        } label: {
-    //                            Text(category.shortDescription)
-    //                                .font(FontEnum.joSaMedium14.font)
-    //                                .frame(height: 36)
-    //                                .background(ColorEnum.colFFFFFF.color)
-    //                                .foregroundColor(ColorEnum.col181818.color)
-    //                        }
-    //
-    //                    }
-    //                    .padding(5)
-    //                }
-    //            }
                 Spacer()
                 RecomendedTodayComponent(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
                     .padding(.bottom, getSafeArea().bottom)
-                
             }
             .padding(.horizontal)
             .padding(.vertical, 5)
         }
         .foregroundColor(isLightTheme ? ColorEnum.col181818.color : ColorEnum.colFFFFFF.color)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-        
         .onAppear(perform: {
             UserDefaults.standard.setValue(false, forKey: "isFirstOpening")
         })
-        
-//        .navigationBarHidden(true)
     }
 }
 
