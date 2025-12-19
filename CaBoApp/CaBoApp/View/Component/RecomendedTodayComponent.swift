@@ -14,10 +14,13 @@ struct RecomendedTodayComponent: View {
                 .font(FontEnum.joSaMedium20.font)
             HStack {
                 makeLink(index: viewModel.recomendationKey1)
+                    .frame(width: UIScreen.main.bounds.width / 3.5)
                 Spacer()
                 makeLink(index: viewModel.recomendationKey2)
+                    .frame(width: UIScreen.main.bounds.width / 3.5)
                 Spacer()
                 makeLink(index: viewModel.recomendationKey3)
+                    .frame(width: UIScreen.main.bounds.width / 3.5)
             }
         }
         .onAppear {
