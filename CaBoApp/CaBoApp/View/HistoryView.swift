@@ -62,7 +62,6 @@ struct HistoryView: View {
                     selectedCategory = CategoryEnum.allCases
                 } label: {
                     Text("All")
-                    //                        .frame(height: 70)
                         .font(FontEnum.joSaMedium14.font)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
@@ -83,7 +82,6 @@ struct HistoryView: View {
                     } label: {
                         Text(category.shortDescription)
                             .font(FontEnum.joSaMedium14.font)
-                        //                            .frame(maxHeight: .infinity)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(selectedCategory.contains(where: {$0 == category}) && selectedCategory != CategoryEnum.allCases ? ColorEnum.colFFC8AF.color : ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 12))

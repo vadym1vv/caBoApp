@@ -3,8 +3,6 @@ import SwiftUI
 
 struct MainScreenView: View {
     
-    
-    
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
     @EnvironmentObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM
@@ -15,8 +13,6 @@ struct MainScreenView: View {
         VStack {
             VStack(alignment: .leading, spacing: GlobalConstant.viewComponentSpacing) {
                 HStack {
-                    Text("Hola, Max")
-                        .font(FontEnum.joSaBold24.font)
                     Spacer()
                     NavigationLink {
                         SettingsView()
@@ -33,6 +29,7 @@ struct MainScreenView: View {
                     .font(FontEnum.daScMedium30.font)
                     .padding(.top, -20)
                 JourneyComponent(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
+                
                 Text("Quick actions")
                     .font(FontEnum.joSaMedium20.font)
                 HStack(alignment: .top) {
@@ -52,13 +49,14 @@ struct MainScreenView: View {
                                     .font(FontEnum.joSaRegular16.font)
                             }
                         }
-                        .padding(5)
+                        .padding(.horizontal, 5)
                     }
                     Spacer()
                 }
                 Spacer()
                 RecomendedTodayComponent(coreDataUserProgressVM: coreDataUserProgressVM, coreDataJournalVM: coreDataJournalVM)
                     .padding(.bottom, getSafeArea().bottom)
+                Spacer()
             }
             .padding(.horizontal)
             .padding(.vertical, 5)
