@@ -313,9 +313,6 @@ struct SettingsView: View {
         .background(isLightTheme ? LinearGradientEnum.mainScreenBg.linearGradientColors : LinearGradientEnum.darkBackgorund.linearGradientColors)
         .ignoresSafeArea()
         .navigationBarHidden(true)
-        .onAppear {
-            IAPManager.shared.fetchProducts()
-        }
         
     }
     

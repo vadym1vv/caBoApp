@@ -43,7 +43,9 @@ struct DoubleRowCardComponent: View {
                     .lineLimit(2)
             }
             .padding(5)
+            Spacer()
         }
+        .frame(height: UIScreen.main.bounds.height / 3.3)
         .background(ColorEnum.colFFC8AF.color)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .foregroundColor(ColorEnum.col181818.color)

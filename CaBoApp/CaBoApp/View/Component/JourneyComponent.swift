@@ -42,7 +42,7 @@ struct JourneyComponent: View {
                 Text("Next step:\n‘Havana Sunrise Spritz’")
                     .font(FontEnum.joSaRegular16.font)
                     .multilineTextAlignment(.leading)
-                    .padding(.top)
+                    .padding(.top, -12 + getSafeArea().top)
             }
             .padding([.vertical, .leading], 10)
             Spacer()
@@ -50,7 +50,7 @@ struct JourneyComponent: View {
                 Image(IconEnum.startSessionImg.icon)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.height / 10, height: UIScreen.main.bounds.height / 10)
+                    .frame(width: UIScreen.main.bounds.height / 10, height: UIScreen.main.bounds.height / 14 + getSafeArea().top)
                 Button {
                     navigateToNextJourney = true
                     manager.next()

@@ -5,6 +5,7 @@ import SwiftUI
 struct CaBoAppApp: App {
     
     init() {
+        IAPManager.shared.start()
         UserDefaults.standard.register(defaults: [
             "isFirstOpening": true,
             "isLightTheme": true,
