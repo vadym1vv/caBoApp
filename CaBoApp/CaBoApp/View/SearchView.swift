@@ -1,11 +1,13 @@
 
 import SwiftUI
+import Combine
 
 struct SearchView: View {
     
     @EnvironmentObject private var coreDataUserProgressVM: CoreDataUserProgressVM
     @EnvironmentObject private var coreDataSearchEntityVM: CoreDataSearchEntityVM
     @EnvironmentObject private var coreDataJournalVM: CoreDataJournalVM
+    @StateObject private var keyboard = KeyboardResponder()
     
     @AppStorage("isLightTheme") private var isLightTheme: Bool = true
     
@@ -37,6 +39,7 @@ struct SearchView: View {
                     }))
                     .font(FontEnum.joSaRegular16.font)
                     .padding(.trailing, 3)
+                    
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 50)
@@ -245,6 +248,7 @@ struct SearchView: View {
                 searchVM.resetSearchCriteria()
             }
         }
+        .padding(.top, keyboard.keyboardHeight)
     }
 }
 

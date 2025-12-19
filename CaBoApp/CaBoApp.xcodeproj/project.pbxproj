@@ -22,6 +22,7 @@
 		93AAD30C2EF1FA7D00C1CC23 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */; };
 		93B4D6E22EF4641B001A89B6 /* ExportUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B4D6E12EF4641B001A89B6 /* ExportUtility.swift */; };
 		93B4D6E42EF46AA0001A89B6 /* RectangleWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B4D6E32EF46AA0001A89B6 /* RectangleWrapper.swift */; };
+		93BFDBEA2EF550D200E7A513 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BFDBE92EF550D200E7A513 /* KeyboardResponder.swift */; };
 		93CD1C102EF414CF0000602F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CD1C0F2EF414CF0000602F /* StoreKit.framework */; };
 		93CD1C122EF415380000602F /* StoreKitConfigurationFile.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 93CD1C112EF415380000602F /* StoreKitConfigurationFile.storekit */; };
 		93CD1C142EF423740000602F /* PaywallComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD1C132EF423740000602F /* PaywallComponent.swift */; };
@@ -95,6 +96,7 @@
 		93AAD30B2EF1FA7D00C1CC23 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		93B4D6E12EF4641B001A89B6 /* ExportUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportUtility.swift; sourceTree = "<group>"; };
 		93B4D6E32EF46AA0001A89B6 /* RectangleWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleWrapper.swift; sourceTree = "<group>"; };
+		93BFDBE92EF550D200E7A513 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		93CD1C0F2EF414CF0000602F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		93CD1C112EF415380000602F /* StoreKitConfigurationFile.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfigurationFile.storekit; sourceTree = "<group>"; };
 		93CD1C132EF423740000602F /* PaywallComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallComponent.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		D5C411ED2EEAE98B00DDB8C5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				93BFDBE92EF550D200E7A513 /* KeyboardResponder.swift */,
 				D54A62332EECA6B5000C902A /* CoreData */,
 				D5C411EE2EEAE99B00DDB8C5 /* JourneyVM.swift */,
 				D510E5B52EEB421500550779 /* DailyRecomendationsVM.swift */,
@@ -445,6 +448,7 @@
 				935EDB542EF07486003A1E96 /* ItemDetailsCardComponent.swift in Sources */,
 				D5AD14D92EE9BDFD00C7A261 /* LinearGradientEnum.swift in Sources */,
 				D5AD14DD2EE9D37C00C7A261 /* IconEnum.swift in Sources */,
+				93BFDBEA2EF550D200E7A513 /* KeyboardResponder.swift in Sources */,
 				93AAD30C2EF1FA7D00C1CC23 /* SearchVM.swift in Sources */,
 				D5AD14E02EE9DDBF00C7A261 /* LayoutExtension.swift in Sources */,
 				935EDB602EF0B9AE003A1E96 /* TabComponentEnum.swift in Sources */,
