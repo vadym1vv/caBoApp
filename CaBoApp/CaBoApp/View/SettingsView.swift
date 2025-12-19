@@ -17,6 +17,10 @@ struct SettingsView: View {
     @State private var showUnlockResetPaywall: Bool = false
     @State private var showResetAlert: Bool = false
     
+    @ObservedObject var iapManager = IAPManager.shared
+    @State private var showRestoreAlert = false
+    @State private var showResetConfirmation = false
+    
     @Environment(\.presentationMode) private var presentationMode
     
     var body: some View {
@@ -119,7 +123,7 @@ struct SettingsView: View {
                         .padding(.vertical,7)
                         .padding(.trailing)
                     }
-                    .frame(height: UIScreen.main.bounds.height / 15)
+                    .frame(height: UIScreen.main.bounds.height / 13)
                     .background(ColorEnum.colFFC8AF.color)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .foregroundColor(ColorEnum.col181818.color)
@@ -135,7 +139,7 @@ struct SettingsView: View {
                         }
                         .padding()
                     }
-                    .frame(height: UIScreen.main.bounds.height / 15)
+                    .frame(height: UIScreen.main.bounds.height / 13)
                     .background(ColorEnum.colFFC8AF.color)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     
@@ -210,7 +214,7 @@ struct SettingsView: View {
                                         .font(FontEnum.joSaMedium16.font)
                                 }
                                 .frame(maxWidth: .infinity)
-                                .frame(height: UIScreen.main.bounds.height / 18)
+                                .frame(height: UIScreen.main.bounds.height / 22)
                                 .background(ColorEnum.colFF6F61.color)
                                 .foregroundColor(ColorEnum.colFFFFFF.color)
                                 .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -248,7 +252,7 @@ struct SettingsView: View {
                                         .font(FontEnum.joSaMedium16.font)
                                 }
                                 .frame(maxWidth: .infinity)
-                                .frame(height: UIScreen.main.bounds.height / 18)
+                                .frame(height: UIScreen.main.bounds.height / 22)
                                 .background(ColorEnum.colF77D4E.color)
                                 .foregroundColor(ColorEnum.colFFFFFF.color)
                                 .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -280,7 +284,7 @@ struct SettingsView: View {
                                 Text("Reset progress")
                             }
                             .frame(maxWidth: .infinity)
-                            .frame(height: UIScreen.main.bounds.height / 18)
+                            frame(height: UIScreen.main.bounds.height / 22)
                             .background(ColorEnum.colFF5D4D.color)
                             .foregroundColor(ColorEnum.colFFFFFF.color)
                             .clipShape(RoundedRectangle(cornerRadius: 24))
@@ -295,10 +299,36 @@ struct SettingsView: View {
                             Text("About the app")
                         }
                         .frame(maxWidth: .infinity)
-                        .frame(height: UIScreen.main.bounds.height / 18)
+                        .frame(height: UIScreen.main.bounds.height / 22)
                         .background(ColorEnum.colFFFFFF.color)
                         .foregroundColor(ColorEnum.col181818.color)
                         .clipShape(RoundedRectangle(cornerRadius: 24))
+                    }
+                    
+                    if (!isExportUnlocked && !isResetUnlocked) {
+                        Button {
+                            IAPManager.shared.restorePurchases()
+                        } label: {
+                            Text("Restore Purchase")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: UIScreen.main.bounds.height / 22)
+                                .background(ColorEnum.colFFFFFF.color)
+                                .foregroundColor(ColorEnum.col181818.color)
+                                .clipShape(RoundedRectangle(cornerRadius: 24))
+                        }
+                        
+                        .alert(isPresented: $showRestoreAlert) {
+                            Alert(
+                                title: Text("Restored"),
+                                message: Text("Your previous purchases have been successfully restored."),
+                                dismissButton: .default(Text("OK"))
+                            )
+                        }
+                        .onReceive(iapManager.$restorationWasSuccessful) { success in
+                            if success {
+                                showRestoreAlert = true
+                            }
+                        }
                     }
                     
                 }
@@ -316,6 +346,11 @@ struct SettingsView: View {
         
     }
     
+    private func performGlobalReset() {
+        coreDataUserProgressVM.deleteAllEntities()
+        coreDataJournalVM.deleteAllEntities()
+        coreDataSearchEntityVM.deleteAllEntities()
+    }
     
     enum ExportFormat { case csv, json }
     
